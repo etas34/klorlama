@@ -61,11 +61,14 @@
         },
 
         mounted() {
-            this.getIl();
 
+                this.getIl();
+
+            // this.handleLogin();
         },
 
         methods: {
+
             getIl(){
 
                 axios.get('/api/il')
@@ -86,7 +89,7 @@
                 })
                     .then((response) => {
                          this.ilceler=response.data;
-                         console.log(response.data)
+                         // console.log(response.data)
 
                     })
                     .catch(function (error) {

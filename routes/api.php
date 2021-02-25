@@ -19,5 +19,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/il', [ApiController::class, 'getil']);
-Route::get('/ilce', [ApiController::class, 'getilce']);
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('/il', [ApiController::class, 'getil']);
+    Route::get('/ilce', [ApiController::class, 'getilce']);
+});
+

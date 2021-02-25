@@ -1940,7 +1940,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.getIl();
+    this.getIl(); // this.handleLogin();
   },
   methods: {
     getIl: function getIl() {
