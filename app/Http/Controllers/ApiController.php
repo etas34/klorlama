@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Il;
+use App\Models\Ilce;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -20,4 +21,12 @@ class ApiController extends Controller
 
         return response()->json($ilceler);
     }
+
+    public function getsistem(Request $request)
+    {
+        $ilceler=Ilce::find($request->ilce_id)->sistems;
+
+        return response()->json($ilceler);
+    }
+
 }

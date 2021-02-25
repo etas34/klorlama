@@ -6,28 +6,54 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
-                            Sistem - Yeni Oluştur
+                            Kullanıcı - Yeni Oluştur
                         </h3>
                     </div>
                         <div class="card-body">
                             <div class="row">
 
+                                <div class="form-group col-md-12">
+                                    <label>Kullanıcı Adı</label>
+                                    <input type="text" required name="name" class="form-control">
+                                </div>
 
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-12">
+                                    <label>Email</label>
+                                    <input type="email" required name="email" class="form-control">
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label>Şifre</label>
+                                    <input type="text" required name="password" class="form-control">
+                                </div>
+
+
+
+                                <h5 class="col-md-12">Yetki</h5>
+                                <div class="form-group col-md-4">
                                     <label>İl</label>
                                     <select class="form-control select2" required data-placeholder="İl Seçiniz" v-select2  v-model="selected_il">
+                                        <option value="*">Tümü</option>
                                         <option v-for="il in iller" :value="il.id">{{ il.ad}}</option>
                                     </select>
                                 </div>
 
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-4">
                                     <label>İlçe</label>
                                     <select class="form-control" required data-placeholder="İlçe Seçiniz">
+                                        <option value="*">Tümü</option>
                                         <option v-for="ilce in ilceler" :value="ilce.id">{{ ilce.ad}}</option>
                                     </select>
                                 </div>
 
 
+                                <div class="form-group col-md-4">
+                                    <label>Sistem</label>
+                                    <select class="form-control" required data-placeholder="Sistem Seçiniz">
+                                        <option value="*">Tümü</option>
+                                        <option v-for="ilce in ilceler" :value="ilce.id">{{ ilce.ad}}</option>
+                                    </select>
+                                </div>
                                 <div class="form-group col-md-12">
                                     <label>Sistem Adı</label>
                                     <input type="text" required name="name" class="form-control">
@@ -56,7 +82,9 @@
             return {
                 iller: [],
                 ilceler: [],
-                selected_il:''
+                sistemler: [],
+                selected_il:'',
+                selected_ilce:''
             }
         },
 
@@ -90,6 +118,24 @@
                     .then((response) => {
                          this.ilceler=response.data;
                          // console.log(response.data)
+
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+            },
+
+            getSistem(ilce_id){
+
+                axios.get('/api/sistem',{
+                    params: {
+                        ilce_id:ilce_id
+                    }
+                })
+                    .then((response) => {
+                        this.sistemler=response.data;
+                        // console.log(response.data)
 
                     })
                     .catch(function (error) {
