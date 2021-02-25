@@ -16,27 +16,21 @@
                                 <div class="form-group col-md-6">
                                     <label>İl</label>
                                     <select class="form-control select2" required data-placeholder="İl Seçiniz" v-select2  v-model="selected_il">
-                                        <option></option>
                                         <option v-for="il in iller" :value="il.id">{{ il.ad}}</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group col-md-6">
                                     <label>İlçe</label>
-                                    <select class="form-control select2" required data-placeholder="İlçe Seçiniz" >
-                                        <option>Alaska</option>
-                                        <option>California</option>
-                                        <option>Delaware</option>
-                                        <option>Tennessee</option>
-                                        <option>Texas</option>
-                                        <option>Washington</option>
+                                    <select class="form-control" required data-placeholder="İlçe Seçiniz">
+                                        <option v-for="ilce in ilceler" :value="ilce.id">{{ ilce.ad}}</option>
                                     </select>
                                 </div>
 
 
                                 <div class="form-group col-md-12">
                                     <label>Sistem Adı</label>
-                                    <input type="text" required name="name" class="form-control"  :value="selected_il">
+                                    <input type="text" required name="name" class="form-control">
                                 </div>
 
 
@@ -61,6 +55,7 @@
         data: function () {
             return {
                 iller: [],
+                ilceler: [],
                 selected_il:''
             }
         },
@@ -81,19 +76,31 @@
                         console.log(error);
                     });
 
-            }
+            },
+            getIlce(il_id){
+
+                axios.get('/api/ilce',{
+                    params: {
+                        il_id:il_id
+                    }
+                })
+                    .then((response) => {
+                         this.ilceler=response.data;
+                         console.log(response.data)
+
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+            },
 
         },
 
         watch : {
-            selected_id:  {
-
-                handler(val){
-                    console.log(val)
-                },
-                deep: true
+            selected_il(val) {
+                this.getIlce(val)
             },
-
         }
 
 

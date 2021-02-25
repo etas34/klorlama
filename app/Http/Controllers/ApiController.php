@@ -13,4 +13,11 @@ class ApiController extends Controller
 
         return response()->json($il);
     }
+
+    public function getilce(Request $request)
+    {
+        $ilceler=Il::find($request->il_id)->ilces;
+
+        return response()->json($ilceler);
+    }
 }

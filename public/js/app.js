@@ -1931,16 +1931,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       iller: [],
+      ilceler: [],
       selected_il: ''
     };
   },
@@ -1956,14 +1951,25 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    getIlce: function getIlce(il_id) {
+      var _this2 = this;
+
+      axios.get('/api/ilce', {
+        params: {
+          il_id: il_id
+        }
+      }).then(function (response) {
+        _this2.ilceler = response.data;
+        console.log(response.data);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   watch: {
-    selected_id: {
-      handler: function handler(val) {
-        console.log(val);
-      },
-      deep: true
+    selected_il: function selected_il(val) {
+      this.getIlce(val);
     }
   }
 });
@@ -2482,30 +2488,34 @@ var render = function() {
                     }
                   }
                 },
-                [
-                  _c("option"),
-                  _vm._v(" "),
-                  _vm._l(_vm.iller, function(il) {
-                    return _c("option", { domProps: { value: il.id } }, [
-                      _vm._v(_vm._s(il.ad))
-                    ])
-                  })
-                ],
-                2
+                _vm._l(_vm.iller, function(il) {
+                  return _c("option", { domProps: { value: il.id } }, [
+                    _vm._v(_vm._s(il.ad))
+                  ])
+                }),
+                0
               )
             ]),
             _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-12" }, [
-              _c("label", [_vm._v("Sistem Adı")]),
+            _c("div", { staticClass: "form-group col-md-6" }, [
+              _c("label", [_vm._v("İlçe")]),
               _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", required: "", name: "name" },
-                domProps: { value: _vm.selected_il }
-              })
-            ])
+              _c(
+                "select",
+                {
+                  staticClass: "form-control",
+                  attrs: { required: "", "data-placeholder": "İlçe Seçiniz" }
+                },
+                _vm._l(_vm.ilceler, function(ilce) {
+                  return _c("option", { domProps: { value: ilce.id } }, [
+                    _vm._v(_vm._s(ilce.ad))
+                  ])
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
           ])
         ]),
         _vm._v(" "),
@@ -2529,29 +2539,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-6" }, [
-      _c("label", [_vm._v("İlçe")]),
+    return _c("div", { staticClass: "form-group col-md-12" }, [
+      _c("label", [_vm._v("Sistem Adı")]),
       _vm._v(" "),
-      _c(
-        "select",
-        {
-          staticClass: "form-control select2",
-          attrs: { required: "", "data-placeholder": "İlçe Seçiniz" }
-        },
-        [
-          _c("option", [_vm._v("Alaska")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("California")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Delaware")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Tennessee")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Texas")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Washington")])
-        ]
-      )
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "text", required: "", name: "name" }
+      })
     ])
   },
   function() {

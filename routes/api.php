@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/il', [ApiController::class, 'getil']);
+Route::get('/ilce', [ApiController::class, 'getilce']);
