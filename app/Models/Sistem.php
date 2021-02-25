@@ -15,4 +15,14 @@ class Sistem extends Model
         'ad',
         'telefon',
     ];
+
+    public function Il()
+    {
+        return $this->belongsTo(Il::class);
+    }
+
+    public function Ilce()
+    {
+        return $this->belongsTo(Ilce::class);
+    }
 }

@@ -15,6 +15,9 @@ class Ilce extends Model
     {
         return $this->belongsTo(Il::class);
     }
-
+    public function sistems()
+    {
+        return $this->hasMany(Sistem::class);
+    }
 
 }

@@ -40,7 +40,7 @@
 
                                 <div class="form-group col-md-4">
                                     <label>İlçe</label>
-                                    <select class="form-control" required data-placeholder="İlçe Seçiniz">
+                                    <select class="form-control" required data-placeholder="İlçe Seçiniz" v-model="selected_ilce">
                                         <option value="*">Tümü</option>
                                         <option v-for="ilce in ilceler" :value="ilce.id">{{ ilce.ad}}</option>
                                     </select>
@@ -51,14 +51,9 @@
                                     <label>Sistem</label>
                                     <select class="form-control" required data-placeholder="Sistem Seçiniz">
                                         <option value="*">Tümü</option>
-                                        <option v-for="ilce in ilceler" :value="ilce.id">{{ ilce.ad}}</option>
+                                        <option v-for="sistem in sistemler" :value="sistem.id">{{ sistem.ad}}</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-12">
-                                    <label>Sistem Adı</label>
-                                    <input type="text" required name="name" class="form-control">
-                                </div>
-
 
 
                             </div>
@@ -135,7 +130,7 @@
                 })
                     .then((response) => {
                         this.sistemler=response.data;
-                        // console.log(response.data)
+                        console.log(response.data)
 
                     })
                     .catch(function (error) {
@@ -149,6 +144,10 @@
         watch : {
             selected_il(val) {
                 this.getIlce(val)
+            },
+
+            selected_ilce(val) {
+                this.getSistem(val)
             },
         }
 
