@@ -8,7 +8,7 @@
 
         </section>
         <!-- /.content -->
-    </div>
+
     <!-- /.content-wrapper -->
     <!-- /.content -->
 </x-layouts.admin-app>

@@ -50,6 +50,41 @@
             </li>
         </ul>
 
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown user-menu">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                    <img src="{{asset('adminlte/dist/img/user.png')}}"
+                         class="user-image img-circle elevation-2" alt="User Image">
+                    <span class="d-none d-md-inline">{{Auth::user()->name}}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <!-- User image -->
+                    <li class="user-header bg-primary">
+                        <img src="{{ asset('adminlte/dist/img/user.png')}}" class="img-circle elevation-2"
+                             alt="User Image">
+
+                        <p>
+                            {{Auth::user()->name}}
+                            {{--                            <small>{{ Carbon\Carbon::parse(Auth::user()->created_at)->format('d M Y') }} Tarihi'nden Beri Üye </small>--}}
+                        </p>
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                        {{--                        <a href="#" class="btn btn-default btn-flat">Profile</a>--}}
+
+                        <a href="{{route('logout')}}" class="btn btn-block btn-flat "
+                           onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">Çıkış Yap</a>
+                        <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                        </form>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
 
     </nav>
     <!-- /.navbar -->
@@ -71,52 +106,53 @@
             </div><!-- /.container-fluid -->
         </section>
 
-    <!-- Content Wrapper. Contains page content -->
-    {{ $slot }}
+        <!-- Content Wrapper. Contains page content -->
+        {{ $slot }}
+    </div>
+            <!-- /.content-wrapper -->
+            <x-layouts.admin-footer></x-layouts.admin-footer>
 
-    <!-- /.content-wrapper -->
-  <x-layouts.admin-footer></x-layouts.admin-footer>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-</div>
-<!-- jQuery -->
-<script src="{{asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{asset('adminlte/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-    $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- ChartJS -->
-<script src="{{asset('adminlte/plugins/chart.js/Chart.min.js')}}"></script>
-<!-- Sparkline -->
-<script src="{{asset('adminlte/plugins/sparklines/sparkline.js')}}"></script>
-<!-- JQVMap -->
-<script src="{{asset('adminlte/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-<script src="{{asset('adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{asset('adminlte/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
-<!-- daterangepicker -->
-<script src="{{asset('adminlte/plugins/moment/moment.min.js')}}"></script>
-<script src="{{asset('adminlte/plugins/daterangepicker/daterangepicker.js')}}"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{asset('adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
-<!-- Summernote -->
-<script src="{{asset('adminlte/plugins/summernote/summernote-bs4.min.js')}}"></script>
-<!-- overlayScrollbars -->
-<script src="{{asset('adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('adminlte/dist/js/adminlte.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Control sidebar content goes here -->
+            </aside>
+            <!-- /.control-sidebar -->
+        </div>
+        <!-- jQuery -->
+        <script src="{{asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
+        <!-- jQuery UI 1.11.4 -->
+        <script src="{{asset('adminlte/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+        <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+        <script>
+            $.widget.bridge('uibutton', $.ui.button)
+        </script>
+        <!-- Bootstrap 4 -->
+        <script src="{{asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+        <!-- ChartJS -->
+        <script src="{{asset('adminlte/plugins/chart.js/Chart.min.js')}}"></script>
+        <!-- Sparkline -->
+        <script src="{{asset('adminlte/plugins/sparklines/sparkline.js')}}"></script>
+        <!-- JQVMap -->
+        <script src="{{asset('adminlte/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
+        <script src="{{asset('adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
+        <!-- jQuery Knob Chart -->
+        <script src="{{asset('adminlte/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
+        <!-- daterangepicker -->
+        <script src="{{asset('adminlte/plugins/moment/moment.min.js')}}"></script>
+        <script src="{{asset('adminlte/plugins/daterangepicker/daterangepicker.js')}}"></script>
+        <!-- Tempusdominus Bootstrap 4 -->
+        <script
+            src="{{asset('adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+        <!-- Summernote -->
+        <script src="{{asset('adminlte/plugins/summernote/summernote-bs4.min.js')}}"></script>
+        <!-- overlayScrollbars -->
+        <script src="{{asset('adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
+        <!-- AdminLTE App -->
+        <script src="{{asset('adminlte/dist/js/adminlte.js')}}"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="{{asset('adminlte/dist/js/demo.js')}}"></script>
 
 
-<script src="{{asset('js/app.js')}}"></script>
+        <script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
