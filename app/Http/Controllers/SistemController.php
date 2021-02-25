@@ -33,18 +33,27 @@ class SistemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+
+       $status = Sistem::create([
+            'ilce_id' => $request['ilce_id'],
+            'il_id' => $request['il_id'],
+            'ad' => $request['ad'],
+            'telefon' => $request['telefon'],
+        ]);
+
+
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sistem  $sistem
+     * @param \App\Models\Sistem $sistem
      * @return \Illuminate\Http\Response
      */
     public function show(Sistem $sistem)
@@ -55,7 +64,7 @@ class SistemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Sistem  $sistem
+     * @param \App\Models\Sistem $sistem
      * @return \Illuminate\Http\Response
      */
     public function edit(Sistem $sistem)
@@ -66,8 +75,8 @@ class SistemController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sistem  $sistem
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Sistem $sistem
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Sistem $sistem)
@@ -78,7 +87,7 @@ class SistemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Sistem  $sistem
+     * @param \App\Models\Sistem $sistem
      * @return \Illuminate\Http\Response
      */
     public function destroy(Sistem $sistem)

@@ -7,13 +7,16 @@
 // require('./bootstrap');
 
 window.axios = require('axios');
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
+
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.axios.defaults.withCredentials = true
 
 window.Vue = require('vue').default;
-
+Vue.use(VueToast);
 
 Vue.directive('select2', {
     inserted(el) {

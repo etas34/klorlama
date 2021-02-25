@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\SistemController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +24,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/il', [ApiController::class, 'getil']);
     Route::get('/ilce', [ApiController::class, 'getilce']);
+
+    Route::group(['prefix'=>'sistem','as'=>'sistem.'],function (){
+        Route::post('/store', [SistemController::class, 'store'])->name('store');
+    });
+
+
+
+
+
 });
 
