@@ -10,6 +10,12 @@
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
+
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('adminlte/plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('adminlte/dist/css/adminlte.min.css')}}">
 
@@ -82,16 +88,16 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-12">
-                        <h1>{{ $title }}</h1>
-                    </div>
+{{--        <section class="content-header">--}}
+{{--            <div class="container-fluid">--}}
+{{--                <div class="row mb-2">--}}
+{{--                    <div class="col-sm-12">--}}
+{{--                        <h1>{{ $title }}</h1>--}}
+{{--                    </div>--}}
 
-                </div>
-            </div><!-- /.container-fluid -->
-        </section>
+{{--                </div>--}}
+{{--            </div><!-- /.container-fluid -->--}}
+{{--        </section>--}}
 
         <!-- Content Wrapper. Contains page content -->
         {{ $slot }}
@@ -111,6 +117,9 @@
         <!-- Bootstrap 4 -->
         <script src="{{asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
+        <!-- Select2 -->
+        <script src="{{asset('adminlte/plugins/select2/js/select2.full.min.js')}}"></script>
+
         <!-- AdminLTE App -->
         <script src="{{asset('adminlte/dist/js/adminlte.js')}}"></script>
         <!-- AdminLTE for demo purposes -->
@@ -118,5 +127,10 @@
 
 
         <script src="{{asset('js/app.js')}}"></script>
+
+        <script>
+            $('.select2').select2()
+
+        </script>
 </body>
 </html>

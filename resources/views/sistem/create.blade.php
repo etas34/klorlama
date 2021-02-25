@@ -3,7 +3,8 @@
     <!-- Main content -->
     <section class="content">
         <div id="app">
-            <example-component></example-component>
+            <sistem-create></sistem-create>
+
         </div>
 
     </section>

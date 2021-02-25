@@ -6,7 +6,25 @@
 
 // require('./bootstrap');
 
+window.axios = require('axios');
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Vue = require('vue').default;
+
+
+Vue.directive('select2', {
+    inserted(el) {
+        $(el).on('select2:select', () => {
+            const event = new Event('change', { bubbles: true, cancelable: true });
+            el.dispatchEvent(event);
+        });
+
+        $(el).on('select2:unselect', () => {
+            const event = new Event('change', {bubbles: true, cancelable: true})
+            el.dispatchEvent(event)
+        })
+    },
+});
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,6 +38,7 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('sistem-create', require('./components/SistemCreate.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

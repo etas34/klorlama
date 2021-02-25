@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SistemController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,4 +38,13 @@ Route::group(['prefix'=>'user','as'=>'user.'],function (){
     Route::get('/destroy/{user}', [UserController::class, 'destroy'])->name('destroy');
     Route::post('/edit/{user}', [UserController::class, 'update'])->name('update');
     Route::post('/create', [UserController::class, 'store'])->name('store');
+});
+
+Route::group(['prefix'=>'sistem','as'=>'sistem.'],function (){
+    Route::get('/', [SistemController::class, 'index'])->name('index');
+    Route::get('/create', [SistemController::class, 'create'])->name('create');
+    Route::get('/edit/{sistem}', [SistemController::class, 'edit'])->name('edit');
+    Route::get('/destroy/{sistem}', [SistemController::class, 'destroy'])->name('destroy');
+    Route::post('/edit/{sistem}', [SistemController::class, 'update'])->name('update');
+    Route::post('/create', [SistemController::class, 'store'])->name('store');
 });

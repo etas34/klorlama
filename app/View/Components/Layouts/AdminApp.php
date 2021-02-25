@@ -16,11 +16,9 @@ class AdminApp extends Component
      *
      * @var string
      */
-    public $title;
 
-    public function __construct($title)
+    public function __construct()
     {
-        $this->title = $title;
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Il;
 use App\Models\Sistem;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,9 @@ class SistemController extends Controller
      */
     public function create()
     {
-        //
+
+
+        return view('sistem.create');
     }
 
     /**
