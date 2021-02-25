@@ -1,0 +1,168 @@
+Index: resources/views/dashboard.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><x-layouts.admin-app :title=\"'Blank Page prop'\">\r\n\r\n    <!-- Main content -->\r\n    <section class=\"content\">\r\n        <div id=\"app\">\r\n            <example-component></example-component>\r\n        </div>\r\n\r\n    </section>\r\n\r\n    <!-- /.content -->\r\n\r\n    <!-- /.content-wrapper -->\r\n    <!-- /.content -->\r\n</x-layouts.admin-app>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/dashboard.blade.php b/resources/views/dashboard.blade.php
+--- a/resources/views/dashboard.blade.php	(revision ba28726122eb77f11cc225fb45aaab6ec27465c8)
++++ b/resources/views/dashboard.blade.php	(date 1614240770560)
+@@ -1,4 +1,4 @@
+-<x-layouts.admin-app :title="'Blank Page prop'">
++<x-layouts.admin-app :title="'Title'">
+ 
+     <!-- Main content -->
+     <section class="content">
+Index: resources/views/components/layouts/admin-footer.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\n    <!-- Simplicity is the ultimate sophistication. - Leonardo da Vinci -->\r\n    <!-- Main Footer -->\r\n    <footer class=\"main-footer\">\r\n        <strong>Copyright &copy; 2014-2020 <a href=\"https://adminlte.io\">AdminLTE.io</a>.</strong>\r\n        All rights reserved.\r\n        <div class=\"float-right d-none d-sm-inline-block\">\r\n            <b>Version</b> 3.1.0-rc\r\n        </div>\r\n    </footer>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/components/layouts/admin-footer.blade.php b/resources/views/components/layouts/admin-footer.blade.php
+--- a/resources/views/components/layouts/admin-footer.blade.php	(revision ba28726122eb77f11cc225fb45aaab6ec27465c8)
++++ b/resources/views/components/layouts/admin-footer.blade.php	(date 1614240246541)
+@@ -2,7 +2,7 @@
+     <!-- Simplicity is the ultimate sophistication. - Leonardo da Vinci -->
+     <!-- Main Footer -->
+     <footer class="main-footer">
+-        <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
++        <strong>Copyright &copy; 2014-{{ date('Y') }} <a href="http://cmsyazilim.net">CMS Yazılım</a>.</strong>
+         All rights reserved.
+         <div class="float-right d-none d-sm-inline-block">
+             <b>Version</b> 3.1.0-rc
+Index: routes/web.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nuse Illuminate\\Support\\Facades\\Route;\r\n\r\n/*\r\n|--------------------------------------------------------------------------\r\n| Web Routes\r\n|--------------------------------------------------------------------------\r\n|\r\n| Here is where you can register web routes for your application. These\r\n| routes are loaded by the RouteServiceProvider within a group which\r\n| contains the \"web\" middleware group. Now create something great!\r\n|\r\n*/\r\n\r\n\r\nRoute::get('/', function () {\r\n    return view('dashboard');\r\n})->middleware(['auth'])->name('dashboard');\r\n\r\nrequire __DIR__.'/auth.php';\r\n\r\nAuth::routes();\r\n\r\nRoute::get('/home', [App\\Http\\Controllers\\HomeController::class, 'index'])->name('home');\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/routes/web.php b/routes/web.php
+--- a/routes/web.php	(revision ba28726122eb77f11cc225fb45aaab6ec27465c8)
++++ b/routes/web.php	(date 1614239919891)
+@@ -13,8 +13,11 @@
+ |
+ */
+ 
+-
+ Route::get('/', function () {
++    return redirect('dashboard');
++});
++
++Route::get('/dashboard', function () {
+     return view('dashboard');
+ })->middleware(['auth'])->name('dashboard');
+ 
+Index: resources/views/components/layouts/admin-app.blade.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"utf-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n    <title>AdminLTE 3 | Blank Page</title>\r\n\r\n    <!-- Google Font: Source Sans Pro -->\r\n    <link rel=\"stylesheet\"\r\n          href=\"https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback\">\r\n    <!-- Font Awesome -->\r\n    <link rel=\"stylesheet\" href=\"{{asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}\">\r\n    <!-- Theme style -->\r\n    <link rel=\"stylesheet\" href=\"{{asset('adminlte/dist/css/adminlte.min.css')}}\">\r\n\r\n    <link rel=\"stylesheet\" href=\"{{asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}\">\r\n    <link href=\"{{asset('css/app.css')}}\" rel=\"stylesheet\">\r\n\r\n    <!-- Toastr -->\r\n{{--    <link rel=\"stylesheet\" href=\"{{asset('adminlte/{{asset('adminlte/plugins/toastr/toastr.min.css')}}\">--}}\r\n<!-- Custom Styles -->\r\n    @stack('styles')\r\n</head>\r\n\r\n<body class=\"hold-transition sidebar-mini layout-fixed\">\r\n<div class=\"wrapper\">\r\n\r\n    <!-- Navbar -->\r\n    <nav class=\"main-header navbar navbar-expand navbar-white navbar-light\">\r\n        <!-- Left navbar links -->\r\n        <ul class=\"navbar-nav\">\r\n            <li class=\"nav-item\">\r\n                <a class=\"nav-link\" data-widget=\"pushmenu\" href=\"#\" role=\"button\"><i class=\"fas fa-bars\"></i></a>\r\n            </li>\r\n            <li class=\"nav-item d-none d-sm-inline-block\">\r\n                <a href=\"index3.html\" class=\"nav-link\">Home</a>\r\n            </li>\r\n        </ul>\r\n\r\n        <!-- Right navbar links -->\r\n        <ul class=\"navbar-nav ml-auto\">\r\n            <li class=\"nav-item dropdown user-menu\">\r\n                <a href=\"#\" class=\"nav-link dropdown-toggle\" data-toggle=\"dropdown\">\r\n                    <img src=\"{{asset('adminlte/dist/img/user.png')}}\"\r\n                         class=\"user-image img-circle elevation-2\" alt=\"User Image\">\r\n                    <span class=\"d-none d-md-inline\">{{Auth::user()->name}}</span>\r\n                </a>\r\n                <ul class=\"dropdown-menu dropdown-menu-lg dropdown-menu-right\">\r\n                    <!-- User image -->\r\n                    <li class=\"user-header bg-primary\">\r\n                        <img src=\"{{ asset('adminlte/dist/img/user.png')}}\" class=\"img-circle elevation-2\"\r\n                             alt=\"User Image\">\r\n\r\n                        <p>\r\n                            {{Auth::user()->name}}\r\n                            {{--                            <small>{{ Carbon\\Carbon::parse(Auth::user()->created_at)->format('d M Y') }} Tarihi'nden Beri Üye </small>--}}\r\n                        </p>\r\n                    </li>\r\n                    <!-- Menu Footer-->\r\n                    <li class=\"user-footer\">\r\n                        {{--                        <a href=\"#\" class=\"btn btn-default btn-flat\">Profile</a>--}}\r\n\r\n                        <a href=\"{{route('logout')}}\" class=\"btn btn-block btn-flat \"\r\n                           onclick=\"event.preventDefault();\r\n                                                document.getElementById('logout-form').submit();\">Çıkış Yap</a>\r\n                        <form id=\"logout-form\" method=\"POST\" action=\"{{ route('logout') }}\">\r\n                            @csrf\r\n\r\n                        </form>\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n\r\n        </ul>\r\n\r\n    </nav>\r\n    <!-- /.navbar -->\r\n\r\n    <!-- Main Sidebar Container -->\r\n    <x-layouts.admin-sidebar></x-layouts.admin-sidebar>\r\n\r\n    <!-- Content Wrapper. Contains page content -->\r\n    <div class=\"content-wrapper\">\r\n        <!-- Content Header (Page header) -->\r\n        <section class=\"content-header\">\r\n            <div class=\"container-fluid\">\r\n                <div class=\"row mb-2\">\r\n                    <div class=\"col-sm-12\">\r\n                        <h1>{{ $title }}</h1>\r\n                    </div>\r\n\r\n                </div>\r\n            </div><!-- /.container-fluid -->\r\n        </section>\r\n\r\n        <!-- Content Wrapper. Contains page content -->\r\n        {{ $slot }}\r\n    </div>\r\n            <!-- /.content-wrapper -->\r\n            <x-layouts.admin-footer></x-layouts.admin-footer>\r\n\r\n            <!-- Control Sidebar -->\r\n            <aside class=\"control-sidebar control-sidebar-dark\">\r\n                <!-- Control sidebar content goes here -->\r\n            </aside>\r\n            <!-- /.control-sidebar -->\r\n        </div>\r\n        <!-- jQuery -->\r\n        <script src=\"{{asset('adminlte/plugins/jquery/jquery.min.js')}}\"></script>\r\n\r\n        <!-- Bootstrap 4 -->\r\n        <script src=\"{{asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}\"></script>\r\n\r\n        <!-- AdminLTE App -->\r\n        <script src=\"{{asset('adminlte/dist/js/adminlte.js')}}\"></script>\r\n        <!-- AdminLTE for demo purposes -->\r\n        <script src=\"{{asset('adminlte/dist/js/demo.js')}}\"></script>\r\n\r\n\r\n        <script src=\"{{asset('js/app.js')}}\"></script>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/views/components/layouts/admin-app.blade.php b/resources/views/components/layouts/admin-app.blade.php
+--- a/resources/views/components/layouts/admin-app.blade.php	(revision ba28726122eb77f11cc225fb45aaab6ec27465c8)
++++ b/resources/views/components/layouts/admin-app.blade.php	(date 1614239190645)
+@@ -41,14 +41,14 @@
+         <ul class="navbar-nav ml-auto">
+             <li class="nav-item dropdown user-menu">
+                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+-                    <img src="{{asset('adminlte/dist/img/user.png')}}"
++                    <img src="{{asset('adminlte/dist/img/avatar.png')}}"
+                          class="user-image img-circle elevation-2" alt="User Image">
+                     <span class="d-none d-md-inline">{{Auth::user()->name}}</span>
+                 </a>
+                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                     <!-- User image -->
+                     <li class="user-header bg-primary">
+-                        <img src="{{ asset('adminlte/dist/img/user.png')}}" class="img-circle elevation-2"
++                        <img src="{{ asset('adminlte/dist/img/avatar.png')}}" class="img-circle elevation-2"
+                              alt="User Image">
+ 
+                         <p>
+Index: routes/auth.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nuse App\\Http\\Controllers\\Auth\\AuthenticatedSessionController;\r\nuse App\\Http\\Controllers\\Auth\\ConfirmablePasswordController;\r\nuse App\\Http\\Controllers\\Auth\\EmailVerificationNotificationController;\r\nuse App\\Http\\Controllers\\Auth\\EmailVerificationPromptController;\r\nuse App\\Http\\Controllers\\Auth\\NewPasswordController;\r\nuse App\\Http\\Controllers\\Auth\\PasswordResetLinkController;\r\nuse App\\Http\\Controllers\\Auth\\RegisteredUserController;\r\nuse App\\Http\\Controllers\\Auth\\VerifyEmailController;\r\nuse Illuminate\\Support\\Facades\\Route;\r\n\r\n//Route::get('/register', [RegisteredUserController::class, 'create'])\r\n//                ->middleware('guest')\r\n//                ->name('register');\r\n//\r\n//Route::post('/register', [RegisteredUserController::class, 'store'])\r\n//                ->middleware('guest');\r\n\r\nRoute::get('/login', [AuthenticatedSessionController::class, 'create'])\r\n                ->middleware('guest')\r\n                ->name('login');\r\n\r\nRoute::post('/login', [AuthenticatedSessionController::class, 'store'])\r\n                ->middleware('guest');\r\n\r\n//Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])\r\n//                ->middleware('guest')\r\n//                ->name('password.request');\r\n//\r\n//Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])\r\n//                ->middleware('guest')\r\n//                ->name('password.email');\r\n\r\n//Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])\r\n//                ->middleware('guest')\r\n//                ->name('password.reset');\r\n//\r\n//Route::post('/reset-password', [NewPasswordController::class, 'store'])\r\n//                ->middleware('guest')\r\n//                ->name('password.update');\r\n\r\nRoute::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])\r\n                ->middleware('auth')\r\n                ->name('verification.notice');\r\n\r\nRoute::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])\r\n                ->middleware(['auth', 'signed', 'throttle:6,1'])\r\n                ->name('verification.verify');\r\n\r\nRoute::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])\r\n                ->middleware(['auth', 'throttle:6,1'])\r\n                ->name('verification.send');\r\n\r\nRoute::get('/confirm-password', [ConfirmablePasswordController::class, 'show'])\r\n                ->middleware('auth')\r\n                ->name('password.confirm');\r\n\r\nRoute::post('/confirm-password', [ConfirmablePasswordController::class, 'store'])\r\n                ->middleware('auth');\r\n\r\nRoute::post('/logout', [AuthenticatedSessionController::class, 'destroy'])\r\n                ->middleware('auth')\r\n                ->name('logout');\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/routes/auth.php b/routes/auth.php
+--- a/routes/auth.php	(revision ba28726122eb77f11cc225fb45aaab6ec27465c8)
++++ b/routes/auth.php	(date 1614239128207)
+@@ -10,12 +10,12 @@
+ use App\Http\Controllers\Auth\VerifyEmailController;
+ use Illuminate\Support\Facades\Route;
+ 
+-//Route::get('/register', [RegisteredUserController::class, 'create'])
+-//                ->middleware('guest')
+-//                ->name('register');
+-//
+-//Route::post('/register', [RegisteredUserController::class, 'store'])
+-//                ->middleware('guest');
++Route::get('/register', [RegisteredUserController::class, 'create'])
++                ->middleware('guest')
++                ->name('register');
++
++Route::post('/register', [RegisteredUserController::class, 'store'])
++                ->middleware('guest');
+ 
+ Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+                 ->middleware('guest')
+@@ -24,21 +24,21 @@
+ Route::post('/login', [AuthenticatedSessionController::class, 'store'])
+                 ->middleware('guest');
+ 
+-//Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
+-//                ->middleware('guest')
+-//                ->name('password.request');
+-//
+-//Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
+-//                ->middleware('guest')
+-//                ->name('password.email');
++Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
++                ->middleware('guest')
++                ->name('password.request');
++
++Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
++                ->middleware('guest')
++                ->name('password.email');
+ 
+-//Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
+-//                ->middleware('guest')
+-//                ->name('password.reset');
+-//
+-//Route::post('/reset-password', [NewPasswordController::class, 'store'])
+-//                ->middleware('guest')
+-//                ->name('password.update');
++Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])
++                ->middleware('guest')
++                ->name('password.reset');
++
++Route::post('/reset-password', [NewPasswordController::class, 'store'])
++                ->middleware('guest')
++                ->name('password.update');
+ 
+ Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])
+                 ->middleware('auth')
+Index: app/Providers/AppServiceProvider.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?php\r\n\r\nnamespace App\\Providers;\r\n\r\nuse Illuminate\\Support\\ServiceProvider;\r\n\r\nclass AppServiceProvider extends ServiceProvider\r\n{\r\n    /**\r\n     * Register any application services.\r\n     *\r\n     * @return void\r\n     */\r\n    public function register()\r\n    {\r\n        //\r\n    }\r\n\r\n    /**\r\n     * Bootstrap any application services.\r\n     *\r\n     * @return void\r\n     */\r\n    public function boot()\r\n    {\r\n        //\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/Providers/AppServiceProvider.php b/app/Providers/AppServiceProvider.php
+--- a/app/Providers/AppServiceProvider.php	(revision ba28726122eb77f11cc225fb45aaab6ec27465c8)
++++ b/app/Providers/AppServiceProvider.php	(date 1614239352117)
+@@ -23,6 +23,6 @@
+      */
+     public function boot()
+     {
+-        //
++        \Schema::defaultStringLength(191);
+     }
+ }
