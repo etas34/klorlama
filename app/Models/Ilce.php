@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Ilce extends Model
 {
     use HasFactory;
+    /**
+     * Get the Il that owns the Ilce.
+     */
+    public function Il()
+    {
+        return $this->belongsTo(Il::class);
+    }
+
+
 }
