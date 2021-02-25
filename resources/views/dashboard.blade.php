@@ -1,4 +1,4 @@
-<x-layouts.admin-app :title="'Blank Page prop'">
+<x-layouts.admin-app :title="'Title'">
 
     <!-- Main content -->
     <section class="content">
