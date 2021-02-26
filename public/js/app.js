@@ -2148,16 +2148,22 @@ __webpack_require__.r(__webpack_exports__);
           position: 'top-right'
         });
       })["catch"](function (error) {
-        Vue.$toast.error('Bir Şeyler Ters Gitti!', {
-          // override the global option
-          position: 'top-right'
-        });
+        if (error.response.status === 422) {
+          $.each(error.response.data.errors, function (key, value) {
+            Vue.$toast.error(value, {
+              position: 'top-right'
+            });
+          });
+        } else {
+          Vue.$toast.error('Bir Şeyler Ters Gitti!', {
+            position: 'top-right'
+          });
+        }
       })["finally"](function () {
         _this.disableSubmit = false;
         _this.formData.name = '';
         _this.formData.email = '';
         _this.formData.password = '';
-        _this.selected_il = '';
       });
     },
     getIl: function getIl() {

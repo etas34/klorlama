@@ -119,16 +119,21 @@
                             position: 'top-right'
                         })
                     }).catch(function (error) {
-                    Vue.$toast.error('Bir Şeyler Ters Gitti!', {
-                        // override the global option
-                        position: 'top-right'
-                    })
+                    if (error.response.status === 422){
+                        $.each(error.response.data.errors, function(key, value) {
+
+                            Vue.$toast.error(value, {position: 'top-right'})
+                        });
+
+                    }
+                    else {
+                        Vue.$toast.error('Bir Şeyler Ters Gitti!', {position: 'top-right'})
+                    }
                 }).finally(() => {
                     this.disableSubmit = false;
                     this.formData.name = '';
                     this.formData.email = '';
                     this.formData.password = '';
-                    this.selected_il='';
                 });
 
             },
