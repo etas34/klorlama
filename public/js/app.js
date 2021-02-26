@@ -3615,7 +3615,10 @@ var render = function() {
                 _c("div", { staticClass: "form-group col-md-4" }, [
                   _c("label", [_vm._v("Sistem")]),
                   _vm._v(" "),
-                  _vm.selected_ilce && _vm.selected_ilce !== "*"
+                  _vm.selected_il &&
+                  _vm.selected_il !== "*" &&
+                  _vm.selected_ilce &&
+                  _vm.selected_ilce !== "*"
                     ? _c(
                         "select",
                         {

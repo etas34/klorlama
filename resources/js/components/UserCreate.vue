@@ -51,7 +51,7 @@
 
                                 <div class="form-group col-md-4">
                                     <label>Sistem</label>
-                                    <select  v-if="selected_ilce && selected_ilce!=='*'" class="form-control" required data-placeholder="Sistem Seçiniz" v-model="selected_sistem">
+                                    <select  v-if="selected_il && selected_il!=='*' && selected_ilce && selected_ilce!=='*'" class="form-control" required data-placeholder="Sistem Seçiniz" v-model="selected_sistem">
                                         <option value="*">Tümü</option>
                                         <option v-for="sistem in sistemler" :value="sistem.id">{{ sistem.ad}}</option>
                                     </select>
