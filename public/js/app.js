@@ -2107,6 +2107,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2114,44 +2122,75 @@ __webpack_require__.r(__webpack_exports__);
       ilceler: [],
       sistemler: [],
       selected_il: '',
-      selected_ilce: ''
+      selected_ilce: '',
+      selected_sistem: '',
+      disableSubmit: false,
+      formData: {
+        ilce_id: '',
+        il_id: '',
+        sistem_id: '',
+        name: '',
+        email: '',
+        password: ''
+      }
     };
   },
   mounted: function mounted() {
     this.getIl(); // this.handleLogin();
   },
   methods: {
-    getIl: function getIl() {
+    storeSistem: function storeSistem(event) {
       var _this = this;
 
+      this.disableSubmit = true;
+      axios.post('/api/user/store', this.formData).then(function (response) {
+        Vue.$toast.success('Kayıt Başarı İle Eklendi!', {
+          position: 'top-right'
+        });
+      })["catch"](function (error) {
+        Vue.$toast.error('Bir Şeyler Ters Gitti!', {
+          // override the global option
+          position: 'top-right'
+        });
+      })["finally"](function () {
+        _this.disableSubmit = false;
+        _this.formData.name = '';
+        _this.formData.email = '';
+        _this.formData.password = '';
+        _this.selected_il = '';
+      });
+    },
+    getIl: function getIl() {
+      var _this2 = this;
+
       axios.get('/api/il').then(function (response) {
-        _this.iller = response.data;
+        _this2.iller = response.data;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     getIlce: function getIlce(il_id) {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get('/api/ilce', {
         params: {
           il_id: il_id
         }
       }).then(function (response) {
-        _this2.ilceler = response.data; // console.log(response.data)
+        _this3.ilceler = response.data; // console.log(response.data)
       })["catch"](function (error) {
         console.log(error);
       });
     },
     getSistem: function getSistem(ilce_id) {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get('/api/sistem', {
         params: {
           ilce_id: ilce_id
         }
       }).then(function (response) {
-        _this3.sistemler = response.data;
+        _this4.sistemler = response.data;
         console.log(response.data);
       })["catch"](function (error) {
         console.log(error);
@@ -2160,10 +2199,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     selected_il: function selected_il(val) {
+      this.formData.il_id = val;
       this.getIlce(val);
     },
     selected_ilce: function selected_ilce(val) {
+      this.formData.ilce_id = val;
       this.getSistem(val);
+    },
+    selected_sistem: function selected_sistem(val) {
+      this.formData.sistem_id = val;
     }
   }
 });
@@ -3366,136 +3410,280 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
     _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "card" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "row" }, [
-            _vm._m(1),
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.storeSistem($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "card" }, [
+            _vm._m(0),
             _vm._v(" "),
-            _vm._m(2),
-            _vm._v(" "),
-            _vm._m(3),
-            _vm._v(" "),
-            _c("h5", { staticClass: "col-md-12" }, [_vm._v("Yetki")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-4" }, [
-              _c("label", [_vm._v("İl")]),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    { name: "select2", rawName: "v-select2" },
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.selected_il,
-                      expression: "selected_il"
-                    }
-                  ],
-                  staticClass: "form-control select2",
-                  attrs: { required: "", "data-placeholder": "İl Seçiniz" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.selected_il = $event.target.multiple
-                        ? $$selectedVal
-                        : $$selectedVal[0]
-                    }
-                  }
-                },
-                [
-                  _c("option", { attrs: { value: "*" } }, [_vm._v("Tümü")]),
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "form-group col-md-12" }, [
+                  _c("label", [_vm._v("Kullanıcı Adı")]),
                   _vm._v(" "),
-                  _vm._l(_vm.iller, function(il) {
-                    return _c("option", { domProps: { value: il.id } }, [
-                      _vm._v(_vm._s(il.ad))
-                    ])
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.name,
+                        expression: "formData.name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", required: "", name: "name" },
+                    domProps: { value: _vm.formData.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.formData, "name", $event.target.value)
+                      }
+                    }
                   })
-                ],
-                2
-              )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group col-md-12" }, [
+                  _c("label", [_vm._v("Email")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.email,
+                        expression: "formData.email"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "email", required: "", name: "email" },
+                    domProps: { value: _vm.formData.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.formData, "email", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group col-md-12" }, [
+                  _c("label", [_vm._v("Şifre")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.password,
+                        expression: "formData.password"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", required: "", name: "password" },
+                    domProps: { value: _vm.formData.password },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.formData, "password", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("h5", { staticClass: "col-md-12" }, [_vm._v("Yetki")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group col-md-4" }, [
+                  _c("label", [_vm._v("İl")]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        { name: "select2", rawName: "v-select2" },
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.selected_il,
+                          expression: "selected_il"
+                        }
+                      ],
+                      staticClass: "form-control select2",
+                      attrs: { required: "", "data-placeholder": "İl Seçiniz" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.selected_il = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "*" } }, [_vm._v("Tümü")]),
+                      _vm._v(" "),
+                      _vm._l(_vm.iller, function(il) {
+                        return _c("option", { domProps: { value: il.id } }, [
+                          _vm._v(_vm._s(il.ad))
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group col-md-4" }, [
+                  _c("label", [_vm._v("İlçe")]),
+                  _vm._v(" "),
+                  _vm.selected_il && _vm.selected_il !== "*"
+                    ? _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.selected_ilce,
+                              expression: "selected_ilce"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            required: "",
+                            "data-placeholder": "İlçe Seçiniz"
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.selected_ilce = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "*" } }, [
+                            _vm._v("Tümü")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.ilceler, function(ilce) {
+                            return _c(
+                              "option",
+                              { domProps: { value: ilce.id } },
+                              [_vm._v(_vm._s(ilce.ad))]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group col-md-4" }, [
+                  _c("label", [_vm._v("Sistem")]),
+                  _vm._v(" "),
+                  _vm.selected_ilce && _vm.selected_ilce !== "*"
+                    ? _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.selected_sistem,
+                              expression: "selected_sistem"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            required: "",
+                            "data-placeholder": "Sistem Seçiniz"
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.selected_sistem = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "*" } }, [
+                            _vm._v("Tümü")
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(_vm.sistemler, function(sistem) {
+                            return _c(
+                              "option",
+                              { domProps: { value: sistem.id } },
+                              [_vm._v(_vm._s(sistem.ad))]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    : _vm._e()
+                ])
+              ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-4" }, [
-              _c("label", [_vm._v("İlçe")]),
-              _vm._v(" "),
+            _c("div", { staticClass: "card-footer" }, [
               _c(
-                "select",
+                "button",
                 {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.selected_ilce,
-                      expression: "selected_ilce"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { required: "", "data-placeholder": "İlçe Seçiniz" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.selected_ilce = $event.target.multiple
-                        ? $$selectedVal
-                        : $$selectedVal[0]
-                    }
-                  }
+                  staticClass: "btn btn-primary float-right",
+                  attrs: { disabled: _vm.disableSubmit, type: "submit" }
                 },
                 [
-                  _c("option", { attrs: { value: "*" } }, [_vm._v("Tümü")]),
+                  _vm.disableSubmit
+                    ? _c("span", {
+                        staticClass: "spinner-border spinner-border-sm",
+                        attrs: { role: "status", "aria-hidden": "true" }
+                      })
+                    : _vm._e(),
                   _vm._v(" "),
-                  _vm._l(_vm.ilceler, function(ilce) {
-                    return _c("option", { domProps: { value: ilce.id } }, [
-                      _vm._v(_vm._s(ilce.ad))
-                    ])
-                  })
-                ],
-                2
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-4" }, [
-              _c("label", [_vm._v("Sistem")]),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
-                  staticClass: "form-control",
-                  attrs: { required: "", "data-placeholder": "Sistem Seçiniz" }
-                },
-                [
-                  _c("option", { attrs: { value: "*" } }, [_vm._v("Tümü")]),
-                  _vm._v(" "),
-                  _vm._l(_vm.sistemler, function(sistem) {
-                    return _c("option", { domProps: { value: sistem.id } }, [
-                      _vm._v(_vm._s(sistem.ad))
-                    ])
-                  })
-                ],
-                2
+                  !_vm.disableSubmit ? _c("span", [_vm._v("Kaydet")]) : _vm._e()
+                ]
               )
             ])
           ])
-        ]),
-        _vm._v(" "),
-        _vm._m(4)
-      ])
+        ]
+      )
     ])
   ])
 }
@@ -3510,60 +3698,6 @@ var staticRenderFns = [
           "\n                    Kullanıcı - Yeni Oluştur\n                "
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-12" }, [
-      _c("label", [_vm._v("Kullanıcı Adı")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", required: "", name: "name" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-12" }, [
-      _c("label", [_vm._v("Email")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "email", required: "", name: "email" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-12" }, [
-      _c("label", [_vm._v("Şifre")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", required: "", name: "password" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary float-right",
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Kaydet")]
-      )
     ])
   }
 ]

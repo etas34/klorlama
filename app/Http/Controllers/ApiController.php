@@ -17,6 +17,8 @@ class ApiController extends Controller
 
     public function getilce(Request $request)
     {
+        if ($request->il_id=='*')
+            return null;
         $ilceler=Il::find($request->il_id)->ilces;
 
         return response()->json($ilceler);
@@ -24,6 +26,8 @@ class ApiController extends Controller
 
     public function getsistem(Request $request)
     {
+        if ($request->ilce_id=='*')
+            return null;
         $sistemler=Ilce::find($request->ilce_id)->sistems;
 
         return response()->json($sistemler);

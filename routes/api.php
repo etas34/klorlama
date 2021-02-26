@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\SistemController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,11 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/il', [ApiController::class, 'getil']);
     Route::get('/ilce', [ApiController::class, 'getilce']);
@@ -30,6 +26,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('/store', [SistemController::class, 'store'])->name('store');
     });
 
+
+    Route::group(['prefix'=>'user','as'=>'user.'],function (){
+        Route::post('/store', [UserController::class, 'store'])->name('store');
+    });
 
 
 

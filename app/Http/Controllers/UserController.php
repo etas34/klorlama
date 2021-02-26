@@ -35,7 +35,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|unique:users',
+            'password' => 'required',
+        ]);
+
+
+        $user =new User();
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=bcrypt($request->password);
+        $user->il_id=$request->il_id;
+        if($request->ilce_id)
+            $user->ilce_id=$request->ilce_id;
+        if($request->sistem_id)
+            $user->sistem_id=$request->sistem_id;
+
+        $user->save();
+
+
+
+
+
+
     }
 
     /**

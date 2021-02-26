@@ -37,7 +37,6 @@ Route::group(['prefix'=>'user','as'=>'user.'],function (){
     Route::get('/edit/{user}', [UserController::class, 'edit'])->name('edit');
     Route::get('/destroy/{user}', [UserController::class, 'destroy'])->name('destroy');
     Route::post('/edit/{user}', [UserController::class, 'update'])->name('update');
-    Route::post('/create', [UserController::class, 'store'])->name('store');
 });
 
 Route::group(['prefix'=>'sistem','as'=>'sistem.'],function (){
@@ -46,5 +45,4 @@ Route::group(['prefix'=>'sistem','as'=>'sistem.'],function (){
     Route::get('/edit/{sistem}', [SistemController::class, 'edit'])->name('edit');
     Route::get('/destroy/{sistem}', [SistemController::class, 'destroy'])->name('destroy');
     Route::post('/edit/{sistem}', [SistemController::class, 'update'])->name('update');
-    Route::post('/create', [SistemController::class, 'store'])->name('store');
 });

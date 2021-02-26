@@ -3,6 +3,8 @@
             <!-- left column -->
             <div class="col-md-12">
                 <!-- general form elements -->
+
+                <form @submit.prevent="storeSistem">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">
@@ -14,17 +16,17 @@
 
                                 <div class="form-group col-md-12">
                                     <label>Kullanıcı Adı</label>
-                                    <input type="text" required name="name" class="form-control">
+                                    <input type="text" required name="name" class="form-control" v-model="formData.name">
                                 </div>
 
                                 <div class="form-group col-md-12">
                                     <label>Email</label>
-                                    <input type="email" required name="email" class="form-control">
+                                    <input type="email" required name="email" class="form-control" v-model="formData.email">
                                 </div>
 
                                 <div class="form-group col-md-12">
                                     <label>Şifre</label>
-                                    <input type="text" required name="password" class="form-control">
+                                    <input type="text" required name="password" class="form-control" v-model="formData.password">
                                 </div>
 
 
@@ -40,7 +42,7 @@
 
                                 <div class="form-group col-md-4">
                                     <label>İlçe</label>
-                                    <select class="form-control" required data-placeholder="İlçe Seçiniz" v-model="selected_ilce">
+                                    <select v-if="selected_il && selected_il!=='*'" class="form-control" required data-placeholder="İlçe Seçiniz" v-model="selected_ilce">
                                         <option value="*">Tümü</option>
                                         <option v-for="ilce in ilceler" :value="ilce.id">{{ ilce.ad}}</option>
                                     </select>
@@ -49,7 +51,7 @@
 
                                 <div class="form-group col-md-4">
                                     <label>Sistem</label>
-                                    <select class="form-control" required data-placeholder="Sistem Seçiniz">
+                                    <select  v-if="selected_ilce && selected_ilce!=='*'" class="form-control" required data-placeholder="Sistem Seçiniz" v-model="selected_sistem">
                                         <option value="*">Tümü</option>
                                         <option v-for="sistem in sistemler" :value="sistem.id">{{ sistem.ad}}</option>
                                     </select>
@@ -61,10 +63,16 @@
                         <!-- /.card-body -->
 
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary float-right">Kaydet</button>
+                            <button :disabled="disableSubmit" type="submit" class="btn btn-primary float-right">
+                            <span v-if="disableSubmit" class="spinner-border spinner-border-sm" role="status"
+                                  aria-hidden="true"></span>
+                                <span v-if="!disableSubmit">Kaydet</span>
+
+                            </button>
                         </div>
                 </div>
                 <!-- /.card -->
+                </form>
 
             </div>
         </div>
@@ -79,7 +87,18 @@
                 ilceler: [],
                 sistemler: [],
                 selected_il:'',
-                selected_ilce:''
+                selected_ilce:'',
+                selected_sistem:'',
+                disableSubmit: false,
+
+                formData: {
+                    ilce_id: '',
+                    il_id: '',
+                    sistem_id: '',
+                    name: '',
+                    email: '',
+                    password: '',
+                }
             }
         },
 
@@ -92,6 +111,27 @@
 
         methods: {
 
+            storeSistem(event) {
+                this.disableSubmit = true
+                axios.post('/api/user/store', this.formData)
+                    .then((response) => {
+                        Vue.$toast.success('Kayıt Başarı İle Eklendi!', {
+                            position: 'top-right'
+                        })
+                    }).catch(function (error) {
+                    Vue.$toast.error('Bir Şeyler Ters Gitti!', {
+                        // override the global option
+                        position: 'top-right'
+                    })
+                }).finally(() => {
+                    this.disableSubmit = false;
+                    this.formData.name = '';
+                    this.formData.email = '';
+                    this.formData.password = '';
+                    this.selected_il='';
+                });
+
+            },
             getIl(){
 
                 axios.get('/api/il')
@@ -143,11 +183,16 @@
 
         watch : {
             selected_il(val) {
+                this.formData.il_id = val
                 this.getIlce(val)
             },
 
             selected_ilce(val) {
+                this.formData.ilce_id = val
                 this.getSistem(val)
+            },
+            selected_sistem(val) {
+                this.formData.sistem_id = val
             },
         }
 
