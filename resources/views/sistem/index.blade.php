@@ -38,18 +38,19 @@
                     <tbody>
                     @foreach($sistem as $key => $value)
                         <tr>
-
-                            <td> {{$value->ad}}</td>
-                            <td> {{$value->il->ad}}</td>
-                            <td> {{$value->ilce->ad}}</td>
-                            <td> {{$value->telefon}}</td>
-                            <td> {{$value->klor}}</td>
-                            <td> {{$value->pompa}}</td>
-                            <td> {{$value->elektrik}}</td>
-                            <td> {{$value->gunes_paneli}}</td>
-                            <td> {{$value->depo_guvenlik}}</td>
-                            <td> {{$value->pano_guvenlik}}</td>
+                            <td>{{$value->ad}}</td>
+                            <td>{{$value->il->ad}}</td>
+                            <td>{{$value->ilce->ad}}</td>
+                            <td>{{$value->telefon}}</td>
+                            <td>{{$value->klor}}</td>
+                            <td>{{$value->pompa}}</td>
+                            <td>{{$value->elektrik}}</td>
+                            <td>{{$value->gunes_paneli}}</td>
+                            <td>{{$value->depo_guvenlik}}</td>
+                            <td>{{$value->pano_guvenlik}}</td>
                             <td>
+                                <a href="{{route('sistem.show',$value)}}"> <span
+                                        class="badge bg-success p-2">Göster</span></a>
                                 <a href="{{route('sistem.edit',$value)}}"> <span
                                         class="badge bg-warning p-2">Düzenle</span></a>
                                 <a onclick="return confirm('Kayıt silinecek, emin misiniz?')"

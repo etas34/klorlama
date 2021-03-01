@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/', [SistemController::class, 'index'])->name('index');
         Route::get('/create', [SistemController::class, 'create'])->name('create');
         Route::get('/edit/{sistem}', [SistemController::class, 'edit'])->name('edit');
+        Route::get('/show/{sistem}', [SistemController::class, 'show'])->name('show');
         Route::get('/destroy/{sistem}', [SistemController::class, 'destroy'])->name('destroy');
         Route::post('/edit/{sistem}', [SistemController::class, 'update'])->name('update');
 

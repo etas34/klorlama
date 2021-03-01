@@ -65,7 +65,7 @@ class SistemController extends Controller
      */
     public function show(Sistem $sistem)
     {
-        //
+        return view('sistem.show',compact('sistem'));
     }
 
     /**

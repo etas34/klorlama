@@ -25,7 +25,7 @@ class CreateSistemsTable extends Migration
             $table->string('gunes_paneli')->nullable();
             $table->string('depo_guvenlik')->nullable();
             $table->string('pano_guvenlik')->nullable();
-            $table->tinyInteger('status')->default(1);
+            $table->tinyInteger('durum')->default(1);
             $table->timestamps();
         });
     }
