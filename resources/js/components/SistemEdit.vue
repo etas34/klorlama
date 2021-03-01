@@ -7,7 +7,7 @@
                 <div class="card mt-3">
                     <div class="card-header">
                         <h3 class="card-title">
-                            Sistem - Yeni Oluştur
+                            Sistem - Düzenle
                         </h3>
                     </div>
                     <div class="card-body">
@@ -17,21 +17,20 @@
 
                             <div class="form-group col-md-6">
                                 <label>İl</label>
-                                <select class="form-control select2" required data-placeholder="İl Seçiniz" v-select2
+                                <select class="form-control select2" required :data-placeholder="sistem.il_ad" v-select2
                                         v-model="selected_il">
-                                    <option v-for="il in iller" :value="il.id">{{ il.ad }}</option>
+
+                                    <option v-for="il in iller" :value="il.id"  >{{ il.ad }}</option>
                                 </select>
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label>İlçe</label>
-                                <select class="form-control" required data-placeholder="İlçe Seçiniz"
+                                <select class="form-control" required
                                         v-model="formData.ilce_id">
-                                    <option v-for="ilce in ilceler" :value="ilce.id">{{ ilce.ad }}</option>
+                                    <option v-for="ilce in ilceler" :value="ilce.id" >{{ ilce.ad }}</option>
                                 </select>
                             </div>
-
-
                             <div class="form-group col-md-12">
                                 <label>Sistem Adı</label>
                                 <input ref="clear" type="text" required name="ad" class="form-control"
@@ -69,6 +68,7 @@
 import {TheMask} from 'vue-the-mask'
 
 export default {
+    props:['sistem'],
     components: {TheMask},
     data: function () {
         return {
@@ -80,26 +80,27 @@ export default {
             formData: {
                 ilce_id: '',
                 il_id: '',
-                ad: '',
-                telefon: ''
+                ad: this.sistem.ad,
+                telefon: this.sistem.telefon
             }
 
         }
     },
 
     mounted() {
-
         this.getIl();
-
+        this.selected_il = this.sistem.il_id
+        this.getIlce( this.sistem.il_id)
+        this.formData.ilce_id = this.sistem.ilce_id
         // this.handleLogin();
     },
 
     methods: {
         storeSistem(event) {
             this.disableSubmit = true
-            axios.post('/api/sistem/store', this.formData)
+            axios.post(`/api/sistem/update/${this.sistem.id}`, this.formData)
                 .then((response) => {
-                    Vue.$toast.success('Kayıt Başarı İle Eklendi!', {
+                    Vue.$toast.success('Kayıt Başarı İle Düzenlendi!', {
                         position: 'top-right'
                     })
                 }).catch(function (error) {
@@ -113,11 +114,8 @@ export default {
                 else {
                     Vue.$toast.error('Bir Şeyler Ters Gitti!', {position: 'top-right'})
                 }
-
             }).finally(() => {
                 this.disableSubmit = false
-                this.formData.ad = ''
-                this.formData.telefon = ''
             });
 
         },
@@ -156,7 +154,8 @@ export default {
             this.formData.il_id = val
             this.getIlce(val)
         }
-    }
+    },
+
 
 
 }

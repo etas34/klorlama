@@ -5,7 +5,7 @@
                 <!-- general form elements -->
 
                 <form @submit.prevent="storeSistem">
-                <div class="card">
+                <div class="card mt-3">
                     <div class="card-header">
                         <h3 class="card-title">
                             Kullanıcı - Yeni Oluştur
@@ -122,7 +122,7 @@
                     if (error.response.status === 422){
                         $.each(error.response.data.errors, function(key, value) {
 
-                            Vue.$toast.error(value, {position: 'top-right'})
+                            Vue.$toast.error(value[0], {position: 'top-right'})
                         });
 
                     }

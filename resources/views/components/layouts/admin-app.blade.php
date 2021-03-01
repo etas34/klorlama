@@ -21,11 +21,12 @@
 
     <link rel="stylesheet" href="{{asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
-
+    @toastr_css
+@stack('styles')
     <!-- Toastr -->
 {{--    <link rel="stylesheet" href="{{asset('adminlte/{{asset('adminlte/plugins/toastr/toastr.min.css')}}">--}}
 <!-- Custom Styles -->
-    @stack('styles')
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -39,7 +40,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">Home</a>
+                <a href="{{route('dashboard')}}" class="nav-link">Ana Sayfa</a>
             </li>
         </ul>
 
@@ -132,5 +133,8 @@
             $('.select2').select2()
 
         </script>
+        @toastr_js
+        @toastr_render
+@stack('script')
 </body>
 </html>

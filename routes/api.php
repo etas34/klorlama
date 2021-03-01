@@ -24,11 +24,13 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::group(['prefix'=>'sistem','as'=>'sistem.'],function (){
         Route::post('/store', [SistemController::class, 'store'])->name('store');
+        Route::post('/update/{sistem}', [SistemController::class, 'update'])->name('update');
     });
 
 
     Route::group(['prefix'=>'user','as'=>'user.'],function (){
         Route::post('/store', [UserController::class, 'store'])->name('store');
+        Route::post('/update/{user}', [UserController::class, 'update'])->name('update');
     });
 
 

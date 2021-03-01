@@ -45,7 +45,9 @@ Vue.directive('select2', {
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('sistem-create', require('./components/SistemCreate.vue').default);
+Vue.component('sistem-edit', require('./components/SistemEdit.vue').default);
 Vue.component('user-create', require('./components/UserCreate.vue').default);
+Vue.component('user-edit', require('./components/UserEdit.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

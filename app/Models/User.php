@@ -40,4 +40,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the phone associated with the user.
+     */
+    public function il()
+    {
+        return $this->belongsTo(Il::class);
+    }
+    /**
+     * Get the phone associated with the user.
+     */
+    public function ilce()
+    {
+        return $this->belongsTo(Ilce::class);
+    }
+    /**
+     * Get the phone associated with the user.
+     */
+    public function sistem()
+    {
+        return $this->belongsTo(Sistem::class);
+    }
+
+
+
 }
