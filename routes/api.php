@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\SistemController;
+use App\Http\Controllers\SmsLogController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,3 +39,5 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
 });
 
+
+Route::post('/sms-log',[SmsLogController::class, 'store'] );

@@ -6,10 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -48,13 +49,16 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Il::class);
     }
+
     /**
      * Get the phone associated with the user.
      */
     public function ilce()
     {
+
         return $this->belongsTo(Ilce::class);
     }
+
     /**
      * Get the phone associated with the user.
      */
@@ -63,6 +67,11 @@ class User extends Authenticatable
         return $this->belongsTo(Sistem::class);
     }
 
+    public function getYetki()
+    {
+        if ($this->sistem_id == "*")
+            return Sistem::all();
+    }
 
 
 }

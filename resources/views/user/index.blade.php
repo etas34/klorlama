@@ -19,8 +19,6 @@
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-
-
                         <th>Kullanıcı</th>
                         <th>E-mail</th>
                         <th>İl</th>
