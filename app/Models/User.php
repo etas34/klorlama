@@ -69,8 +69,17 @@ class User extends Authenticatable
 
     public function getYetki()
     {
-        if ($this->sistem_id == "*")
+        if ($this->il_id == "*")
             return Sistem::all();
+
+        if ($this->ilce_id == "*")
+            return Sistem::where('il_id',$this->il_id)->get();
+
+        if ($this->sistem_id == "*")
+            return Sistem::where('il_id',$this->il_id)->where('ilce_id',$this->ilce_id)->get();
+
+
+        return Sistem::where('il_id',$this->il_id)->where('ilce_id',$this->ilce_id)->where('id',$this->sistem_id)->get();
     }
 
 

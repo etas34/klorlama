@@ -2915,7 +2915,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n@-webkit-keyframes rotating-data-v-34349067 /* Safari and Chrome */\n{\nfrom {\n        transform: rotate(0deg);\n}\nto {\n        transform: rotate(360deg);\n}\n}\n@keyframes rotating-data-v-34349067 {\nfrom {\n        transform: rotate(0deg);\n}\nto {\n        transform: rotate(360deg);\n}\n}\n.rotating[data-v-34349067] {\n    -webkit-animation: rotating-data-v-34349067 2s linear infinite;\n    animation: rotating-data-v-34349067 2s linear infinite;\n}\n.btn-pos[data-v-34349067] {\n    left: 1070px;\n    top: 400px;\n    position: absolute;\n    z-index: 1000\n}\n.su[data-v-34349067]\n{\n    position: absolute;\n    top: 370px;\n    left: 209px;\n    z-index: 1000;\n    width: 304px;\n    vertical-align: central;\n    text-align: center;\n    background-color: rgb(246, 246, 246);\n}\n.boru[data-v-34349067]\n{\n    position: absolute;\n    top: 600px;\n    height: 30px;\n    left: 520px;\n    width: 450px;\n}\n.resim[data-v-34349067] {\n    position: relative;\n    top: 50px;\n    left: 130px;\n}\n.sol-ok[data-v-34349067] {\n    position: absolute;\n    left: 600px;\n    top: 597px;\n    width: 35px;\n}\n.cark[data-v-34349067] {\n    position: absolute;\n    z-index: 1000;\n    left: 1085px;\n    top: 580px;\n    width: 80px;\n}\n.pos[data-v-34349067] {\n    position: absolute;\n    top: 300px;\n    left: 320px;\n    z-index: 5000;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n@-webkit-keyframes rotating-data-v-34349067 /* Safari and Chrome */\r\n{\nfrom {\r\n        transform: rotate(0deg);\n}\nto {\r\n        transform: rotate(360deg);\n}\n}\n@keyframes rotating-data-v-34349067 {\nfrom {\r\n        transform: rotate(0deg);\n}\nto {\r\n        transform: rotate(360deg);\n}\n}\n.rotating[data-v-34349067] {\r\n    -webkit-animation: rotating-data-v-34349067 2s linear infinite;\r\n    animation: rotating-data-v-34349067 2s linear infinite;\n}\n.btn-pos[data-v-34349067] {\r\n    left: 1170px;\r\n    top: 400px;\r\n    position: absolute;\r\n    z-index: 1000\n}\n.su[data-v-34349067]\r\n{\r\n    position: absolute;\r\n    top: 370px;\r\n    left: 209px;\r\n    z-index: 1000;\r\n    width: 304px;\r\n    vertical-align: central;\r\n    text-align: center;\r\n    background-color: rgb(246, 246, 246);\n}\n.boru[data-v-34349067]\r\n{\r\n    position: absolute;\r\n    top: 600px;\r\n    height: 30px;\r\n    left: 520px;\r\n    width: 460px;\n}\n.resim[data-v-34349067] {\r\n    position: relative;\r\n    top: 50px;\r\n    left: 130px;\n}\n.sol-ok[data-v-34349067] {\r\n    position: absolute;\r\n    left: 600px;\r\n    top: 597px;\r\n    width: 35px;\n}\n.cark[data-v-34349067] {\r\n    position: absolute;\r\n    z-index: 1000;\r\n    left: 1180px;\r\n    top: 558px;\r\n    width: 100px;\n}\n.pos[data-v-34349067] {\r\n    position: absolute;\r\n    top: 300px;\r\n    left: 320px;\r\n    z-index: 5000;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4558,7 +4558,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn btn-pos",
+          staticClass: "btn btn-pos mt-5",
           class: [!_vm.run ? "btn-success" : "btn-danger"],
           on: { click: _vm.runSystem }
         },
