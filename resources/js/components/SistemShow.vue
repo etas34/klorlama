@@ -11,7 +11,7 @@
 
         </div>
         <div class="card-body">
-            <button v-on:click="runSystem" class="btn btn-pos mt-5" :class="[!run ? 'btn-success' : 'btn-danger']"
+            <button v-on:click="runSystem" class="btn btn-pos" :class="[!run ? 'btn-success' : 'btn-danger']"
             >
                 {{ !run ? 'Sistemi Çalıştır' : 'Sistemi Durdur' }}
             </button>
@@ -76,7 +76,7 @@
 }
 
 .btn-pos {
-    left: 1170px;
+    left: 1070px;
     top: 400px;
     position: absolute;
     z-index: 1000
@@ -100,7 +100,7 @@
     top: 600px;
     height: 30px;
     left: 520px;
-    width: 460px;
+    width: 450px;
 }
 
 .resim {
@@ -119,9 +119,9 @@
 .cark {
     position: absolute;
     z-index: 1000;
-    left: 1180px;
-    top: 558px;
-    width: 100px;
+    left: 1085px;
+    top: 580px;
+    width: 80px;
 }
 
 .pos {
