@@ -2428,6 +2428,90 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['sistem'],
   data: function data() {
@@ -3004,7 +3088,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n@-webkit-keyframes rotating-data-v-34349067 /* Safari and Chrome */\n{\nfrom {\n        transform: rotate(0deg);\n}\nto {\n        transform: rotate(360deg);\n}\n}\n@keyframes rotating-data-v-34349067 {\nfrom {\n        transform: rotate(0deg);\n}\nto {\n        transform: rotate(360deg);\n}\n}\n.rotating[data-v-34349067] {\n    -webkit-animation: rotating-data-v-34349067 2s linear infinite;\n    animation: rotating-data-v-34349067 2s linear infinite;\n}\n.btn-pos[data-v-34349067] {\n    left: 1070px;\n    top: 400px;\n    position: absolute;\n    z-index: 1000\n}\n.su[data-v-34349067]\n{\n    position: absolute;\n    top: 370px;\n    left: 209px;\n    z-index: 1000;\n    width: 304px;\n    vertical-align: central;\n    text-align: center;\n    background-color: rgb(246, 246, 246);\n}\n.boru[data-v-34349067]\n{\n    position: absolute;\n    top: 600px;\n    height: 30px;\n    left: 520px;\n    width: 450px;\n}\n.resim[data-v-34349067] {\n    position: relative;\n    top: 50px;\n    left: 130px;\n}\n.sol-ok[data-v-34349067] {\n    position: absolute;\n    left: 600px;\n    top: 597px;\n    width: 35px;\n}\n.cark[data-v-34349067] {\n    position: absolute;\n    z-index: 1000;\n    left: 1085px;\n    top: 580px;\n    width: 80px;\n}\n.pos[data-v-34349067] {\n    position: absolute;\n    top: 300px;\n    left: 320px;\n    z-index: 5000;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n@-webkit-keyframes rotating-data-v-34349067 /* Safari and Chrome */\n{\nfrom {\n        transform: rotate(0deg);\n}\nto {\n        transform: rotate(360deg);\n}\n}\n@keyframes rotating-data-v-34349067 {\nfrom {\n        transform: rotate(0deg);\n}\nto {\n        transform: rotate(360deg);\n}\n}\n.rotating[data-v-34349067] {\n    -webkit-animation: rotating-data-v-34349067 2s linear infinite;\n    animation: rotating-data-v-34349067 2s linear infinite;\n}\n.btn-pos[data-v-34349067] {\n    left: 1070px;\n    top: 400px;\n    position: absolute;\n    z-index: 1000\n}\n.su[data-v-34349067] {\n    position: absolute;\n    top: 370px;\n    left: 209px;\n    z-index: 1000;\n    width: 304px;\n    vertical-align: central;\n    text-align: center;\n    background-color: rgb(246, 246, 246);\n}\n.boru[data-v-34349067] {\n    position: absolute;\n    top: 600px;\n    height: 30px;\n    left: 520px;\n    width: 450px;\n}\n.resim[data-v-34349067] {\n    position: relative;\n    top: 50px;\n    left: 130px;\n}\n.sol-ok[data-v-34349067] {\n    position: absolute;\n    left: 600px;\n    top: 597px;\n    width: 35px;\n}\n.cark[data-v-34349067] {\n    position: absolute;\n    z-index: 1000;\n    left: 1085px;\n    top: 580px;\n    width: 80px;\n}\n.pos[data-v-34349067] {\n    position: absolute;\n    top: 300px;\n    left: 320px;\n    z-index: 5000;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4892,83 +4976,118 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card " }, [
-    _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [
-        _vm._v("\n            " + _vm._s(_vm.sistem.ad) + "\n\n        ")
+  return _c("div", { staticClass: "row container-fluid" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card " }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.sistem.ad) +
+                "\n\n                "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-pos",
+              class: [!_vm.run ? "btn-success" : "btn-danger"],
+              on: { click: _vm.runSystem }
+            },
+            [
+              _vm._v(
+                "\n                    " +
+                  _vm._s(!_vm.run ? "Sistemi Çalıştır" : "Sistemi Durdur") +
+                  "\n                "
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("h2", { staticClass: "pos" }, [
+            _vm._v(_vm._s(this.pixel + " %") + " ")
+          ]),
+          _vm._v(" "),
+          _c("div", {
+            staticClass: "boru",
+            style: [_vm.run ? { backgroundColor: "#1ca3ec" } : ""]
+          }),
+          _vm._v(" "),
+          _c("div", {
+            staticClass: "su",
+            style: "height: " + (420 - this.pixel * 4.2) + "px"
+          }),
+          _vm._v(" "),
+          _vm.run
+            ? _c("img", {
+                staticClass:
+                  "sol-ok animate__animated animate__infinite infinite'",
+                class: { animate__slideInRight: _vm.run },
+                attrs: { src: "../../img/left-arrow.png" }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.run
+            ? _c("img", {
+                staticClass:
+                  "sol-ok animate__animated animate__infinite infinite'",
+                class: { animate__slideInRight: _vm.run },
+                staticStyle: { left: "700px !important" },
+                attrs: { src: "../../img/left-arrow.png", alt: "arrow" }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.run
+            ? _c("img", {
+                staticClass:
+                  "sol-ok animate__animated animate__infinite infinite'",
+                class: { animate__slideInRight: _vm.run },
+                staticStyle: { left: "800px !important" },
+                attrs: { src: "../../img/left-arrow.png" }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "resim",
+            attrs: { src: "../../img/Website.png", alt: "slsl" }
+          }),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "cark",
+            class: { rotating: _vm.run },
+            attrs: { src: "../../img/settings.png", alt: "slsl" }
+          })
+        ])
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-pos",
-          class: [!_vm.run ? "btn-success" : "btn-danger"],
-          on: { click: _vm.runSystem }
-        },
-        [
-          _vm._v(
-            "\n            " +
-              _vm._s(!_vm.run ? "Sistemi Çalıştır" : "Sistemi Durdur") +
-              "\n        "
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c("h2", { staticClass: "pos" }, [
-        _vm._v(_vm._s(this.pixel + " %") + " ")
-      ]),
-      _vm._v(" "),
-      _c("div", {
-        staticClass: "boru",
-        style: [_vm.run ? { backgroundColor: "#1ca3ec" } : ""]
-      }),
-      _vm._v(" "),
-      _c("div", {
-        staticClass: "su",
-        style: "height: " + (420 - this.pixel * 4.2) + "px"
-      }),
-      _vm._v(" "),
-      _vm.run
-        ? _c("img", {
-            staticClass: "sol-ok animate__animated animate__infinite infinite'",
-            class: { animate__slideInRight: _vm.run },
-            attrs: { src: "../../img/left-arrow.png" }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.run
-        ? _c("img", {
-            staticClass: "sol-ok animate__animated animate__infinite infinite'",
-            class: { animate__slideInRight: _vm.run },
-            staticStyle: { left: "700px !important" },
-            attrs: { src: "../../img/left-arrow.png", alt: "arrow" }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.run
-        ? _c("img", {
-            staticClass: "sol-ok animate__animated animate__infinite infinite'",
-            class: { animate__slideInRight: _vm.run },
-            staticStyle: { left: "800px !important" },
-            attrs: { src: "../../img/left-arrow.png" }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "resim",
-        attrs: { src: "../../img/Website.png", alt: "slsl" }
-      }),
-      _vm._v(" "),
-      _c("img", {
-        staticClass: "cark",
-        class: { rotating: _vm.run },
-        attrs: { src: "../../img/settings.png", alt: "slsl" }
-      })
-    ])
+    _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("ul", [
+            _c("li", [_vm._v("Seviye : % " + _vm._s(_vm.pixel))]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Üst seviye : % 1252")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Alt seviye : % 415")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Depoya giren su miktarı : foo")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Debi ( m³/s) : bar")])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _vm._m(3)
   ])
 }
 var staticRenderFns = [
@@ -4976,56 +5095,184 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "table",
-      {
-        staticClass: "table table-borderless table-sm",
-        staticStyle: { position: "absolute" }
-      },
-      [
-        _c("thead", [
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("First")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Last")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Handle")])
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [
+        _vm._v("\n                    Depo Bilgileri\n                ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [
+            _vm._v("\n                    Motor Bilgileri\n                ")
           ])
         ]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
+        _c("div", { staticClass: "card-body" }, [
+          _c("ul", { staticClass: "list-unstyled" }, [
+            _c("li", [
+              _c("div", { staticClass: "input-group input-group-sm mb-3" }, [
+                _c("div", { staticClass: "input-group-prepend" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "input-group-text",
+                      attrs: { id: "inputGroup-sizing-sm" }
+                    },
+                    [_vm._v("Pompa zaman aşımı")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    "aria-label": "Sizing example input",
+                    "aria-describedby": "inputGroup-sizing-sm"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group-append" }, [
+                  _c("button", { staticClass: "btn btn-success" }, [
+                    _vm._v("Kaydet")
+                  ])
+                ])
+              ])
+            ]),
             _vm._v(" "),
-            _c("td", [_vm._v("Mark")]),
+            _c("li", [_vm._v("Çalışma Tarihi : 14:20 - 03.02.2021")]),
             _vm._v(" "),
-            _c("td", [_vm._v("Otto")]),
+            _c("li", [_vm._v("Pompa Durumu : Çalışıyor")]),
             _vm._v(" "),
-            _c("td", [_vm._v("@mdo")])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Jacob")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("Thornton")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("@fat")])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("th", { attrs: { scope: "row" } }, [_vm._v("3")]),
-            _vm._v(" "),
-            _c("td", { attrs: { colspan: "2" } }, [_vm._v("Larry the Bird")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("@twitter")])
+            _c("li", [
+              _vm._v("Pompanın çalışmaması gereken zamanlar : 14-00 - 15-00")
+            ])
           ])
         ])
-      ]
-    )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [
+            _vm._v("\n                    Klor Bilgileri\n                ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("ul", { staticClass: "list-unstyled" }, [
+            _c("li", [
+              _c("div", { staticClass: "input-group input-group-sm mb-3" }, [
+                _c("div", { staticClass: "input-group-prepend" }, [
+                  _c(
+                    "span",
+                    { staticClass: "input-group-text", attrs: { id: "cvw" } },
+                    [_vm._v("Klor atım süresi")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "number",
+                    "aria-label": "Sizing example input",
+                    "aria-describedby": "cvw"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group-append" }, [
+                  _c("button", { staticClass: "btn btn-success" }, [
+                    _vm._v("Kaydet")
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Klor Durumu : Var")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Klor Arıza Durumu : null")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Klor Dolum : 02.02.2021 - 14:40")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Klor Bitiş : 02.02.2021 - 14:40")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Klor Sonucu : 0.3 (ppm)")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Son ölçüm zamanı")])
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [
+            _vm._v("\n                    Klor Bilgileri\n                ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("ul", { staticClass: "list-unstyled" }, [
+            _c("li", [
+              _c("div", { staticClass: "input-group input-group-sm mb-3" }, [
+                _c("div", { staticClass: "input-group-prepend" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "input-group-text",
+                      attrs: { id: "klorvs" }
+                    },
+                    [_vm._v("Klor atım süresi")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "number",
+                    "aria-label": "Sizing example input",
+                    "aria-describedby": "inputGroup-sizing-sm"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group-append" }, [
+                  _c("button", { staticClass: "btn btn-success" }, [
+                    _vm._v("Kaydet")
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Klor Durumu : Var")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Klor Arıza Durumu : null")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Klor Dolum : 02.02.2021 - 14:40")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Klor Bitiş : 02.02.2021 - 14:40")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Klor Sonucu : 0.3 (ppm)")]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Son ölçüm zamanı")])
+          ])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
