@@ -1949,6 +1949,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1964,7 +1985,11 @@ __webpack_require__.r(__webpack_exports__);
         ilce_id: '',
         il_id: '',
         ad: '',
-        telefon: ''
+        klorlama_tel: '',
+        motor_tel: '',
+        klor_olcum_tel: '',
+        alt_limit: '',
+        ust_limit: ''
       }
     };
   },
@@ -2025,7 +2050,15 @@ __webpack_require__.r(__webpack_exports__);
     selected_il: function selected_il(val) {
       this.formData.il_id = val;
       this.getIlce(val);
-    }
+    } // 'formData.alt_limit'(){
+    //     if (100<this.formData.alt_limit)
+    //         this.formData.alt_limit = 100
+    // },
+    // 'formData.ust_limit'(){
+    //     if (0>this.formData.alt_limit)
+    //         this.formData.alt_limit = 0
+    // }
+
   }
 });
 
@@ -2110,6 +2143,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['sistem'],
@@ -2126,7 +2180,11 @@ __webpack_require__.r(__webpack_exports__);
         ilce_id: '',
         il_id: '',
         ad: this.sistem.ad,
-        telefon: this.sistem.telefon
+        klorlama_tel: this.sistem.klorlama_tel,
+        motor_tel: this.sistem.motor_tel,
+        klor_olcum_tel: this.sistem.klor_olcum_tel,
+        ust_limit: this.sistem.ust_limit,
+        alt_limit: this.sistem.alt_limit
       }
     };
   },
@@ -2205,6 +2263,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2915,7 +3004,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n@-webkit-keyframes rotating-data-v-34349067 /* Safari and Chrome */\r\n{\nfrom {\r\n        transform: rotate(0deg);\n}\nto {\r\n        transform: rotate(360deg);\n}\n}\n@keyframes rotating-data-v-34349067 {\nfrom {\r\n        transform: rotate(0deg);\n}\nto {\r\n        transform: rotate(360deg);\n}\n}\n.rotating[data-v-34349067] {\r\n    -webkit-animation: rotating-data-v-34349067 2s linear infinite;\r\n    animation: rotating-data-v-34349067 2s linear infinite;\n}\n.btn-pos[data-v-34349067] {\r\n    left: 1170px;\r\n    top: 400px;\r\n    position: absolute;\r\n    z-index: 1000\n}\n.su[data-v-34349067]\r\n{\r\n    position: absolute;\r\n    top: 370px;\r\n    left: 209px;\r\n    z-index: 1000;\r\n    width: 304px;\r\n    vertical-align: central;\r\n    text-align: center;\r\n    background-color: rgb(246, 246, 246);\n}\n.boru[data-v-34349067]\r\n{\r\n    position: absolute;\r\n    top: 600px;\r\n    height: 30px;\r\n    left: 520px;\r\n    width: 460px;\n}\n.resim[data-v-34349067] {\r\n    position: relative;\r\n    top: 50px;\r\n    left: 130px;\n}\n.sol-ok[data-v-34349067] {\r\n    position: absolute;\r\n    left: 600px;\r\n    top: 597px;\r\n    width: 35px;\n}\n.cark[data-v-34349067] {\r\n    position: absolute;\r\n    z-index: 1000;\r\n    left: 1180px;\r\n    top: 558px;\r\n    width: 100px;\n}\n.pos[data-v-34349067] {\r\n    position: absolute;\r\n    top: 300px;\r\n    left: 320px;\r\n    z-index: 5000;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n@-webkit-keyframes rotating-data-v-34349067 /* Safari and Chrome */\n{\nfrom {\n        transform: rotate(0deg);\n}\nto {\n        transform: rotate(360deg);\n}\n}\n@keyframes rotating-data-v-34349067 {\nfrom {\n        transform: rotate(0deg);\n}\nto {\n        transform: rotate(360deg);\n}\n}\n.rotating[data-v-34349067] {\n    -webkit-animation: rotating-data-v-34349067 2s linear infinite;\n    animation: rotating-data-v-34349067 2s linear infinite;\n}\n.btn-pos[data-v-34349067] {\n    left: 1070px;\n    top: 400px;\n    position: absolute;\n    z-index: 1000\n}\n.su[data-v-34349067]\n{\n    position: absolute;\n    top: 370px;\n    left: 209px;\n    z-index: 1000;\n    width: 304px;\n    vertical-align: central;\n    text-align: center;\n    background-color: rgb(246, 246, 246);\n}\n.boru[data-v-34349067]\n{\n    position: absolute;\n    top: 600px;\n    height: 30px;\n    left: 520px;\n    width: 450px;\n}\n.resim[data-v-34349067] {\n    position: relative;\n    top: 50px;\n    left: 130px;\n}\n.sol-ok[data-v-34349067] {\n    position: absolute;\n    left: 600px;\n    top: 597px;\n    width: 35px;\n}\n.cark[data-v-34349067] {\n    position: absolute;\n    z-index: 1000;\n    left: 1085px;\n    top: 580px;\n    width: 80px;\n}\n.pos[data-v-34349067] {\n    position: absolute;\n    top: 300px;\n    left: 320px;\n    z-index: 5000;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4221,7 +4310,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group col-md-12" }, [
-                  _c("label", [_vm._v("Telefon Numarası")]),
+                  _c("label", [_vm._v("Motor Numarası")]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -4234,20 +4323,148 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.formData.telefon,
-                        expression: "formData.telefon"
+                        value: _vm.formData.motor_tel,
+                        expression: "formData.motor_tel"
                       }
                     ],
                     ref: "clear",
                     staticClass: "form-control",
-                    attrs: { type: "text", required: "", name: "telefon" },
-                    domProps: { value: _vm.formData.telefon },
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.formData.motor_tel },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.formData, "telefon", $event.target.value)
+                        _vm.$set(_vm.formData, "motor_tel", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group col-md-12" }, [
+                  _c("label", [_vm._v("Klorlama Numarası")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "mask",
+                        rawName: "v-mask",
+                        value: "0 (###) ###-####",
+                        expression: "'0 (###) ###-####'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.klorlama_tel,
+                        expression: "formData.klorlama_tel"
+                      }
+                    ],
+                    ref: "clear",
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.formData.klorlama_tel },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.formData,
+                          "klorlama_tel",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group col-md-12" }, [
+                  _c("label", [_vm._v("Klor Ölçüm Numarası")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "mask",
+                        rawName: "v-mask",
+                        value: "0 (###) ###-####",
+                        expression: "'0 (###) ###-####'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.klor_olcum_tel,
+                        expression: "formData.klor_olcum_tel"
+                      }
+                    ],
+                    ref: "clear",
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.formData.klor_olcum_tel },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.formData,
+                          "klor_olcum_tel",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group col-md-6" }, [
+                  _c("label", [_vm._v("Depo Alt Limit")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.alt_limit,
+                        expression: "formData.alt_limit"
+                      }
+                    ],
+                    ref: "clear",
+                    staticClass: "form-control",
+                    attrs: { type: "number", max: "100", min: "0", step: "0" },
+                    domProps: { value: _vm.formData.alt_limit },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.formData, "alt_limit", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group col-md-6" }, [
+                  _c("label", [_vm._v("Depo Üst Limit")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.ust_limit,
+                        expression: "formData.ust_limit"
+                      }
+                    ],
+                    ref: "clear",
+                    staticClass: "form-control",
+                    attrs: { type: "number", max: "100", min: "0", step: "0" },
+                    domProps: { value: _vm.formData.ust_limit },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.formData, "ust_limit", $event.target.value)
                       }
                     }
                   })
@@ -4452,7 +4669,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group col-md-12" }, [
-                  _c("label", [_vm._v("Telefon Numarası")]),
+                  _c("label", [_vm._v("Motor Numarası")]),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -4465,20 +4682,148 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.formData.telefon,
-                        expression: "formData.telefon"
+                        value: _vm.formData.motor_tel,
+                        expression: "formData.motor_tel"
                       }
                     ],
                     ref: "clear",
                     staticClass: "form-control",
-                    attrs: { type: "text", required: "", name: "telefon" },
-                    domProps: { value: _vm.formData.telefon },
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.formData.motor_tel },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.formData, "telefon", $event.target.value)
+                        _vm.$set(_vm.formData, "motor_tel", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group col-md-12" }, [
+                  _c("label", [_vm._v("Klorlama Numarası")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "mask",
+                        rawName: "v-mask",
+                        value: "0 (###) ###-####",
+                        expression: "'0 (###) ###-####'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.klorlama_tel,
+                        expression: "formData.klorlama_tel"
+                      }
+                    ],
+                    ref: "clear",
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.formData.klorlama_tel },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.formData,
+                          "klorlama_tel",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group col-md-12" }, [
+                  _c("label", [_vm._v("Klor Ölçüm Numarası")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "mask",
+                        rawName: "v-mask",
+                        value: "0 (###) ###-####",
+                        expression: "'0 (###) ###-####'"
+                      },
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.klor_olcum_tel,
+                        expression: "formData.klor_olcum_tel"
+                      }
+                    ],
+                    ref: "clear",
+                    staticClass: "form-control",
+                    attrs: { type: "text" },
+                    domProps: { value: _vm.formData.klor_olcum_tel },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.formData,
+                          "klor_olcum_tel",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group col-md-6" }, [
+                  _c("label", [_vm._v("Depo Alt Limit")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.alt_limit,
+                        expression: "formData.alt_limit"
+                      }
+                    ],
+                    ref: "clear",
+                    staticClass: "form-control",
+                    attrs: { type: "number", min: "0", max: "100", step: "0" },
+                    domProps: { value: _vm.formData.alt_limit },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.formData, "alt_limit", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group col-md-6" }, [
+                  _c("label", [_vm._v("Depo Üst Limit")]),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.ust_limit,
+                        expression: "formData.ust_limit"
+                      }
+                    ],
+                    ref: "clear",
+                    staticClass: "form-control",
+                    attrs: { type: "number", min: "0", max: "100", step: "0" },
+                    domProps: { value: _vm.formData.ust_limit },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.formData, "ust_limit", $event.target.value)
                       }
                     }
                   })
@@ -4555,10 +4900,12 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
+      _vm._m(0),
+      _vm._v(" "),
       _c(
         "button",
         {
-          staticClass: "btn btn-pos mt-5",
+          staticClass: "btn btn-pos",
           class: [!_vm.run ? "btn-success" : "btn-danger"],
           on: { click: _vm.runSystem }
         },
@@ -4624,7 +4971,63 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "table",
+      {
+        staticClass: "table table-borderless table-sm",
+        staticStyle: { position: "absolute" }
+      },
+      [
+        _c("thead", [
+          _c("tr", [
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("First")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Last")]),
+            _vm._v(" "),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Handle")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tbody", [
+          _c("tr", [
+            _c("th", { attrs: { scope: "row" } }, [_vm._v("1")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("Mark")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("Otto")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("@mdo")])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("th", { attrs: { scope: "row" } }, [_vm._v("2")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("Jacob")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("Thornton")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("@fat")])
+          ]),
+          _vm._v(" "),
+          _c("tr", [
+            _c("th", { attrs: { scope: "row" } }, [_vm._v("3")]),
+            _vm._v(" "),
+            _c("td", { attrs: { colspan: "2" } }, [_vm._v("Larry the Bird")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("@twitter")])
+          ])
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 

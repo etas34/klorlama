@@ -13,7 +13,11 @@ class Sistem extends Model
         'ilce_id',
         'il_id',
         'ad',
-        'telefon',
+        'klorlama_tel',
+        'motor_tel',
+        'klor_olcum_tel',
+        'ust_limit',
+        'alt_limit',
     ];
 
     public function Il()

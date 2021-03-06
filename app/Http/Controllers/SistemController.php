@@ -43,7 +43,11 @@ class SistemController extends Controller
         $validated = $request->validate([
             'ilce_id' => 'required',
             'ad' => 'required|max:255',
-            'telefon' => 'max:255',
+            'klorlama_tel' => 'max:255',
+            'motor_tel' => 'max:255',
+            'klor_olcum_tel' => 'max:255',
+            'ust_limit' => 'max:255',
+            'alt_limit' => 'max:255',
             'il_id' => 'required',
         ]);
 
@@ -51,7 +55,11 @@ class SistemController extends Controller
             'ilce_id' => $request['ilce_id'],
             'il_id' => $request['il_id'],
             'ad' => $request['ad'],
-            'telefon' => $request['telefon'],
+            'klorlama_tel' => $request['klorlama_tel'],
+            'motor_tel' => $request['motor_tel'],
+            'klor_olcum_tel' => $request['klor_olcum_tel'],
+            'ust_limit' => $request['ust_limit'],
+            'alt_limit' => $request['alt_limit'],
         ]);
 
 
@@ -96,13 +104,21 @@ class SistemController extends Controller
         $validated = $request->validate([
             'ilce_id' => 'required',
             'ad' => 'required|max:255',
-            'telefon' => 'max:255',
+            'klorlama_tel' => 'max:255',
+            'motor_tel' => 'max:255',
+            'klor_olcum_tel' => 'max:255',
+            'ust_limit' => 'max:255',
+            'alt_limit' => 'max:255',
             'il_id' => 'required',
         ]);
        $sistem->ilce_id = $request['ilce_id'];
        $sistem->il_id = $request['il_id'];
        $sistem->ad = $request['ad'];
-       $sistem->telefon = $request['telefon'];
+       $sistem->klorlama_tel = $request['klorlama_tel'];
+       $sistem->motor_tel = $request['motor_tel'];
+       $sistem->klor_olcum_tel = $request['klor_olcum_tel'];
+       $sistem->ust_limit = $request['ust_limit'];
+       $sistem->alt_limit = $request['alt_limit'];
        $sistem->save();
     }
 

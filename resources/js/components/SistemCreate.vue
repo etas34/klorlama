@@ -38,12 +38,33 @@
                                        v-model="formData.ad">
                             </div>
                             <div class="form-group col-md-12">
-                                <label>Telefon Numarası</label>
-                                <input ref="clear" type="text" v-mask="'0 (###) ###-####'" required name="telefon"
-                                       class="form-control" v-model="formData.telefon">
+                                <label>Motor Numarası</label>
+                                <input ref="clear" type="text" v-mask="'0 (###) ###-####'"
+                                       class="form-control" v-model="formData.motor_tel">
 
                             </div>
+                            <div class="form-group col-md-12">
+                                <label>Klorlama Numarası</label>
+                                <input ref="clear" type="text" v-mask="'0 (###) ###-####'"
+                                       class="form-control" v-model="formData.klorlama_tel">
 
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Klor Ölçüm Numarası</label>
+                                <input ref="clear" type="text" v-mask="'0 (###) ###-####'"
+                                       class="form-control" v-model="formData.klor_olcum_tel">
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Depo Alt Limit</label>
+                                <input ref="clear" type="number" max="100" min="0" step="0" class="form-control"
+                                       v-model="formData.alt_limit">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Depo Üst Limit</label>
+                                <input ref="clear" type="number" max="100" min="0" step="0" class="form-control"
+                                       v-model="formData.ust_limit">
+                            </div>
 
                         </div>
                     </div>
@@ -81,7 +102,11 @@ export default {
                 ilce_id: '',
                 il_id: '',
                 ad: '',
-                telefon: ''
+                klorlama_tel: '',
+                motor_tel: '',
+                klor_olcum_tel: '',
+                alt_limit: '',
+                ust_limit: '',
             }
 
         }
@@ -103,14 +128,13 @@ export default {
                         position: 'top-right'
                     })
                 }).catch(function (error) {
-                if (error.response.status === 422){
-                    $.each(error.response.data.errors, function(key, value) {
+                if (error.response.status === 422) {
+                    $.each(error.response.data.errors, function (key, value) {
 
                         Vue.$toast.error(value[0], {position: 'top-right'})
                     });
 
-                }
-                else {
+                } else {
                     Vue.$toast.error('Bir Şeyler Ters Gitti!', {position: 'top-right'})
                 }
 
@@ -155,7 +179,15 @@ export default {
         selected_il(val) {
             this.formData.il_id = val
             this.getIlce(val)
-        }
+        },
+        // 'formData.alt_limit'(){
+        //     if (100<this.formData.alt_limit)
+        //         this.formData.alt_limit = 100
+        // },
+        // 'formData.ust_limit'(){
+        //     if (0>this.formData.alt_limit)
+        //         this.formData.alt_limit = 0
+        // }
     }
 
 

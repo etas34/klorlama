@@ -20,7 +20,7 @@
                                 <select class="form-control select2" required :data-placeholder="sistem.il_ad" v-select2
                                         v-model="selected_il">
 
-                                    <option v-for="il in iller" :value="il.id"  >{{ il.ad }}</option>
+                                    <option v-for="il in iller" :value="il.id">{{ il.ad }}</option>
                                 </select>
                             </div>
 
@@ -28,7 +28,7 @@
                                 <label>İlçe</label>
                                 <select class="form-control" required
                                         v-model="formData.ilce_id">
-                                    <option v-for="ilce in ilceler" :value="ilce.id" >{{ ilce.ad }}</option>
+                                    <option v-for="ilce in ilceler" :value="ilce.id">{{ ilce.ad }}</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
@@ -37,12 +37,33 @@
                                        v-model="formData.ad">
                             </div>
                             <div class="form-group col-md-12">
-                                <label>Telefon Numarası</label>
-                                <input ref="clear" type="text" v-mask="'0 (###) ###-####'" required name="telefon"
-                                       class="form-control" v-model="formData.telefon">
+                                <label>Motor Numarası</label>
+                                <input ref="clear" type="text" v-mask="'0 (###) ###-####'"
+                                       class="form-control" v-model="formData.motor_tel">
+
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Klorlama Numarası</label>
+                                <input ref="clear" type="text" v-mask="'0 (###) ###-####'"
+                                       class="form-control" v-model="formData.klorlama_tel">
+
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Klor Ölçüm Numarası</label>
+                                <input ref="clear" type="text" v-mask="'0 (###) ###-####'"
+                                       class="form-control" v-model="formData.klor_olcum_tel">
 
                             </div>
 
+                            <div class="form-group col-md-6">
+                                <label>Depo Alt Limit</label>
+                                <input ref="clear" type="number" min="0" max="100" step="0" class="form-control"
+                                       v-model="formData.alt_limit">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Depo Üst Limit</label>
+                                <input ref="clear" type="number" min="0" max="100" step="0" class="form-control" v-model="formData.ust_limit">
+                            </div>
 
                         </div>
                     </div>
@@ -68,7 +89,7 @@
 import {TheMask} from 'vue-the-mask'
 
 export default {
-    props:['sistem'],
+    props: ['sistem'],
     components: {TheMask},
     data: function () {
         return {
@@ -81,7 +102,11 @@ export default {
                 ilce_id: '',
                 il_id: '',
                 ad: this.sistem.ad,
-                telefon: this.sistem.telefon
+                klorlama_tel: this.sistem.klorlama_tel,
+                motor_tel: this.sistem.motor_tel,
+                klor_olcum_tel: this.sistem.klor_olcum_tel,
+                ust_limit: this.sistem.ust_limit,
+                alt_limit: this.sistem.alt_limit,
             }
 
         }
@@ -90,7 +115,7 @@ export default {
     mounted() {
         this.getIl();
         this.selected_il = this.sistem.il_id
-        this.getIlce( this.sistem.il_id)
+        this.getIlce(this.sistem.il_id)
         this.formData.ilce_id = this.sistem.ilce_id
         // this.handleLogin();
     },
@@ -104,14 +129,13 @@ export default {
                         position: 'top-right'
                     })
                 }).catch(function (error) {
-                if (error.response.status === 422){
-                    $.each(error.response.data.errors, function(key, value) {
+                if (error.response.status === 422) {
+                    $.each(error.response.data.errors, function (key, value) {
 
                         Vue.$toast.error(value[0], {position: 'top-right'})
                     });
 
-                }
-                else {
+                } else {
                     Vue.$toast.error('Bir Şeyler Ters Gitti!', {position: 'top-right'})
                 }
             }).finally(() => {
@@ -155,7 +179,6 @@ export default {
             this.getIlce(val)
         }
     },
-
 
 
 }

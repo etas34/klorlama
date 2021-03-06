@@ -21,14 +21,16 @@
                     <tr>
 
 
-                        <th>Sistem Adı</th>
                         <th>İl</th>
                         <th>İlçe</th>
-                        <th>Telefon</th>
+                        <th>Sistem Adı</th>
+                        <th>Motor Numarası</th>
+                        <th>Klorlama Numarası</th>
+                        <th>Klor Ölçüm Numarası</th>
                         <th>Klor</th>
                         <th>Pompa</th>
                         <th>Elektrik</th>
-                        <th>Güneş Paneli</th>
+                        <th>Kapı Güvenliği</th>
                         <th>Depo Güvenliği</th>
                         <th>Pano Güvenliği</th>
                         <th>İşlemler</th>
@@ -38,14 +40,16 @@
                     <tbody>
                     @foreach($sistem as $key => $value)
                         <tr>
-                            <td>{{$value->ad}}</td>
                             <td>{{$value->il->ad}}</td>
                             <td>{{$value->ilce->ad}}</td>
-                            <td>{{$value->telefon}}</td>
+                            <td>{{$value->ad}}</td>
+                            <td>{{$value->motor_tel}}</td>
+                            <td>{{$value->klorlama_tel}}</td>
+                            <td>{{$value->klor_olcum_tel}}</td>
                             <td>{{$value->klor}}</td>
                             <td>{{$value->pompa}}</td>
                             <td>{{$value->elektrik}}</td>
-                            <td>{{$value->gunes_paneli}}</td>
+                            <td>{{$value->kapi_guvenlik}}</td>
                             <td>{{$value->depo_guvenlik}}</td>
                             <td>{{$value->pano_guvenlik}}</td>
                             <td>
