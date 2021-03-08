@@ -6,15 +6,16 @@
         <div class="container" :class="{'active' : run}">
             <div class="row">
                 <div class="col col-12 py-3">
-                    <h3 >{{ sistem.ad }}</h3>
+                    <h3>{{ sistem.ad }}</h3>
                 </div>
                 <div class="col col-12 mb-3">
-                    <span id="fillingRate">{{pixel}}%</span>
+                    <span id="fillingRate">{{ pixel }}%</span>
                 </div>
                 <div id="app" class="col col-12 mb-5">
                     <img id="machine" :src="'../../img/machine.svg'" alt="">
                     <div id="action">
-                        <button v-on:click="runSystem" class="btn btn-pos" :class="[!run ? 'btn-success' : 'btn-danger']"
+                        <button v-on:click="runSystem" class="btn btn-pos"
+                                :class="[!run ? 'btn-success' : 'btn-danger']"
                         >
                             {{ !run ? 'Sistemi Çalıştır' : 'Sistemi Durdur' }}
                         </button>
@@ -78,10 +79,13 @@
                                     <th scope="row">
                                         Pompa Zaman Aşımı
                                     </th>
-                                    <td> <div class="form-group">
-                                        <input type="number" step="1" min="1" max="99"  class="form-control" aria-label="Sizing example input"
-                                               aria-describedby="inputGroup-sizing-sm">
-                                    </div></td>
+                                    <td>
+                                        <div class="form-group">
+                                            <input type="number" step="1" min="1" max="99" class="form-control"
+                                                   aria-label="Sizing example input"
+                                                   aria-describedby="inputGroup-sizing-sm">
+                                        </div>
+                                    </td>
                                     <td>
                                         <button class="btn btn-success pull-right">Kaydet</button>
                                     </td>
@@ -142,19 +146,34 @@
                         </div>
                         <div class="card-body">
                             <table class="table">
-                            <tbody>
+                                <tbody>
                                 <tr>
-                                    <th scope="row">  Klor atım süresi</th>
+                                    <th scope="row">
+                                        Klor atım süresi
+                                    </th>
                                     <td>
                                         <input type="number" class="form-control" aria-label="Sizing example input"
                                                aria-describedby="cvw">
                                     </td>
-                                    <td>  <button class="btn btn-success">
-                                        <span class="fas fa-check"></span>
-                                    </button>
+                                    <td>
+                                        <button class="btn btn-success">
+                                            Kaydet
+                                        </button>
                                     </td>
                                 </tr>
 
+                                <tr>
+
+                                    <th scope="row">Klor Durumu :</th>
+                                    <td colspan="2"> Var</td>
+
+                                </tr>
+                                <tr>
+
+                                    <th scope="row">Klor Arıza Durumu :</th>
+                                    <td colspan="2">Null</td>
+
+                                </tr>
                                 <tr>
 
                                     <th scope="row">Pompanın çalışmaması gereken zamanlar :</th>
@@ -162,35 +181,24 @@
 
                                 </tr>
                                 <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
+                                    <th scope="row">Klor Dolum :</th>
+                                    <td colspan="2">02.02.2021 - 14:40</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Klor Bitiş :</th>
+                                    <td colspan="2">02.02.2021 - 14:40</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Klor Sonucu :</th>
+                                    <td colspan="2">0.3 (ppm)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Son ölçüm zamanı :</th>
+                                    <td colspan="2">02.02.2021 - 14:40</td>
                                 </tr>
                                 </tbody>
                             </table>
 
-                            <ul class="list-unstyled">
-                                <li>
-                                    <div class="input-group input-group-sm mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="cvw">
-                                            </span>
-                                        </div>
-
-                                        <div class="input-group-append">
-
-                                        </div>
-                                    </div>
-
-                                </li>
-                                <li>Klor Durumu : Var</li>
-                                <li>Klor Arıza Durumu : null</li>
-                                <li>Klor Dolum : 02.02.2021 - 14:40</li>
-                                <li>Klor Bitiş : 02.02.2021 - 14:40</li>
-                                <li>Klor Sonucu : 0.3 (ppm)</li>
-                                <li>Son ölçüm zamanı</li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -202,13 +210,37 @@
                             </h3>
                         </div>
                         <div class="card-body">
-                            <ul>
-                                <li>Seviye : % {{ pixel }}</li>
-                                <li>Üst seviye : % 1252</li>
-                                <li>Alt seviye : % 415</li>
-                                <li>Depoya giren su miktarı : foo</li>
-                                <li>Debi ( m³/s) : bar</li>
-                            </ul>
+
+                            <table class="table">
+                                <tbody>
+                                <tr>
+
+                                    <th scope="row">Seviye :</th>
+                                    <td colspan="2"> % 70</td>
+
+                                </tr>
+                                <tr>
+
+                                    <th scope="row">Üst seviye :</th>
+                                    <td colspan="2">% 1252</td>
+
+                                </tr>
+                                <tr>
+
+                                    <th scope="row">Alt seviye :</th>
+                                    <td colspan="2"> % 415</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">Depoya giren su miktarı :</th>
+                                    <td colspan="2"> foo</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Debi ( m³/s) :</th>
+                                    <td colspan="2"> bar</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -220,12 +252,31 @@
                             </h3>
                         </div>
                         <div class="card-body">
-                            <ul class="list-unstyled">
 
-                                <li>Haraket : Yok</li>
-                                <li>Kapı Güvenliği : Güvenli</li>
-                                <li>Pano Güvenliği : Güvenli</li>
-                            </ul>
+                            <table class="table">
+                                <tbody>
+                                <tr>
+
+                                    <th scope="row">Haraket :</th>
+                                    <td colspan="2"> Yok</td>
+
+                                </tr>
+                                <tr>
+
+                                    <th scope="row">Kapı Güvenliği :</th>
+                                    <td colspan="2"> Güvenli</td>
+
+                                </tr>
+                                <tr>
+
+                                    <th scope="row">Pano Güvenliği :</th>
+                                    <td colspan="2">Güvenli</td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+
                         </div>
                     </div>
                 </div>
