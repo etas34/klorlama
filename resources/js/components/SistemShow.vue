@@ -62,8 +62,146 @@
                     </div>
                 </div>
 
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                Motor Bilgileri
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
 
-                <div class="col-md-3">
+                                <tbody>
+                                <tr>
+
+                                    <th scope="row">
+                                        Pompa Zaman Aşımı
+                                    </th>
+                                    <td> <div class="form-group">
+                                        <input type="number" step="1" min="1" max="99"  class="form-control" aria-label="Sizing example input"
+                                               aria-describedby="inputGroup-sizing-sm">
+                                    </div></td>
+                                    <td>
+                                        <button class="btn btn-success pull-right">Kaydet</button>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <th scope="row"> Yasaklı Zaman</th>
+                                    <td>
+
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Başlangıç Saati</label>
+                                            <select class="form-control" id="exampleFormControlSelect1">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Bitiş Saati</label>
+                                            <select class="form-control" id="exampleFormControlSelect2">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                        <button class="btn btn-success pull-right">Kaydet</button>
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <th scope="row">Çalışma Tarihi :</th>
+                                    <td colspan="2">14:20 - 03.02.2021</td>
+
+                                </tr>
+                                <tr>
+
+                                    <th scope="row">Pompa Durumu :</th>
+                                    <td colspan="2">Çalışıyor</td>
+
+                                </tr>
+                                <tr>
+
+                                    <th scope="row">Pompanın çalışmaması gereken zamanlar :</th>
+                                    <td colspan="2"> 14-00 - 15-00</td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                Klor Bilgileri
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">  Klor atım süresi</th>
+                                    <td>
+                                        <input type="number" class="form-control" aria-label="Sizing example input"
+                                               aria-describedby="cvw">
+                                    </td>
+                                    <td>  <button class="btn btn-success">
+                                        <span class="fas fa-check"></span>
+                                    </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <th scope="row">Pompanın çalışmaması gereken zamanlar :</th>
+                                    <td colspan="2"> 14-00 - 15-00</td>
+
+                                </tr>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td>Larry</td>
+                                    <td>the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <ul class="list-unstyled">
+                                <li>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="cvw">
+                                            </span>
+                                        </div>
+
+                                        <div class="input-group-append">
+
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>Klor Durumu : Var</li>
+                                <li>Klor Arıza Durumu : null</li>
+                                <li>Klor Dolum : 02.02.2021 - 14:40</li>
+                                <li>Klor Bitiş : 02.02.2021 - 14:40</li>
+                                <li>Klor Sonucu : 0.3 (ppm)</li>
+                                <li>Son ölçüm zamanı</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
@@ -81,83 +219,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                Motor Bilgileri
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <div class="input-group input-group-sm mb-3">
-                                        <div class="input-group-prepend">
-                                        <span class="input-group-text"
-                                              id="inputGroup-sizing-sm">Pompa zaman aşımı</span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Sizing example input"
-                                               aria-describedby="inputGroup-sizing-sm">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-success"><span class="fas fa-check"></span></button>
-                                        </div>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <div class="input-group input-group-sm mb-3">
-                                        <div class="input-group-prepend">
-                                        <span class="input-group-text"
-                                              id="asa-sizing-sm">Yasaklı zaman ayarla</span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Sizing example input"
-                                               aria-describedby="inputGroup-sizing-sm">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-success"><span class="fas fa-check"></span></button>
-                                        </div>
-                                    </div>
-
-                                </li>
-                                <li>Çalışma Tarihi : 14:20 - 03.02.2021</li>
-                                <li>Pompa Durumu : Çalışıyor</li>
-                                <li>Pompanın çalışmaması gereken zamanlar : 14-00 - 15-00</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                Klor Bilgileri
-                            </h3>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li>
-                                    <div class="input-group input-group-sm mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="cvw">Klor atım süresi</span>
-                                        </div>
-                                        <input type="number" class="form-control" aria-label="Sizing example input"
-                                               aria-describedby="cvw">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-success"><span class="fas fa-check"></span></button>
-                                        </div>
-                                    </div>
-
-                                </li>
-                                <li>Klor Durumu : Var</li>
-                                <li>Klor Arıza Durumu : null</li>
-                                <li>Klor Dolum : 02.02.2021 - 14:40</li>
-                                <li>Klor Bitiş : 02.02.2021 - 14:40</li>
-                                <li>Klor Sonucu : 0.3 (ppm)</li>
-                                <li>Son ölçüm zamanı</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
+                <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
