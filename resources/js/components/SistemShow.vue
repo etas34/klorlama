@@ -1,176 +1,181 @@
 <template>
 
     <!-- general form elements -->
-    <div class="row container-fluid">
+    <div>
 
 
-        <div class="col col-12">
-            <span id="fillingRate">20%</span>
-        </div>
-        <div id="sys_app" class="col col-12">
-            <img id="machine" :src="'../../img/machine.svg'" alt="">
-            <div id="action">
-                <button>Sistemi Çalıştır</button>
-            </div>
-            <div id="cogwheel" class="d-flex justify-content-center align-items-center">
-                <img :src="'../../img/cogwheel.svg'" alt="">
-            </div>
-            <div id="waterbox">
-                <div id="water">
-                    <svg class="waves min" xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28"
-                         preserveAspectRatio="none"
-                         shape-rendering="auto">
-                        <defs>
-                            <path id="gentle-wave"
-                                  d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
-                        </defs>
-                        <g class="parallax">
-                            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.5"/>
-                            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.3)"/>
-                            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.2)"/>
-                            <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(255,255,255,0.5)"/>
-                        </g>
-                    </svg>
+        <div class="container">
+            <div class="row">
+                <div class="col col-12 py-3">
+                    <h3 >{{ sistem.ad }}</h3>
                 </div>
-            </div>
-            <div id="watertank">
-                <div id="tankinner" class="d-flex justify-content-end align-items-end">
-                    <div id="tankinnerwater" style="height: 100%;">
-                        <svg class="waves" xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28"
-                             preserveAspectRatio="none" shape-rendering="auto">
-                            <defs>
-                                <path id="gentle-wave"
-                                      d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
-                            </defs>
-                            <g class="parallax">
-                                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgb(26 183 239 / 70%)"/>
-                                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgb(26 183 239 / 50%)"/>
-                                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgb(26 183 239 / 30%)"/>
-                                <use xlink:href="#gentle-wave" x="48" y="7" fill="#1ab7ef"/>
-                            </g>
-                        </svg>
+                <div class="col col-12">
+                    <span id="fillingRate">20%</span>
+                </div>
+                <div id="app" class="col col-12 mb-5">
+                    <img id="machine" :src="'../../img/machine.svg'" alt="">
+                    <div id="action">
+                        <button>Sistemi Çalıştır</button>
+                    </div>
+                    <div id="cogwheel" class="d-flex justify-content-center align-items-center">
+                        <img :src="'../../img/cogwheel.svg'" alt="">
+                    </div>
+                    <div id="waterbox">
+                        <div id="water">
+                            <svg class="waves min" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                                <defs>
+                                    <path id="gentle-wave"
+                                          d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+                                </defs>
+                                <g class="parallax">
+                                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.5"/>
+                                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.3)"/>
+                                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.2)"/>
+                                    <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(255,255,255,0.5)"/>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                    <div id="watertank">
+                        <div id="tankinner" class="d-flex justify-content-end align-items-end">
+                            <div id="tankinnerwater" style="height: 20%;">
+                                <svg class="waves" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink"
+                                     viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                                    <defs>
+                                        <path id="gentle-wave"
+                                              d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+                                    </defs>
+                                    <g class="parallax">
+                                        <use xlink:href="#gentle-wave" x="48" y="0" fill="rgb(26 183 239 / 70%)"/>
+                                        <use xlink:href="#gentle-wave" x="48" y="3" fill="rgb(26 183 239 / 50%)"/>
+                                        <use xlink:href="#gentle-wave" x="48" y="5" fill="rgb(26 183 239 / 30%)"/>
+                                        <use xlink:href="#gentle-wave" x="48" y="7" fill="#1ab7ef"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                Depo Bilgileri
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Seviye : % {{ pixel }}</li>
+                                <li>Üst seviye : % 1252</li>
+                                <li>Alt seviye : % 415</li>
+                                <li>Depoya giren su miktarı : foo</li>
+                                <li>Debi ( m³/s) : bar</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                Motor Bilgileri
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text"
+                                              id="inputGroup-sizing-sm">Pompa zaman aşımı</span>
+                                        </div>
+                                        <input type="text" class="form-control" aria-label="Sizing example input"
+                                               aria-describedby="inputGroup-sizing-sm">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-success">Kaydet</button>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>Çalışma Tarihi : 14:20 - 03.02.2021</li>
+                                <li>Pompa Durumu : Çalışıyor</li>
+                                <li>Pompanın çalışmaması gereken zamanlar : 14-00 - 15-00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                Klor Bilgileri
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="cvw">Klor atım süresi</span>
+                                        </div>
+                                        <input type="number" class="form-control" aria-label="Sizing example input"
+                                               aria-describedby="cvw">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-success">Kaydet</button>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>Klor Durumu : Var</li>
+                                <li>Klor Arıza Durumu : null</li>
+                                <li>Klor Dolum : 02.02.2021 - 14:40</li>
+                                <li>Klor Bitiş : 02.02.2021 - 14:40</li>
+                                <li>Klor Sonucu : 0.3 (ppm)</li>
+                                <li>Son ölçüm zamanı</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                Klor Bilgileri
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="klorvs">Klor atım süresi</span>
+                                        </div>
+                                        <input type="number" class="form-control" aria-label="Sizing example input"
+                                               aria-describedby="inputGroup-sizing-sm">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-success">Kaydet</button>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>Klor Durumu : Var</li>
+                                <li>Klor Arıza Durumu : null</li>
+                                <li>Klor Dolum : 02.02.2021 - 14:40</li>
+                                <li>Klor Bitiş : 02.02.2021 - 14:40</li>
+                                <li>Klor Sonucu : 0.3 (ppm)</li>
+                                <li>Son ölçüm zamanı</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        Depo Bilgileri
-                    </h3>
-                </div>
-                <div class="card-body">
-                    <ul>
-                        <li>Seviye : % {{ pixel }}</li>
-                        <li>Üst seviye : % 1252</li>
-                        <li>Alt seviye : % 415</li>
-                        <li>Depoya giren su miktarı : foo</li>
-                        <li>Debi ( m³/s) : bar</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        Motor Bilgileri
-                    </h3>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li>
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                        <span class="input-group-text"
-                                              id="inputGroup-sizing-sm">Pompa zaman aşımı</span>
-                                </div>
-                                <input type="text" class="form-control" aria-label="Sizing example input"
-                                       aria-describedby="inputGroup-sizing-sm">
-                                <div class="input-group-append">
-                                    <button class="btn btn-success">Kaydet</button>
-                                </div>
-                            </div>
-
-                        </li>
-                        <li>Çalışma Tarihi : 14:20 - 03.02.2021</li>
-                        <li>Pompa Durumu : Çalışıyor</li>
-                        <li>Pompanın çalışmaması gereken zamanlar : 14-00 - 15-00</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        Klor Bilgileri
-                    </h3>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li>
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="cvw">Klor atım süresi</span>
-                                </div>
-                                <input type="number" class="form-control" aria-label="Sizing example input"
-                                       aria-describedby="cvw">
-                                <div class="input-group-append">
-                                    <button class="btn btn-success">Kaydet</button>
-                                </div>
-                            </div>
-
-                        </li>
-                        <li>Klor Durumu : Var</li>
-                        <li>Klor Arıza Durumu : null</li>
-                        <li>Klor Dolum : 02.02.2021 - 14:40</li>
-                        <li>Klor Bitiş : 02.02.2021 - 14:40</li>
-                        <li>Klor Sonucu : 0.3 (ppm)</li>
-                        <li>Son ölçüm zamanı</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        Klor Bilgileri
-                    </h3>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li>
-                            <div class="input-group input-group-sm mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="klorvs">Klor atım süresi</span>
-                                </div>
-                                <input type="number" class="form-control" aria-label="Sizing example input"
-                                       aria-describedby="inputGroup-sizing-sm">
-                                <div class="input-group-append">
-                                    <button class="btn btn-success">Kaydet</button>
-                                </div>
-                            </div>
-
-                        </li>
-                        <li>Klor Durumu : Var</li>
-                        <li>Klor Arıza Durumu : null</li>
-                        <li>Klor Dolum : 02.02.2021 - 14:40</li>
-                        <li>Klor Bitiş : 02.02.2021 - 14:40</li>
-                        <li>Klor Sonucu : 0.3 (ppm)</li>
-                        <li>Son ölçüm zamanı</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
-
     <!-- /.card -->
 </template>
 <style scoped>
@@ -192,7 +197,7 @@ img {
     max-width: 100%;
 }
 
-#sys_app {
+#app {
     position: relative;
 }
 
@@ -525,6 +530,19 @@ export default {
             }
 
         }
+    },
+    mounted() {
+        $(function(){
+            $('#action button').on('click', function(){
+                if( !$('body').hasClass('active') ){
+                    $('body').addClass('active');
+                    $(this).text('Sistemi Durdur');
+                }else{
+                    $('body').removeClass('active');
+                    $(this).text('Sistemi Çalıştır');
+                }
+            });
+        });
     }
 
 
