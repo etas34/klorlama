@@ -3,43 +3,60 @@
     <!-- general form elements -->
     <div class="row container-fluid">
 
-        <div class="col-md-12">
 
-            <div class="card ">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        {{ sistem.ad }}
-
-                    </h3>
-
-                </div>
-
-                <div class="card-body">
-
-
-                    <button v-on:click="runSystem" class="btn btn-pos" :class="[!run ? 'btn-success' : 'btn-danger']"
-                    >
-                        {{ !run ? 'Sistemi Çalıştır' : 'Sistemi Durdur' }}
-                    </button>
-                    <h2 class="pos">{{ `${this.pixel} %` }} </h2>
-                    <div class="boru" :style="[run ? {backgroundColor: '#1ca3ec'} : '' ]"></div>
-                    <div class="su" :style="'height: ' + (420-(this.pixel * 4.2))   +'px'"></div>
-                    <img v-if="run" :class="{ 'animate__slideInRight':run} "
-                         class="sol-ok animate__animated animate__infinite infinite'"
-                         :src="'../../img/left-arrow.png'">
-                    <img v-if="run" :class="{ 'animate__slideInRight':run} "
-                         class="sol-ok animate__animated animate__infinite infinite'"
-                         style="left: 700px !important" :src="'../../img/left-arrow.png'" alt="arrow">
-                    <img v-if="run" :class="{ 'animate__slideInRight':run} "
-                         class="sol-ok animate__animated animate__infinite infinite'"
-                         style="left: 800px !important" :src="'../../img/left-arrow.png'">
-                    <img class="resim" :src="'../../img/Website.png'" alt="slsl">
-                    <img :class="{'rotating': run}" class="cark" :src="'../../img/settings.png'" alt="slsl">
-                </div>
-                <!-- /.card-body -->
-            </div>
-
+        <div class="col col-12">
+            <span id="fillingRate">20%</span>
         </div>
+        <div id="sys_app" class="col col-12">
+            <img id="machine" :src="'../../img/machine.svg'" alt="">
+            <div id="action">
+                <button>Sistemi Çalıştır</button>
+            </div>
+            <div id="cogwheel" class="d-flex justify-content-center align-items-center">
+                <img :src="'../../img/cogwheel.svg'" alt="">
+            </div>
+            <div id="waterbox">
+                <div id="water">
+                    <svg class="waves min" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28"
+                         preserveAspectRatio="none"
+                         shape-rendering="auto">
+                        <defs>
+                            <path id="gentle-wave"
+                                  d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+                        </defs>
+                        <g class="parallax">
+                            <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.5"/>
+                            <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.3)"/>
+                            <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.2)"/>
+                            <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(255,255,255,0.5)"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            <div id="watertank">
+                <div id="tankinner" class="d-flex justify-content-end align-items-end">
+                    <div id="tankinnerwater" style="height: 100%;">
+                        <svg class="waves" xmlns="http://www.w3.org/2000/svg"
+                             xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28"
+                             preserveAspectRatio="none" shape-rendering="auto">
+                            <defs>
+                                <path id="gentle-wave"
+                                      d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
+                            </defs>
+                            <g class="parallax">
+                                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgb(26 183 239 / 70%)"/>
+                                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgb(26 183 239 / 50%)"/>
+                                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgb(26 183 239 / 30%)"/>
+                                <use xlink:href="#gentle-wave" x="48" y="7" fill="#1ab7ef"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header">
@@ -66,13 +83,15 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                    <ul  class="list-unstyled">
+                    <ul class="list-unstyled">
                         <li>
                             <div class="input-group input-group-sm mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-sm">Pompa zaman aşımı</span>
+                                        <span class="input-group-text"
+                                              id="inputGroup-sizing-sm">Pompa zaman aşımı</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                       aria-describedby="inputGroup-sizing-sm">
                                 <div class="input-group-append">
                                     <button class="btn btn-success">Kaydet</button>
                                 </div>
@@ -100,7 +119,8 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="cvw">Klor atım süresi</span>
                                 </div>
-                                <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="cvw">
+                                <input type="number" class="form-control" aria-label="Sizing example input"
+                                       aria-describedby="cvw">
                                 <div class="input-group-append">
                                     <button class="btn btn-success">Kaydet</button>
                                 </div>
@@ -131,7 +151,8 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="klorvs">Klor atım süresi</span>
                                 </div>
-                                <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                <input type="number" class="form-control" aria-label="Sizing example input"
+                                       aria-describedby="inputGroup-sizing-sm">
                                 <div class="input-group-append">
                                     <button class="btn btn-success">Kaydet</button>
                                 </div>
@@ -149,103 +170,318 @@
             </div>
         </div>
     </div>
+
     <!-- /.card -->
 </template>
 <style scoped>
+@import url(//fonts.googleapis.com/css?family=Lato:300:400);
 
-@-webkit-keyframes rotating /* Safari and Chrome */
-{
-    from {
-        -webkit-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    to {
-        -webkit-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
+* {
+    box-sizing: border-box;
+    box-sizing: -webkit-border-box;
 }
 
-@keyframes rotating {
-    from {
-        -ms-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -webkit-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    to {
-        -ms-transform: rotate(360deg);
-        -moz-transform: rotate(360deg);
-        -webkit-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
+html,
+body {
+    margin: 0;
+    padding: 15px;
+    outline: none;
 }
 
-.rotating {
-    -webkit-animation: rotating 2s linear infinite;
-    -moz-animation: rotating 2s linear infinite;
-    -ms-animation: rotating 2s linear infinite;
-    -o-animation: rotating 2s linear infinite;
-    animation: rotating 2s linear infinite;
+img {
+    max-width: 100%;
 }
 
-.btn-pos {
-    left: 1070px;
-    top: 400px;
-    position: absolute;
-    z-index: 1000
-}
-
-.su {
-    position: absolute;
-    top: 370px;
-    left: 209px;
-    z-index: 1000;
-    width: 304px;
-    vertical-align: central;
-    text-align: center;
-    background-color: rgb(246, 246, 246);
-}
-
-.boru {
-    position: absolute;
-    top: 600px;
-    height: 30px;
-    left: 520px;
-    width: 450px;
-}
-
-.resim {
+#sys_app {
     position: relative;
-    top: 50px;
-    left: 130px;
 }
 
-.sol-ok {
+#cogwheel {
     position: absolute;
-    left: 600px;
-    top: 597px;
-    width: 35px;
+    right: 74px;
+    top: 50%;
+    width: 100px;
+    height: 120px;
+    z-index: 2;
+    transform: translateY(-15%);
+    -o-transform: translateY(-15%);
+    -moz-transform: translateY(-15%);
+    -webkit-transform: translateY(-15%);
 }
 
-.cark {
+#action {
     position: absolute;
-    z-index: 1000;
-    left: 1085px;
-    top: 580px;
-    width: 80px;
+    right: 5%;
+    top: 10%;
 }
 
-.pos {
+#action button {
+    background-color: tomato;
+    color: #fff;
+    padding: .5em 1em;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    border: none;
+}
+
+#waterbox {
+    width: 460px;
+    height: 38px;
+    background: #1ab7ef;
     position: absolute;
-    top: 300px;
-    left: 320px;
-    z-index: 5000;
-
+    top: 54%;
+    right: -87px;
+    left: 0;
+    margin: auto;
+    overflow: hidden;
 }
+
+#watertank {
+    width: 340px;
+    height: 460px;
+    background: #fff;
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    overflow: hidden;
+}
+
+#fillingRate {
+    font-weight: 500;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    line-height: 45px;
+    background: #1ab7ef;
+    font-size: 14px;
+    border-radius: 50px;
+    text-align: center;
+    border: 3px solid #80c4dc;
+    color: #fff;
+}
+
+#tankinner {
+    height: 100%;
+    background: #f1f1f1;
+}
+
+#tankinnerwater {
+    background: #1ab7ef;
+    width: 100%;
+}
+
+body.active #cogwheel img {
+    animation: chark 3s linear infinite;
+}
+
+@keyframes chark {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* responsive */
+
+
+@media (max-width: 1200px) {
+    #cogwheel {
+        right: 64px;
+        width: 85px;
+        height: 100px;
+    }
+
+    #waterbox {
+        width: 387px;
+        height: 32px;
+        right: -76px;
+    }
+
+    #watertank {
+        width: 280px;
+        height: 380px;
+    }
+}
+
+@media (max-width: 992px) {
+    #cogwheel {
+        right: 52px;
+        width: 63px;
+        height: 75px;
+    }
+
+    #waterbox {
+        width: 285px;
+        height: 23px;
+        right: -55px;
+    }
+
+    #watertank {
+        width: 200px;
+        height: 270px;
+    }
+}
+
+@media (max-width: 768px) {
+    #cogwheel {
+        right: 42px;
+        width: 47px;
+        height: 54px;
+    }
+
+    #waterbox {
+        width: 212px;
+        height: 17px;
+        right: -40px;
+    }
+
+    #action button {
+        font-size: 12px;
+        padding: .3em .5em;
+    }
+
+    #watertank {
+        width: 140px;
+        height: 190px;
+    }
+}
+
+@media (max-width: 576px) {
+    html, body {
+        padding: 15px 0;
+    }
+
+    #cogwheel {
+        right: 8.5vw;
+        width: 8vw;
+        height: 9vw;
+    }
+
+    #waterbox {
+        width: 40vw;
+        height: 3.5vw;
+        right: -7vw;
+        top: 53.5%;
+    }
+
+
+    #watertank {
+        width: 26%;
+        height: 83%;
+        left: 25px;
+        top: 20px;
+    }
+}
+
+@media (max-width: 450px) {
+    #watertank {
+        width: 25%;
+        height: 82%;
+        left: 24px;
+        top: 19px;
+    }
+
+    #waterbox {
+        width: 39vw;
+        top: 54%;
+    }
+}
+
+
+@media (max-width: 400px) {
+    #cogwheel {
+        right: 9.2vw;
+        width: 7.5vw;
+        height: 9vw;
+    }
+}
+
+
+.waves {
+    position: relative;
+    width: 100%;
+    margin-top: -25%;
+}
+
+.waves.min {
+    margin: 0;
+    height: 39px;
+}
+
+.waves.min .parallax > use {
+    animation: unset;
+}
+
+body.active .waves.min .parallax > use {
+    animation: move-forever2 5s cubic-bezier(.55, .5, .45, .5) infinite;
+}
+
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+}
+
+.parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+
+.parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+
+.parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+
+.parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+
+.waves.min .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+
+.waves.min .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+
+.waves.min .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+
+.waves.min .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+}
+
+@keyframes move-forever {
+    0% {
+        transform: translate3d(-90px, 0, 0);
+    }
+    100% {
+        transform: translate3d(85px, 0, 0);
+    }
+}
+
+@keyframes move-forever2 {
+    0% {
+        transform: translate3d(85px, 0, 0);
+    }
+    100% {
+        transform: translate3d(-90px, 0, 0);
+    }
+}
+
 </style>
 <script>
 export default {
