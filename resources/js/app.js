@@ -10,8 +10,6 @@ window.axios = require('axios');
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
 import 'animate.css'
-import $ from 'jquery'
-
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

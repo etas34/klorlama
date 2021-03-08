@@ -33,7 +33,7 @@
                         <th>Kapı Güvenliği</th>
                         <th>Depo Güvenliği</th>
                         <th>Pano Güvenliği</th>
-                        <th>İşlemler</th>
+                        <th width="80px">İşlemler</th>
 
                     </tr>
                     </thead>
@@ -54,12 +54,12 @@
                             <td>{{$value->pano_guvenlik}}</td>
                             <td>
                                 <a href="{{route('sistem.show',$value)}}"> <span
-                                        class="badge bg-success p-2">Göster</span></a>
+                                        class="badge bg-success p-2"><i class="fas fa-eye"></i></span></a>
                                 <a href="{{route('sistem.edit',$value)}}"> <span
-                                        class="badge bg-warning p-2">Düzenle</span></a>
+                                        class="badge bg-warning p-2"><i class="fas fa-edit"></i></span></a>
                                 <a onclick="return confirm('Kayıt silinecek, emin misiniz?')"
                                    href="{{route('sistem.destroy',$value)}}">
-                                    <span class="badge bg-danger p-2">Sil</span></a>
+                                    <span class="badge bg-danger p-2"><i class="fas fa-trash"></i></span></a>
 
                             </td>
                         </tr>

@@ -3,19 +3,21 @@
     <!-- general form elements -->
     <div>
 
-
-        <div class="container">
+        <div class="container" :class="{'active' : run}">
             <div class="row">
                 <div class="col col-12 py-3">
                     <h3 >{{ sistem.ad }}</h3>
                 </div>
-                <div class="col col-12">
-                    <span id="fillingRate">20%</span>
+                <div class="col col-12 mb-3">
+                    <span id="fillingRate">{{pixel}}%</span>
                 </div>
                 <div id="app" class="col col-12 mb-5">
                     <img id="machine" :src="'../../img/machine.svg'" alt="">
                     <div id="action">
-                        <button>Sistemi Çalıştır</button>
+                        <button v-on:click="runSystem" class="btn btn-pos" :class="[!run ? 'btn-success' : 'btn-danger']"
+                        >
+                            {{ !run ? 'Sistemi Çalıştır' : 'Sistemi Durdur' }}
+                        </button>
                     </div>
                     <div id="cogwheel" class="d-flex justify-content-center align-items-center">
                         <img :src="'../../img/cogwheel.svg'" alt="">
@@ -40,7 +42,7 @@
                     </div>
                     <div id="watertank">
                         <div id="tankinner" class="d-flex justify-content-end align-items-end">
-                            <div id="tankinnerwater" style="height: 20%;">
+                            <div id="tankinnerwater" :style="'height: '+pixel+'%;'">
                                 <svg class="waves" xmlns="http://www.w3.org/2000/svg"
                                      xmlns:xlink="http://www.w3.org/1999/xlink"
                                      viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
@@ -97,7 +99,21 @@
                                         <input type="text" class="form-control" aria-label="Sizing example input"
                                                aria-describedby="inputGroup-sizing-sm">
                                         <div class="input-group-append">
-                                            <button class="btn btn-success">Kaydet</button>
+                                            <button class="btn btn-success"><span class="fas fa-check"></span></button>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <div class="input-group input-group-sm mb-3">
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text"
+                                              id="asa-sizing-sm">Yasaklı zaman ayarla</span>
+                                        </div>
+                                        <input type="text" class="form-control" aria-label="Sizing example input"
+                                               aria-describedby="inputGroup-sizing-sm">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-success"><span class="fas fa-check"></span></button>
                                         </div>
                                     </div>
 
@@ -126,7 +142,7 @@
                                         <input type="number" class="form-control" aria-label="Sizing example input"
                                                aria-describedby="cvw">
                                         <div class="input-group-append">
-                                            <button class="btn btn-success">Kaydet</button>
+                                            <button class="btn btn-success"><span class="fas fa-check"></span></button>
                                         </div>
                                     </div>
 
@@ -145,30 +161,15 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                Klor Bilgileri
+                                Güvenlik Bilgileri
                             </h3>
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled">
-                                <li>
-                                    <div class="input-group input-group-sm mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="klorvs">Klor atım süresi</span>
-                                        </div>
-                                        <input type="number" class="form-control" aria-label="Sizing example input"
-                                               aria-describedby="inputGroup-sizing-sm">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-success">Kaydet</button>
-                                        </div>
-                                    </div>
 
-                                </li>
-                                <li>Klor Durumu : Var</li>
-                                <li>Klor Arıza Durumu : null</li>
-                                <li>Klor Dolum : 02.02.2021 - 14:40</li>
-                                <li>Klor Bitiş : 02.02.2021 - 14:40</li>
-                                <li>Klor Sonucu : 0.3 (ppm)</li>
-                                <li>Son ölçüm zamanı</li>
+                                <li>Haraket : Yok</li>
+                                <li>Kapı Güvenliği : Güvenli</li>
+                                <li>Pano Güvenliği : Güvenli</li>
                             </ul>
                         </div>
                     </div>
@@ -220,16 +221,6 @@ img {
     top: 10%;
 }
 
-#action button {
-    background-color: tomato;
-    color: #fff;
-    padding: .5em 1em;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 13px;
-    border: none;
-}
-
 #waterbox {
     width: 460px;
     height: 38px;
@@ -276,7 +267,7 @@ img {
     width: 100%;
 }
 
-body.active #cogwheel img {
+.container.active #cogwheel img {
     animation: chark 3s linear infinite;
 }
 
@@ -421,7 +412,7 @@ body.active #cogwheel img {
     animation: unset;
 }
 
-body.active .waves.min .parallax > use {
+.container.active .waves.min .parallax > use {
     animation: move-forever2 5s cubic-bezier(.55, .5, .45, .5) infinite;
 }
 
@@ -532,17 +523,7 @@ export default {
         }
     },
     mounted() {
-        $(function(){
-            $('#action button').on('click', function(){
-                if( !$('body').hasClass('active') ){
-                    $('body').addClass('active');
-                    $(this).text('Sistemi Durdur');
-                }else{
-                    $('body').removeClass('active');
-                    $(this).text('Sistemi Çalıştır');
-                }
-            });
-        });
+
     }
 
 
