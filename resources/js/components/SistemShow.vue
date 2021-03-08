@@ -92,18 +92,17 @@
                                     <td>
 
                                         <div class="form-group">
-                                            <label for="exampleFormControlSelect1">Başlangıç Saati</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
+                                            <p><strong>Saat Aralığı Seçin</strong></p>
+                                            <select class="form-control-sm" id="exampleFormControlSelect1">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
                                                 <option>4</option>
                                                 <option>5</option>
                                             </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlSelect1">Bitiş Saati</label>
-                                            <select class="form-control" id="exampleFormControlSelect2">
+                                            -
+
+                                            <select class="form-control-sm">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -127,12 +126,6 @@
 
                                     <th scope="row">Pompa Durumu :</th>
                                     <td colspan="2">Çalışıyor</td>
-
-                                </tr>
-                                <tr>
-
-                                    <th scope="row">Pompanın çalışmaması gereken zamanlar :</th>
-                                    <td colspan="2"> 14-00 - 15-00</td>
 
                                 </tr>
                                 </tbody>
@@ -547,7 +540,7 @@ export default {
 
     data: function () {
         return {
-            pixel: 0,
+            pixel: 70,
             run: false,
             uyari: ''
         }
