@@ -42,7 +42,7 @@
                     </div>
                     <div id="watertank">
                         <div id="tankinner" class="d-flex justify-content-end align-items-end">
-                            <div id="tankinnerwater" style="height: 20%">
+                            <div id="tankinnerwater" :style="'height: '+pixel+'%;'">
                                 <svg class="waves" xmlns="http://www.w3.org/2000/svg"
                                      xmlns:xlink="http://www.w3.org/1999/xlink"
                                      viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
@@ -507,18 +507,18 @@ export default {
             var $this = this
             this.run = !this.run
 
-            if (this.run) {
-
-
-                for (let i = 1; i <= 100; i++) {
-
-
-                    setTimeout(function timer() {
-                        $this.pixel = i
-                    }, i * 120);
-
-                }
-            }
+            // if (this.run) {
+            //
+            //
+            //     for (let i = 1; i <= 100; i++) {
+            //
+            //
+            //         setTimeout(function timer() {
+            //             $this.pixel = i
+            //         }, i * 120);
+            //
+            //     }
+            // }
 
         }
     },
