@@ -2799,6 +2799,85 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['sistem'],
   data: function data() {
@@ -3376,7 +3455,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(//fonts.googleapis.com/css?family=Lato:300:400);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n*[data-v-34349067] {\n    box-sizing: border-box;\n    box-sizing: -webkit-border-box;\n}\nhtml[data-v-34349067],\nbody[data-v-34349067] {\n    margin: 0;\n    padding: 15px;\n    outline: none;\n}\nimg[data-v-34349067] {\n    max-width: 100%;\n}\n#app[data-v-34349067] {\n    position: relative;\n}\n#cogwheel[data-v-34349067] {\n    position: absolute;\n    right: 74px;\n    top: 50%;\n    width: 100px;\n    height: 120px;\n    z-index: 2;\n    transform: translateY(-15%);\n    -o-transform: translateY(-15%);\n    -moz-transform: translateY(-15%);\n    -webkit-transform: translateY(-15%);\n}\n#action[data-v-34349067] {\n    position: absolute;\n    right: 5%;\n    top: 10%;\n}\n#waterbox[data-v-34349067] {\n    width: 460px;\n    height: 38px;\n    background: #1ab7ef;\n    position: absolute;\n    top: 54%;\n    right: -87px;\n    left: 0;\n    margin: auto;\n    overflow: hidden;\n}\n#watertank[data-v-34349067] {\n    width: 340px;\n    height: 460px;\n    background: #fff;\n    position: absolute;\n    top: 25px;\n    left: 30px;\n    overflow: hidden;\n}\n#fillingRate[data-v-34349067] {\n    font-weight: 500;\n    width: 50px;\n    height: 50px;\n    display: inline-block;\n    line-height: 45px;\n    background: #1ab7ef;\n    font-size: 14px;\n    border-radius: 50px;\n    text-align: center;\n    border: 3px solid #80c4dc;\n    color: #fff;\n}\n#tankinner[data-v-34349067] {\n    height: 100%;\n    background: #f1f1f1;\n}\n#tankinnerwater[data-v-34349067] {\n    background: #1ab7ef;\n    width: 100%;\n}\n.container.active #cogwheel img[data-v-34349067] {\n    -webkit-animation: chark-data-v-34349067 3s linear infinite;\n            animation: chark-data-v-34349067 3s linear infinite;\n}\n@-webkit-keyframes chark-data-v-34349067 {\nfrom {\n        transform: rotate(0deg);\n}\nto {\n        transform: rotate(360deg);\n}\n}\n@keyframes chark-data-v-34349067 {\nfrom {\n        transform: rotate(0deg);\n}\nto {\n        transform: rotate(360deg);\n}\n}\n\n\n/* responsive */\n@media (max-width: 1200px) {\n#cogwheel[data-v-34349067] {\n        right: 64px;\n        width: 85px;\n        height: 100px;\n}\n#waterbox[data-v-34349067] {\n        width: 387px;\n        height: 32px;\n        right: -76px;\n}\n#watertank[data-v-34349067] {\n        width: 280px;\n        height: 380px;\n}\n}\n@media (max-width: 992px) {\n#cogwheel[data-v-34349067] {\n        right: 52px;\n        width: 63px;\n        height: 75px;\n}\n#waterbox[data-v-34349067] {\n        width: 285px;\n        height: 23px;\n        right: -55px;\n}\n#watertank[data-v-34349067] {\n        width: 200px;\n        height: 270px;\n}\n}\n@media (max-width: 768px) {\n#cogwheel[data-v-34349067] {\n        right: 42px;\n        width: 47px;\n        height: 54px;\n}\n#waterbox[data-v-34349067] {\n        width: 212px;\n        height: 17px;\n        right: -40px;\n}\n#action button[data-v-34349067] {\n        font-size: 12px;\n        padding: .3em .5em;\n}\n#watertank[data-v-34349067] {\n        width: 140px;\n        height: 190px;\n}\n}\n@media (max-width: 576px) {\nhtml[data-v-34349067], body[data-v-34349067] {\n        padding: 15px 0;\n}\n#cogwheel[data-v-34349067] {\n        right: 8.5vw;\n        width: 8vw;\n        height: 9vw;\n}\n#waterbox[data-v-34349067] {\n        width: 40vw;\n        height: 3.5vw;\n        right: -7vw;\n        top: 53.5%;\n}\n#watertank[data-v-34349067] {\n        width: 26%;\n        height: 83%;\n        left: 25px;\n        top: 20px;\n}\n}\n@media (max-width: 450px) {\n#watertank[data-v-34349067] {\n        width: 25%;\n        height: 82%;\n        left: 24px;\n        top: 19px;\n}\n#waterbox[data-v-34349067] {\n        width: 39vw;\n        top: 54%;\n}\n}\n@media (max-width: 400px) {\n#cogwheel[data-v-34349067] {\n        right: 9.2vw;\n        width: 7.5vw;\n        height: 9vw;\n}\n}\n.waves[data-v-34349067] {\n    position: relative;\n    width: 100%;\n    margin-top: -25%;\n}\n.waves.min[data-v-34349067] {\n    margin: 0;\n    height: 39px;\n}\n.waves.min .parallax > use[data-v-34349067] {\n    -webkit-animation: unset;\n            animation: unset;\n}\n.container.active .waves.min .parallax > use[data-v-34349067] {\n    -webkit-animation: move-forever2-data-v-34349067 5s cubic-bezier(.55, .5, .45, .5) infinite;\n            animation: move-forever2-data-v-34349067 5s cubic-bezier(.55, .5, .45, .5) infinite;\n}\n.parallax > use[data-v-34349067] {\n    -webkit-animation: move-forever-data-v-34349067 25s cubic-bezier(.55, .5, .45, .5) infinite;\n            animation: move-forever-data-v-34349067 25s cubic-bezier(.55, .5, .45, .5) infinite;\n}\n.parallax > use[data-v-34349067]:nth-child(1) {\n    -webkit-animation-delay: -2s;\n            animation-delay: -2s;\n    -webkit-animation-duration: 7s;\n            animation-duration: 7s;\n}\n.parallax > use[data-v-34349067]:nth-child(2) {\n    -webkit-animation-delay: -3s;\n            animation-delay: -3s;\n    -webkit-animation-duration: 10s;\n            animation-duration: 10s;\n}\n.parallax > use[data-v-34349067]:nth-child(3) {\n    -webkit-animation-delay: -4s;\n            animation-delay: -4s;\n    -webkit-animation-duration: 13s;\n            animation-duration: 13s;\n}\n.parallax > use[data-v-34349067]:nth-child(4) {\n    -webkit-animation-delay: -5s;\n            animation-delay: -5s;\n    -webkit-animation-duration: 20s;\n            animation-duration: 20s;\n}\n.waves.min .parallax > use[data-v-34349067]:nth-child(1) {\n    -webkit-animation-delay: -2s;\n            animation-delay: -2s;\n    -webkit-animation-duration: 7s;\n            animation-duration: 7s;\n}\n.waves.min .parallax > use[data-v-34349067]:nth-child(2) {\n    -webkit-animation-delay: -3s;\n            animation-delay: -3s;\n    -webkit-animation-duration: 10s;\n            animation-duration: 10s;\n}\n.waves.min .parallax > use[data-v-34349067]:nth-child(3) {\n    -webkit-animation-delay: -4s;\n            animation-delay: -4s;\n    -webkit-animation-duration: 13s;\n            animation-duration: 13s;\n}\n.waves.min .parallax > use[data-v-34349067]:nth-child(4) {\n    -webkit-animation-delay: -5s;\n            animation-delay: -5s;\n    -webkit-animation-duration: 20s;\n            animation-duration: 20s;\n}\n@-webkit-keyframes move-forever-data-v-34349067 {\n0% {\n        transform: translate3d(-90px, 0, 0);\n}\n100% {\n        transform: translate3d(85px, 0, 0);\n}\n}\n@keyframes move-forever-data-v-34349067 {\n0% {\n        transform: translate3d(-90px, 0, 0);\n}\n100% {\n        transform: translate3d(85px, 0, 0);\n}\n}\n@-webkit-keyframes move-forever2-data-v-34349067 {\n0% {\n        transform: translate3d(85px, 0, 0);\n}\n100% {\n        transform: translate3d(-90px, 0, 0);\n}\n}\n@keyframes move-forever2-data-v-34349067 {\n0% {\n        transform: translate3d(85px, 0, 0);\n}\n100% {\n        transform: translate3d(-90px, 0, 0);\n}\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n*[data-v-34349067] {\n    box-sizing: border-box;\n    box-sizing: -webkit-border-box;\n}\nhtml[data-v-34349067],\nbody[data-v-34349067] {\n    margin: 0;\n    padding: 15px;\n    outline: none;\n}\nimg[data-v-34349067] {\n    max-width: 100%;\n}\n#app[data-v-34349067] {\n    position: relative;\n}\n#cogwheel[data-v-34349067] {\n    position: absolute;\n    right: 74px;\n    top: 50%;\n    width: 100px;\n    height: 120px;\n    z-index: 2;\n    transform: translateY(-15%);\n    -o-transform: translateY(-15%);\n    -moz-transform: translateY(-15%);\n    -webkit-transform: translateY(-15%);\n}\n#action[data-v-34349067] {\n    position: absolute;\n    right: 5%;\n    top: 10%;\n}\n#waterbox[data-v-34349067] {\n    width: 460px;\n    height: 38px;\n    background: #1ab7ef;\n    position: absolute;\n    top: 54%;\n    right: -87px;\n    left: 0;\n    margin: auto;\n    overflow: hidden;\n}\n#watertank[data-v-34349067] {\n    width: 340px;\n    height: 460px;\n    background: #fff;\n    position: absolute;\n    top: 25px;\n    left: 30px;\n    overflow: hidden;\n}\n#fillingRate[data-v-34349067] {\n    font-weight: 500;\n    width: 50px;\n    height: 50px;\n    display: inline-block;\n    line-height: 45px;\n    background: #1ab7ef;\n    font-size: 14px;\n    border-radius: 50px;\n    text-align: center;\n    border: 3px solid #80c4dc;\n    color: #fff;\n}\n#tankinner[data-v-34349067] {\n    height: 100%;\n    background: #f1f1f1;\n}\n#tankinnerwater[data-v-34349067] {\n    background: #1ab7ef;\n    width: 100%;\n}\n.container.active #cogwheel img[data-v-34349067] {\n    -webkit-animation: chark-data-v-34349067 3s linear infinite;\n            animation: chark-data-v-34349067 3s linear infinite;\n}\n@-webkit-keyframes chark-data-v-34349067 {\nfrom {\n        transform: rotate(0deg);\n}\nto {\n        transform: rotate(360deg);\n}\n}\n@keyframes chark-data-v-34349067 {\nfrom {\n        transform: rotate(0deg);\n}\nto {\n        transform: rotate(360deg);\n}\n}\n\n\n/* responsive */\n@media (max-width: 1200px) {\n#cogwheel[data-v-34349067] {\n        right: 64px;\n        width: 85px;\n        height: 100px;\n}\n#waterbox[data-v-34349067] {\n        width: 387px;\n        height: 32px;\n        right: -76px;\n}\n#watertank[data-v-34349067] {\n        width: 280px;\n        height: 380px;\n}\n}\n@media (max-width: 992px) {\n#cogwheel[data-v-34349067] {\n        right: 52px;\n        width: 63px;\n        height: 75px;\n}\n#waterbox[data-v-34349067] {\n        width: 285px;\n        height: 23px;\n        right: -55px;\n}\n#action[data-v-34349067] {\n       top : -10px;\n}\n#watertank[data-v-34349067] {\n        width: 200px;\n        height: 270px;\n}\n}\n@media (max-width: 768px) {\n#cogwheel[data-v-34349067] {\n        right: 42px;\n        width: 47px;\n        height: 54px;\n}\n#waterbox[data-v-34349067] {\n        width: 212px;\n        height: 17px;\n        right: -40px;\n}\n#action[data-v-34349067] {\n        top: -10px;\n        right : -10px;\n}\n#action button[data-v-34349067] {\n        font-size: 10px;\n        padding: .3em .5em;\n}\n.runSystem[data-v-34349067]{\n        width: 113px !important;\n}\n#watertank[data-v-34349067] {\n        width: 140px;\n        height: 190px;\n}\n}\n@media (max-width: 576px) {\nhtml[data-v-34349067], body[data-v-34349067] {\n        padding: 15px 0;\n}\n#action[data-v-34349067] {\n        top: -40px;\n        right : -3px;\n}\n#cogwheel[data-v-34349067] {\n        right: 8.5vw;\n        width: 8vw;\n        height: 9vw;\n}\n#waterbox[data-v-34349067] {\n        width: 40vw;\n        height: 3.5vw;\n        right: -7vw;\n        top: 53.5%;\n}\n#watertank[data-v-34349067] {\n        width: 26%;\n        height: 83%;\n        left: 25px;\n        top: 20px;\n}\n}\n@media (max-width: 450px) {\n#watertank[data-v-34349067] {\n        width: 25%;\n        height: 82%;\n        left: 24px;\n        top: 19px;\n}\n#waterbox[data-v-34349067] {\n        width: 39vw;\n        top: 54%;\n}\n.runSystem[data-v-34349067]{\n        width: 113px !important;\n}\n}\n@media (max-width: 400px) {\n#cogwheel[data-v-34349067] {\n        right: 9.2vw;\n        width: 7.5vw;\n        height: 9vw;\n}\n}\n.waves[data-v-34349067] {\n    position: relative;\n    width: 100%;\n    margin-top: -25%;\n}\n.waves.min[data-v-34349067] {\n    margin: 0;\n    height: 39px;\n}\n.waves.min .parallax > use[data-v-34349067] {\n    -webkit-animation: unset;\n            animation: unset;\n}\n.container.active .waves.min .parallax > use[data-v-34349067] {\n    -webkit-animation: move-forever2-data-v-34349067 5s cubic-bezier(.55, .5, .45, .5) infinite;\n            animation: move-forever2-data-v-34349067 5s cubic-bezier(.55, .5, .45, .5) infinite;\n}\n.parallax > use[data-v-34349067] {\n    -webkit-animation: move-forever-data-v-34349067 25s cubic-bezier(.55, .5, .45, .5) infinite;\n            animation: move-forever-data-v-34349067 25s cubic-bezier(.55, .5, .45, .5) infinite;\n}\n.parallax > use[data-v-34349067]:nth-child(1) {\n    -webkit-animation-delay: -2s;\n            animation-delay: -2s;\n    -webkit-animation-duration: 7s;\n            animation-duration: 7s;\n}\n.parallax > use[data-v-34349067]:nth-child(2) {\n    -webkit-animation-delay: -3s;\n            animation-delay: -3s;\n    -webkit-animation-duration: 10s;\n            animation-duration: 10s;\n}\n.parallax > use[data-v-34349067]:nth-child(3) {\n    -webkit-animation-delay: -4s;\n            animation-delay: -4s;\n    -webkit-animation-duration: 13s;\n            animation-duration: 13s;\n}\n.parallax > use[data-v-34349067]:nth-child(4) {\n    -webkit-animation-delay: -5s;\n            animation-delay: -5s;\n    -webkit-animation-duration: 20s;\n            animation-duration: 20s;\n}\n.waves.min .parallax > use[data-v-34349067]:nth-child(1) {\n    -webkit-animation-delay: -2s;\n            animation-delay: -2s;\n    -webkit-animation-duration: 7s;\n            animation-duration: 7s;\n}\n.waves.min .parallax > use[data-v-34349067]:nth-child(2) {\n    -webkit-animation-delay: -3s;\n            animation-delay: -3s;\n    -webkit-animation-duration: 10s;\n            animation-duration: 10s;\n}\n.waves.min .parallax > use[data-v-34349067]:nth-child(3) {\n    -webkit-animation-delay: -4s;\n            animation-delay: -4s;\n    -webkit-animation-duration: 13s;\n            animation-duration: 13s;\n}\n.waves.min .parallax > use[data-v-34349067]:nth-child(4) {\n    -webkit-animation-delay: -5s;\n            animation-delay: -5s;\n    -webkit-animation-duration: 20s;\n            animation-duration: 20s;\n}\n@-webkit-keyframes move-forever-data-v-34349067 {\n0% {\n        transform: translate3d(-90px, 0, 0);\n}\n100% {\n        transform: translate3d(85px, 0, 0);\n}\n}\n@keyframes move-forever-data-v-34349067 {\n0% {\n        transform: translate3d(-90px, 0, 0);\n}\n100% {\n        transform: translate3d(85px, 0, 0);\n}\n}\n@-webkit-keyframes move-forever2-data-v-34349067 {\n0% {\n        transform: translate3d(85px, 0, 0);\n}\n100% {\n        transform: translate3d(-90px, 0, 0);\n}\n}\n@keyframes move-forever2-data-v-34349067 {\n0% {\n        transform: translate3d(85px, 0, 0);\n}\n100% {\n        transform: translate3d(-90px, 0, 0);\n}\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5283,11 +5362,47 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("div", { attrs: { id: "action" } }, [
+            !_vm.run
+              ? _c("div", { staticClass: "input-group mb-3" }, [
+                  _c("input", {
+                    staticStyle: { width: "55px !important" },
+                    attrs: {
+                      type: "number",
+                      min: "1",
+                      max: "999",
+                      "aria-label": "Recipient's username",
+                      "aria-describedby": "button-addon2"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group-append" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button", id: "button-addon2" },
+                        on: {
+                          click: function($event) {
+                            _vm.run = true
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Dk Çalıştır\n                            "
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _c(
               "button",
               {
-                staticClass: "btn btn-pos",
+                staticClass: "btn btn-pos mb-2 runSystem",
                 class: [!_vm.run ? "btn-success" : "btn-danger"],
+                staticStyle: { width: "148px" },
                 on: { click: _vm.runSystem }
               },
               [
@@ -5464,25 +5579,7 @@ var render = function() {
         _vm._v(" "),
         _vm._m(1),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("div", { staticClass: "card" }, [
-            _vm._m(2),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("ul", [
-                _c("li", [_vm._v("Seviye : % " + _vm._s(_vm.pixel))]),
-                _vm._v(" "),
-                _c("li", [_vm._v("Üst seviye : % 1252")]),
-                _vm._v(" "),
-                _c("li", [_vm._v("Alt seviye : % 415")]),
-                _vm._v(" "),
-                _c("li", [_vm._v("Depoya giren su miktarı : foo")]),
-                _vm._v(" "),
-                _c("li", [_vm._v("Debi ( m³/s) : bar")])
-              ])
-            ])
-          ])
-        ]),
+        _vm._m(2),
         _vm._v(" "),
         _vm._m(3)
       ])
@@ -5630,7 +5727,9 @@ var staticRenderFns = [
             _c("tbody", [
               _c("tr", [
                 _c("th", { attrs: { scope: "row" } }, [
-                  _vm._v("  Klor atım süresi")
+                  _vm._v(
+                    "\n                                    Klor atım süresi\n                                "
+                  )
                 ]),
                 _vm._v(" "),
                 _c("td", [
@@ -5646,9 +5745,27 @@ var staticRenderFns = [
                 _vm._v(" "),
                 _c("td", [
                   _c("button", { staticClass: "btn btn-success" }, [
-                    _c("span", { staticClass: "fas fa-check" })
+                    _vm._v(
+                      "\n                                        Kaydet\n                                    "
+                    )
                   ])
                 ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [
+                  _vm._v("Klor Durumu :")
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { colspan: "2" } }, [_vm._v(" Var")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [
+                  _vm._v("Klor Arıza Durumu :")
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { colspan: "2" } }, [_vm._v("Null")])
               ]),
               _vm._v(" "),
               _c("tr", [
@@ -5662,42 +5779,39 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("tr", [
-                _c("th", { attrs: { scope: "row" } }, [_vm._v("3")]),
+                _c("th", { attrs: { scope: "row" } }, [_vm._v("Klor Dolum :")]),
                 _vm._v(" "),
-                _c("td", [_vm._v("Larry")]),
+                _c("td", { attrs: { colspan: "2" } }, [
+                  _vm._v("02.02.2021 - 14:40")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [_vm._v("Klor Bitiş :")]),
                 _vm._v(" "),
-                _c("td", [_vm._v("the Bird")]),
-                _vm._v(" "),
-                _c("td", [_vm._v("@twitter")])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "list-unstyled" }, [
-            _c("li", [
-              _c("div", { staticClass: "input-group input-group-sm mb-3" }, [
-                _c("div", { staticClass: "input-group-prepend" }, [
-                  _c("span", {
-                    staticClass: "input-group-text",
-                    attrs: { id: "cvw" }
-                  })
+                _c("td", { attrs: { colspan: "2" } }, [
+                  _vm._v("02.02.2021 - 14:40")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [
+                  _vm._v("Klor Sonucu :")
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "input-group-append" })
+                _c("td", { attrs: { colspan: "2" } }, [_vm._v("0.3 (ppm)")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [
+                  _vm._v("Son ölçüm zamanı :")
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { colspan: "2" } }, [
+                  _vm._v("02.02.2021 - 14:40")
+                ])
               ])
-            ]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Klor Durumu : Var")]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Klor Arıza Durumu : null")]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Klor Dolum : 02.02.2021 - 14:40")]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Klor Bitiş : 02.02.2021 - 14:40")]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Klor Sonucu : 0.3 (ppm)")]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Son ölçüm zamanı")])
+            ])
           ])
         ])
       ])
@@ -5707,11 +5821,55 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [
-        _vm._v(
-          "\n                            Depo Bilgileri\n                        "
-        )
+    return _c("div", { staticClass: "col-md-6" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-header" }, [
+          _c("h3", { staticClass: "card-title" }, [
+            _vm._v(
+              "\n                            Depo Bilgileri\n                        "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("table", { staticClass: "table" }, [
+            _c("tbody", [
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [_vm._v("Seviye :")]),
+                _vm._v(" "),
+                _c("td", { attrs: { colspan: "2" } }, [_vm._v(" % 70")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [_vm._v("Üst seviye :")]),
+                _vm._v(" "),
+                _c("td", { attrs: { colspan: "2" } }, [_vm._v("% 1252")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [_vm._v("Alt seviye :")]),
+                _vm._v(" "),
+                _c("td", { attrs: { colspan: "2" } }, [_vm._v(" % 415")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [
+                  _vm._v("Depoya giren su miktarı :")
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { colspan: "2" } }, [_vm._v(" foo")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [
+                  _vm._v("Debi ( m³/s) :")
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { colspan: "2" } }, [_vm._v(" bar")])
+              ])
+            ])
+          ])
+        ])
       ])
     ])
   },
@@ -5730,12 +5888,30 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
-          _c("ul", { staticClass: "list-unstyled" }, [
-            _c("li", [_vm._v("Haraket : Yok")]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Kapı Güvenliği : Güvenli")]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Pano Güvenliği : Güvenli")])
+          _c("table", { staticClass: "table" }, [
+            _c("tbody", [
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [_vm._v("Haraket :")]),
+                _vm._v(" "),
+                _c("td", { attrs: { colspan: "2" } }, [_vm._v(" Yok")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [
+                  _vm._v("Kapı Güvenliği :")
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { colspan: "2" } }, [_vm._v(" Güvenli")])
+              ]),
+              _vm._v(" "),
+              _c("tr", [
+                _c("th", { attrs: { scope: "row" } }, [
+                  _vm._v("Pano Güvenliği :")
+                ]),
+                _vm._v(" "),
+                _c("td", { attrs: { colspan: "2" } }, [_vm._v("Güvenli")])
+              ])
+            ])
           ])
         ])
       ])

@@ -14,11 +14,22 @@
                 <div id="app" class="col col-12 mb-5">
                     <img id="machine" :src="'../../img/machine.svg'" alt="">
                     <div id="action">
-                        <button v-on:click="runSystem" class="btn btn-pos"
-                                :class="[!run ? 'btn-success' : 'btn-danger']"
-                        >
+
+                        <div v-if="!run" class="input-group mb-3">
+                            <input type="number" min="1" max="999" style="width: 55px !important;"
+                                   aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-success" v-on:click="run = true" type="button"
+                                        id="button-addon2">
+                                    Dk Çalıştır
+                                </button>
+                            </div>
+                        </div>
+                        <button style="width: 148px" v-on:click="runSystem" class="btn btn-pos mb-2 runSystem"
+                                :class="[!run ? 'btn-success' : 'btn-danger']">
                             {{ !run ? 'Sistemi Çalıştır' : 'Sistemi Durdur' }}
                         </button>
+
                     </div>
                     <div id="cogwheel" class="d-flex justify-content-center align-items-center">
                         <img :src="'../../img/cogwheel.svg'" alt="">
@@ -421,7 +432,9 @@ img {
         height: 23px;
         right: -55px;
     }
-
+   #action {
+       top : -10px;
+   }
     #watertank {
         width: 200px;
         height: 270px;
@@ -441,9 +454,17 @@ img {
         right: -40px;
     }
 
+    #action {
+        top: -10px;
+        right : -10px;
+    }
+
     #action button {
-        font-size: 12px;
+        font-size: 10px;
         padding: .3em .5em;
+    }
+    .runSystem{
+        width: 113px !important;
     }
 
     #watertank {
@@ -455,6 +476,10 @@ img {
 @media (max-width: 576px) {
     html, body {
         padding: 15px 0;
+    }
+    #action {
+        top: -40px;
+        right : -3px;
     }
 
     #cogwheel {
@@ -490,6 +515,9 @@ img {
     #waterbox {
         width: 39vw;
         top: 54%;
+    }
+    .runSystem{
+        width: 113px !important;
     }
 }
 
