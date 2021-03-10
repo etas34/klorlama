@@ -27,4 +27,33 @@ class HomeController extends Controller
         dd(Auth::user()->getYetki());
         return view('home');
     }
+
+    public function dashboard()
+    {
+        $sistem = Auth::user()->getYetki();
+
+        if (\Auth::user()->sistem_id == "*") //all muhtarlik
+            return view('sistem.index',compact('sistem'));
+        elseif (\Auth::user()->sistem_id != null) // muhtar id
+            return redirect()->route('sistem.show',\Auth::user()->sistem_id  );
+
+
+        if (\Auth::user()->ilce_id == "*") //"Tum ilçeler"
+          return view('ilce');
+        elseif (\Auth::user()->ilce_id != null) //"ilce id"
+            return redirect()->route('sistem.index',compact('sistem'));
+
+        if (\Auth::user()->il_id == "*") //"God mode"
+            return view('il');
+        elseif (\Auth::user()->il_id != null) // il id
+            return redirect()->route('sistem.index',compact('sistem'));
+
+
+
+        dd('Hiç bir yetki bulunamadı kullanıcı, bu hesabı kullanmaya müsait değil. ');
+
+
+    }
+
+
 }

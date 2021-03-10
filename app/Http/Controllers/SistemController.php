@@ -15,8 +15,10 @@ class SistemController extends Controller
      */
     public function index()
     {
-        $sistem = Sistem::where('durum',1)
+        $sistem = Sistem::where('durum', 1)
             ->get();
+
+
         return view('sistem.index', compact('sistem'));
     }
 
@@ -73,7 +75,19 @@ class SistemController extends Controller
      */
     public function show(Sistem $sistem)
     {
-        return view('sistem.show',compact('sistem'));
+//        $yasakli_zaman = array();
+
+        if ($sistem->yasakli_zaman) {
+            $yasakli_zaman = explode('-', $sistem->yasakli_zaman);
+            if (count($yasakli_zaman) == 2) {
+                $sistem["yasakliZamanBas"] = $yasakli_zaman[0];
+                $sistem["yasakliZamanBit"] = $yasakli_zaman[1];
+            }
+
+        }
+
+
+        return view('sistem.show', compact('sistem'));
     }
 
     /**
@@ -111,15 +125,15 @@ class SistemController extends Controller
             'alt_limit' => 'max:255',
             'il_id' => 'required',
         ]);
-       $sistem->ilce_id = $request['ilce_id'];
-       $sistem->il_id = $request['il_id'];
-       $sistem->ad = $request['ad'];
-       $sistem->klorlama_tel = $request['klorlama_tel'];
-       $sistem->motor_tel = $request['motor_tel'];
-       $sistem->klor_olcum_tel = $request['klor_olcum_tel'];
-       $sistem->ust_limit = $request['ust_limit'];
-       $sistem->alt_limit = $request['alt_limit'];
-       $sistem->save();
+        $sistem->ilce_id = $request['ilce_id'];
+        $sistem->il_id = $request['il_id'];
+        $sistem->ad = $request['ad'];
+        $sistem->klorlama_tel = $request['klorlama_tel'];
+        $sistem->motor_tel = $request['motor_tel'];
+        $sistem->klor_olcum_tel = $request['klor_olcum_tel'];
+        $sistem->ust_limit = $request['ust_limit'];
+        $sistem->alt_limit = $request['alt_limit'];
+        $sistem->save();
     }
 
     /**
@@ -139,4 +153,35 @@ class SistemController extends Controller
 
         return redirect()->route('sistem.index');
     }
+
+
+    public function zamanAsim(Sistem $sistem, Request $request)
+    {
+        $validated = $request->validate([
+            'pompa_zaman_asimi' => 'required',
+        ]);
+        $sistem->pompa_zaman_asimi = $request['pompa_zaman_asimi'];
+        $sistem->save();
+
+    }
+
+    public function yasakliZaman(Sistem $sistem, Request $request)
+    {
+        $validated = $request->validate([
+            'yasakli_zaman' => 'required',
+        ]);
+        $sistem->yasakli_zaman = $request['yasakli_zaman'];
+        $sistem->save();
+
+    }
+    public function klorAtimSure(Sistem $sistem, Request $request)
+    {
+        $validated = $request->validate([
+            'klor_atim_sure' => 'required',
+        ]);
+        $sistem->klor_atim_sure = $request['klor_atim_sure'];
+        $sistem->save();
+
+    }
+
 }
