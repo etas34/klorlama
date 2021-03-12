@@ -189,22 +189,27 @@ export default {
 
     },
 
-    watch: {
+    watch : {
         selected_il(val) {
+            if (val == '*'){
+                this.selected_ilce = null
+                this.selected_sistem = null
+            }
+
             this.formData.il_id = val
             this.getIlce(val)
-            if(val === '*')
-                this.selected_ilce = null
         },
 
-        selected_ilce(val) {
+        selected_ilce(val){
+
+            if (val == '*'){
+                this.selected_sistem = null
+            }
             this.formData.ilce_id = val
             this.getSistem(val)
-            console.log(val)
-            if(val === '*')
-                this.selected_sistem = null
         },
         selected_sistem(val) {
+
             this.formData.sistem_id = val
         },
     }

@@ -2928,6 +2928,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['sistem'],
   data: function data() {
@@ -2968,9 +2970,8 @@ __webpack_require__.r(__webpack_exports__);
     zamanAsimSubmit: function zamanAsimSubmit() {
       var _this = this;
 
-      this.pLoad = true;
-
-      if (confirm("Pompa zaman a\u015F\u0131m\u0131 ".concat(this.pompaZamanAsim, " olarak ayarlanacak emin misiniz?")) && !this.checkPombaZamanAsim) {
+      if (!this.checkPombaZamanAsim && confirm("Pompa zam\u0131an a\u015F\u0131m\u0131 ".concat(this.pompaZamanAsim, " olarak ayarlanacak emin misiniz?"))) {
+        this.pLoad = true;
         var data = {
           pompa_zaman_asimi: this.pompaZamanAsim
         };
@@ -3028,12 +3029,12 @@ __webpack_require__.r(__webpack_exports__);
     klorAtimSureSubmit: function klorAtimSureSubmit() {
       var _this3 = this;
 
-      this.kLoad = true;
       var data = {
         klor_atim_sure: this.klorAtimSure
       };
 
-      if (confirm("Klor at\u0131m s\xFCresi ".concat(data.klorAtimSure, " olarak ayarlanacak emin misiniz?"))) {
+      if (!this.checkKlorAtimSure && confirm("Klor at\u0131m s\xFCresi ".concat(data.klorAtimSure, " olarak ayarlanacak emin misiniz?"))) {
+        this.kLoad = true;
         axios.post("/api/sistem/klor-atim-sure/".concat(this.user_id), data).then(function (response) {
           Vue.$toast.success('Kayıt Başarı İle Eklendi!', {
             position: 'top-right'
@@ -3259,10 +3260,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     selected_il: function selected_il(val) {
+      if (val == '*') {
+        this.selected_ilce = null;
+        this.selected_sistem = null;
+      }
+
       this.formData.il_id = val;
       this.getIlce(val);
     },
     selected_ilce: function selected_ilce(val) {
+      if (val == '*') {
+        this.selected_sistem = null;
+      }
+
       this.formData.ilce_id = val;
       this.getSistem(val);
     },
@@ -3460,15 +3470,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     selected_il: function selected_il(val) {
+      if (val == '*') {
+        this.selected_ilce = null;
+        this.selected_sistem = null;
+      }
+
       this.formData.il_id = val;
       this.getIlce(val);
-      if (val === '*') this.selected_ilce = null;
     },
     selected_ilce: function selected_ilce(val) {
+      if (val == '*') {
+        this.selected_sistem = null;
+      }
+
       this.formData.ilce_id = val;
       this.getSistem(val);
-      console.log(val);
-      if (val === '*') this.selected_sistem = null;
     },
     selected_sistem: function selected_sistem(val) {
       this.formData.sistem_id = val;
@@ -5809,7 +5825,11 @@ var render = function() {
                             ],
                             staticClass: "form-text text-danger"
                           },
-                          [_vm._v("Değer 1 ila 99 arası olmalı")]
+                          [
+                            _vm._v(
+                              "Değer 1\n                                            ila 99 arası olmalı"
+                            )
+                          ]
                         )
                       ])
                     ]),
@@ -6064,7 +6084,11 @@ var render = function() {
                           ],
                           staticClass: "form-text text-danger"
                         },
-                        [_vm._v("Değer 1 ila 99 arası olmalı")]
+                        [
+                          _vm._v(
+                            "Değer 1 ila 99\n                                        arası olmalı"
+                          )
+                        ]
                       )
                     ]),
                     _vm._v(" "),

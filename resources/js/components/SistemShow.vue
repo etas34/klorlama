@@ -103,7 +103,8 @@
                                                    aria-describedby="inputGroup-sizing-sm"
                                                    data-toggle="popover" data-placement="top" data-content="Top popover"
                                             >
-                                            <small v-show="checkPombaZamanAsim" class="form-text text-danger">Değer 1 ila 99 arası olmalı</small>
+                                            <small v-show="checkPombaZamanAsim" class="form-text text-danger">Değer 1
+                                                ila 99 arası olmalı</small>
                                         </div>
 
                                     </td>
@@ -201,7 +202,8 @@
                                                aria-label="Sizing example input"
                                                v-model="klorAtimSure"
                                                aria-describedby="cvw">
-                                        <small v-show="checkKlorAtimSure" class="form-text text-danger">Değer 1 ila 99 arası olmalı</small>
+                                        <small v-show="checkKlorAtimSure" class="form-text text-danger">Değer 1 ila 99
+                                            arası olmalı</small>
 
                                     </td>
                                     <td>
@@ -673,7 +675,7 @@ export default {
             pixel: 70,
             run: false,
             uyari: '',
-            pLoad : false,
+            pLoad: false,
             yLoad: false,
             kLoad: false,
             pompaZamanAsim: this.sistem.pompa_zaman_asimi,
@@ -683,11 +685,11 @@ export default {
         }
     },
     computed: {
-        checkPombaZamanAsim : function () {
-          return  this.pompaZamanAsim < 1 || this.pompaZamanAsim > 99 || this.pompaZamanAsim ===''
+        checkPombaZamanAsim: function () {
+            return this.pompaZamanAsim < 1 || this.pompaZamanAsim > 99 || this.pompaZamanAsim === ''
         },
-        checkKlorAtimSure : function () {
-          return  this.klorAtimSure < 1 || this.klorAtimSure > 99 || this.klorAtimSure ===''
+        checkKlorAtimSure: function () {
+            return this.klorAtimSure < 1 || this.klorAtimSure > 99 || this.klorAtimSure === ''
         }
     },
     watch: {
@@ -703,9 +705,8 @@ export default {
     },
     methods: {
         zamanAsimSubmit() {
-
-            this.pLoad = true
-            if (confirm(`Pompa zaman aşımı ${this.pompaZamanAsim} olarak ayarlanacak emin misiniz?`) && !this.checkPombaZamanAsim) {
+            if (!this.checkPombaZamanAsim && confirm(`Pompa zamıan aşımı ${this.pompaZamanAsim} olarak ayarlanacak emin misiniz?`) ) {
+                this.pLoad = true
                 var data = {
                     pompa_zaman_asimi: this.pompaZamanAsim
                 }
@@ -730,7 +731,7 @@ export default {
 
         },
         yasakliZamanSubmit() {
-            this.yLoad =true
+            this.yLoad = true
             var data = {
                 yasakli_zaman: this.yasakliZamanBas + '-' + this.yasakliZamanBit
             }
@@ -758,11 +759,12 @@ export default {
             }
         },
         klorAtimSureSubmit() {
-            this.kLoad = true
             var data = {
                 klor_atim_sure: this.klorAtimSure
             }
-            if (confirm(`Klor atım süresi ${data.klorAtimSure} olarak ayarlanacak emin misiniz?`)) {
+            if (!this.checkKlorAtimSure && confirm(`Klor atım süresi ${data.klorAtimSure} olarak ayarlanacak emin misiniz?`)) {
+
+                this.kLoad = true
                 axios.post(`/api/sistem/klor-atim-sure/${this.user_id}`, data)
                     .then((response) => {
                         Vue.$toast.success('Kayıt Başarı İle Eklendi!', {

@@ -190,15 +190,25 @@
 
         watch : {
             selected_il(val) {
+                if (val == '*'){
+                    this.selected_ilce = null
+                    this.selected_sistem = null
+                }
+
                 this.formData.il_id = val
                 this.getIlce(val)
             },
 
-            selected_ilce(val) {
+            selected_ilce(val){
+
+                if (val == '*'){
+                    this.selected_sistem = null
+                }
                 this.formData.ilce_id = val
                 this.getSistem(val)
             },
             selected_sistem(val) {
+
                 this.formData.sistem_id = val
             },
         }

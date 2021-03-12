@@ -47,6 +47,7 @@ class CreateSistemsTable extends Migration
             $table->string('kapi_guvenlik')->nullable();
             $table->string('pano_guvenlik')->nullable();
             $table->string('depo_guvenlik')->nullable();
+            $table->string('aku_ariza')->nullable();
 
 
             $table->tinyInteger('durum')->default(1);
