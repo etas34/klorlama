@@ -25,6 +25,13 @@ Route::get('/', function () {
 require __DIR__ . '/auth.php';
 
 Auth::routes();
+Route::get('/reset', function (){
+    Artisan::call('config:cache');
+
+    Artisan::call('cache:clear');
+
+});
+
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/dashboard', [HomeController::class,'dashboard'])->name('dashboard');
