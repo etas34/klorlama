@@ -43,4 +43,4 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 
 
-Route::post('/sms-log',[SmsLogController::class, 'store'] );
+Route::post('/smslog-br7u10fkoiee3nbmkxno',[SmsLogController::class, 'store'] );

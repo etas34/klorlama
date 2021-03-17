@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SmsLog;
 use Illuminate\Http\Request;
+use Storage;
 
 class SmsLogController extends Controller
 {
@@ -25,19 +26,21 @@ class SmsLogController extends Controller
      */
     public function store(Request $request)
     {
-
-        $request->validate(
-            [
-                'source_addr' => 'required|max:255',
-                'content' => 'required',
-                'received_at' => 'required|max:255',
-            ]
-        );
+        $data = $request[0];
+//        Storage::put('file.txt', $data['content']);
+//        $data->validate(
+//            [
+//                'source_addr' => 'required|max:255',
+//                'content' => 'required',
+//                'received_at' => 'required|max:255',
+//            ]
+//        );
         return SmsLog::create([
-            'numara' => $request['source_addr'],
-            'mesaj' => $request['content'],
-            'tarih' => $request['received_at'],
+            'numara' => $data['source_addr'],
+            'mesaj' => $data['content'],
+            'tarih' => $data['received_at'],
         ]);
+
 
     }
 
@@ -47,9 +50,9 @@ class SmsLogController extends Controller
      * @param \App\Models\SmsLog $smsLog
      * @return \Illuminate\Http\Response
      */
-    public function show(SmsLog $smsLog)
+    public function show(Request $request)
     {
-        //
+       55 / 0;
     }
 
     /**
