@@ -78,111 +78,6 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
-                                Pomba Bilgiler
-                            </h3>
-                        </div>
-                        <div class="card-body">
-
-                            <table class="table">
-
-
-                                <tbody>
-                                <tr>
-
-                                    <th scope="row">
-                                        Pompa Zaman Aşımı
-                                    </th>
-                                    <td>
-                                        <div class="form-group">
-
-
-                                            <input type="number" step="1" min="1" max="99" class="form-control"
-                                                   v-on:keyup.enter="zamanAsimSubmit"
-                                                   aria-label="Sizing example input"
-                                                   v-model="pompaZamanAsim"
-                                                   aria-describedby="inputGroup-sizing-sm"
-                                                   data-toggle="popover" data-placement="top" data-content="Top popover"
-                                            >
-                                            <small v-show="checkPombaZamanAsim" class="form-text text-danger">Değer 1
-                                                ila 99 arası olmalı</small>
-                                        </div>
-
-                                    </td>
-                                    <td>
-                                        <button @click="zamanAsimSubmit"
-                                                :disabled="checkPombaZamanAsim || pLoad"
-                                                class="btn btn-success pull-right">
-                                                 <span v-if="pLoad"
-                                                       class="spinner-border spinner-border-sm"
-                                                       role="status"
-                                                       aria-hidden="true"></span>
-                                            {{ pLoad ? '' : 'Kaydet' }}
-                                        </button>
-                                    </td>
-
-
-                                </tr>
-
-
-                                <tr>
-
-                                    <th scope="row"> Yasaklı Zaman</th>
-                                    <td>
-
-                                        <div class="form-group">
-                                            <p><strong>Saat Aralığı Seçin</strong></p>
-                                            <select v-model="yasakliZamanBas" class="form-control-sm"
-                                                    id="exampleFormControlSelect1">
-
-                                                <option v-for="(n, saat) in 24">
-                                                    {{ String(saat).length === 1 ? "0" + saat : saat }}
-                                                </option>
-                                            </select>
-                                            -
-                                            <select class="form-control-sm" v-model="yasakliZamanBit">
-                                                <option v-for="(n, saat) in 24">
-                                                    {{ String(saat).length === 1 ? "0" + saat : saat }}
-                                                </option>
-
-
-                                            </select>
-                                        </div>
-                                    </td>
-                                    <td>
-
-                                        <button @click="yasakliZamanSubmit"
-                                                :disabled="yLoad"
-                                                class="btn btn-success pull-right">
-                                                            <span v-if="yLoad"
-                                                                  class="spinner-border spinner-border-sm"
-                                                                  role="status"
-                                                                  aria-hidden="true"></span>
-                                            {{ yLoad ? '' : 'Kaydet' }}
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-
-                                    <th scope="row">Çalışma Tarihi :</th>
-                                    <td colspan="2">{{ sistem.calisma_tarih }}</td>
-
-                                </tr>
-                                <tr>
-
-                                    <th scope="row">Pompa Durumu :</th>
-                                    <td colspan="2">{{ sistem.pompa_durumu }}</td>
-
-                                </tr>
-                                </tbody>
-
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
                                 Klor Bilgileri
                             </h3>
                         </div>
@@ -211,10 +106,10 @@
                                             :disabled="checkKlorAtimSure || kLoad"
                                             @click="klorAtimSureSubmit"
                                             class="btn btn-success">
-                                                                 <span v-if="kLoad"
-                                                                       class="spinner-border spinner-border-sm"
-                                                                       role="status"
-                                                                       aria-hidden="true"></span>
+                                             <span v-if="kLoad"
+                                                   class="spinner-border spinner-border-sm"
+                                                   role="status"
+                                                   aria-hidden="true"></span>
                                             {{ kLoad ? '' : 'Kaydet' }}
 
                                         </button>
@@ -234,20 +129,51 @@
 
                                 </tr>
                                 <tr>
-                                    <th scope="row">Klor Dolum :</th>
-                                    <td colspan="2"> {{ sistem.klor_dolum }}</td>
+                                    <th scope="row">Klor Dolum Zamanı:</th>
+                                    <td colspan="2">{{ sistem.klor_dolum }}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Klor Bitiş :</th>
+                                    <th scope="row">Klor Bitiş Zamanı:</th>
                                     <td colspan="2"> {{ sistem.klor_bitis }}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Klor Sonucu :</th>
+                                    <th scope="row">Klor Ölçüm Sonucu :</th>
                                     <td colspan="2">{{ sistem.klor_sonucu }} (ppm)</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Son ölçüm zamanı :</th>
+                                    <th scope="row">Son Ölçüm Zamanı :</th>
                                     <td colspan="2">{{ sistem.son_olcum_zaman }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Son Ölçüm Zamanı :</th>
+                                    <td colspan="2">{{ sistem.son_olcum_zaman }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">2.Klor atım Periyodu</th>
+                                    <td colspan="2">
+
+                                        <div class="form-group">
+                                            <label for="periodSaat">Saat</label>
+                                            <input type="number" min="1" step="1" v-model="periodSaat" class="form-control" id="periodSaat">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="periodSaniye">Atım Saniyesi</label>
+                                            <input type="number" min="1" step="1" v-model="periodSaniye" class="form-control" id="periodSaniye">
+                                        </div>
+                                                <button
+                                                    :disabled="kLoad"
+                                                    @click="periodAtimSubmit"
+                                                    class="btn btn-success">
+                                             <span v-if="kLoad"
+                                                   class="spinner-border spinner-border-sm"
+                                                   role="status"
+                                                   aria-hidden="true"></span>
+                                                    {{ kLoad ? '' : 'Kaydet' }}
+
+                                                </button>
+
+
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -272,18 +198,18 @@
                                     <td colspan="2"> % {{ sistem.depo_seviye }}</td>
 
                                 </tr>
-                                <tr>
+                                <!--                                <tr>-->
 
-                                    <th scope="row">Üst seviye :</th>
-                                    <td colspan="2">% {{ sistem.alt_limit }}</td>
+                                <!--                                    <th scope="row">Üst seviye :</th>-->
+                                <!--                                    <td colspan="2">% {{ sistem.alt_limit }}</td>-->
 
-                                </tr>
-                                <tr>
+                                <!--                                </tr>-->
+                                <!--                                <tr>-->
 
-                                    <th scope="row">Alt seviye :</th>
-                                    <td colspan="2"> % {{ sistem.ust_limit }}</td>
+                                <!--                                    <th scope="row">Alt seviye :</th>-->
+                                <!--                                    <td colspan="2"> % {{ sistem.ust_limit }}</td>-->
 
-                                </tr>
+                                <!--                                </tr>-->
                                 <tr>
                                     <th scope="row">Debi ( m³/s) :</th>
                                     <td colspan="2">{{ sistem.debi }}</td>
@@ -293,48 +219,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                Güvenlik Bilgileri
-                            </h3>
-                        </div>
-                        <div class="card-body">
 
-                            <table class="table">
-                                <tbody>
-                                <tr>
-
-                                    <th scope="row">Haraket :</th>
-                                    <td colspan="2"> {{ sistem.haraket }}</td>
-
-                                </tr>
-                                <tr>
-
-                                    <th scope="row">Kapı Güvenliği :</th>
-                                    <td colspan="2">{{ sistem.kapi_guvenlik }}</td>
-
-                                </tr>
-                                <tr>
-
-                                    <th scope="row">Pano Güvenliği :</th>
-                                    <td colspan="2">{{ sistem.pano_guvenlik }}</td>
-
-                                </tr>
-                                <tr>
-
-                                    <th scope="row">Depo Güvenliği :</th>
-                                    <td colspan="2"> {{ sistem.depo_guvenlik }}</td>
-
-                                </tr>
-
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -675,19 +560,16 @@ export default {
             pixel: 70,
             run: false,
             uyari: '',
-            pLoad: false,
-            yLoad: false,
+            pLoad: true,
             kLoad: false,
             pompaZamanAsim: this.sistem.pompa_zaman_asimi,
-            yasakliZamanBas: this.sistem.yasakliZamanBas,
-            yasakliZamanBit: this.sistem.yasakliZamanBit,
             klorAtimSure: this.sistem.klor_atim_sure,
+            periodSaat: this.sistem.period_saat,
+            periodSaniye: this.sistem.period_saniye,
         }
     },
     computed: {
-        checkPombaZamanAsim: function () {
-            return this.pompaZamanAsim < 1 || this.pompaZamanAsim > 99 || this.pompaZamanAsim === ''
-        },
+
         checkKlorAtimSure: function () {
             return this.klorAtimSure < 1 || this.klorAtimSure > 99 || this.klorAtimSure === ''
         }
@@ -704,68 +586,47 @@ export default {
         }
     },
     methods: {
-        zamanAsimSubmit() {
-            if (!this.checkPombaZamanAsim && confirm(`Pompa zamıan aşımı ${this.pompaZamanAsim} olarak ayarlanacak emin misiniz?`) ) {
-                this.pLoad = true
-                var data = {
-                    pompa_zaman_asimi: this.pompaZamanAsim
-                }
-                axios.post(`/api/sistem/zaman-asim/${this.user_id}`, data)
-                    .then((response) => {
-
-                        Vue.$toast.success('Kayıt Başarı İle Eklendi!', {
-                            position: 'top-right'
-                        })
-                    }).catch(function (error) {
-                    if (error.response.status === 422) {
-                        $.each(error.response.data.errors, function (key, value) {
-                            Vue.$toast.error(value[0], {position: 'top-right'})
-                        });
-                    } else {
-                        Vue.$toast.error('Bir Şeyler Ters Gitti!', {position: 'top-right'})
-                    }
-                }).finally(() => {
-                    this.pLoad = false
-                });
-            }
-
-        },
-        yasakliZamanSubmit() {
-            this.yLoad = true
-            var data = {
-                yasakli_zaman: this.yasakliZamanBas + '-' + this.yasakliZamanBit
-            }
-            if (confirm(`Yasaklı saat aralığı ${data.yasakli_zaman} olarak ayarlanacak emin misiniz?`)) {
-
-
-                axios.post(`/api/sistem/yasakli-zaman/${this.user_id}`, data)
-                    .then((response) => {
-                        Vue.$toast.success('Kayıt Başarı İle Eklendi!', {
-                            position: 'top-right'
-                        })
-                    }).catch(function (error) {
-                    if (error.response.status === 422) {
-                        $.each(error.response.data.errors, function (key, value) {
-
-                            Vue.$toast.error(value[0], {position: 'top-right'})
-                        });
-
-                    } else {
-                        Vue.$toast.error('Bir Şeyler Ters Gitti!', {position: 'top-right'})
-                    }
-                }).finally(() => {
-                    this.yLoad = false
-                });
-            }
-        },
         klorAtimSureSubmit() {
             var data = {
                 klor_atim_sure: this.klorAtimSure
             }
-            if (!this.checkKlorAtimSure && confirm(`Klor atım süresi ${data.klorAtimSure} olarak ayarlanacak emin misiniz?`)) {
-
+            if (!this.checkKlorAtimSure && confirm(`Klor atım süresi ${this.klorAtimSure} olarak ayarlanacak emin misiniz?`)) {
+                // console.log(this.klorAtimSure)
                 this.kLoad = true
                 axios.post(`/api/sistem/klor-atim-sure/${this.user_id}`, data)
+                    .then((response) => {
+                        Vue.$toast.success('Kayıt Başarı İle Eklendi!', {
+                            position: 'top-right'
+                        })
+                    }).catch(function (error) {
+                    if (error.response.status === 422) {
+                        $.each(error.response.data.errors, function (key, value) {
+
+                            Vue.$toast.error(value[0], {position: 'top-right'})
+                        });
+
+                    } else {
+                        Vue.$toast.error('Bir Şeyler Ters Gitti!', {
+                            position: 'top-right'
+                        })
+                    }
+
+                }).finally(() => {
+                    this.kLoad = false
+                });
+            }
+        },
+
+        periodAtimSubmit() {
+            var data = {
+                period_saniye: this.periodSaniye,
+                period_saat: this.periodSaat,
+            }
+            console.log(data)
+            if (!this.checkKlorAtimSure && confirm(`Klor atım Periodu ${this.periodSaat} saat, ${this.periodSaniye} saniye olarak ayarlanacak emin misiniz?`)) {
+                // console.log(this.klorAtimSure)
+                this.kLoad = true
+                axios.post(`/api/sistem/klor-atim-period/${this.user_id}`, data)
                     .then((response) => {
                         Vue.$toast.success('Kayıt Başarı İle Eklendi!', {
                             position: 'top-right'

@@ -55,16 +55,7 @@
                                        class="form-control" v-model="formData.klor_olcum_tel">
 
                             </div>
-                            <div class="form-group col-md-6">
-                                <label>Depo Alt Limit</label>
-                                <input ref="clear" type="number" max="100" min="0" step="0" class="form-control"
-                                       v-model="formData.alt_limit">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Depo Üst Limit</label>
-                                <input ref="clear" type="number" max="100" min="0" step="0" class="form-control"
-                                       v-model="formData.ust_limit">
-                            </div>
+
 
                         </div>
                     </div>

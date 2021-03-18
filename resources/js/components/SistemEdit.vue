@@ -55,15 +55,6 @@
 
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label>Depo Alt Limit</label>
-                                <input ref="clear" type="number" min="0" max="100" step="0" class="form-control"
-                                       v-model="formData.alt_limit">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label>Depo Üst Limit</label>
-                                <input ref="clear" type="number" min="0" max="100" step="0" class="form-control" v-model="formData.ust_limit">
-                            </div>
 
                         </div>
                     </div>
@@ -105,8 +96,6 @@ export default {
                 klorlama_tel: this.sistem.klorlama_tel,
                 motor_tel: this.sistem.motor_tel,
                 klor_olcum_tel: this.sistem.klor_olcum_tel,
-                ust_limit: this.sistem.ust_limit,
-                alt_limit: this.sistem.alt_limit,
             }
 
         }

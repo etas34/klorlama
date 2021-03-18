@@ -29,6 +29,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('/zaman-asim/{sistem}' , [SistemController::class, 'zamanAsim'] )->name('zamanAsim');
         Route::post('/yasakli-zaman/{sistem}' , [SistemController::class, 'yasakliZaman'] )->name('yasakliZaman');
         Route::post('/klor-atim-sure/{sistem}' , [SistemController::class, 'klorAtimSure'] )->name('klorAtimSure');
+        Route::post('/klor-atim-period/{sistem}' , [SistemController::class, 'klorAtimPeriod'] )->name('klorAtimPeriod');
     });
 
 
@@ -36,7 +37,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('/store', [UserController::class, 'store'])->name('store');
         Route::post('/update/{user}', [UserController::class, 'update'])->name('update');
     });
-
 
 
 

@@ -32,7 +32,6 @@
                         <td>K.ölçüm Ariza</td>
                         <td>Akü Ariza</td>
                         <td>Pompa Ariza</td>
-                        <td>Pompa Güvenli̇ği̇</td>
 
                     </tr>
                     </thead>

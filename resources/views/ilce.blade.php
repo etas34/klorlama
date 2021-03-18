@@ -32,7 +32,6 @@
                         <th>Depo Seviyesi - Son Güncelleme</th>
                         <th>Klor Ölçüm - Son Güncelleme</th>
                         <th>Pompa Arıza</th>
-                        <th>Pompa & Pano Güvenliği</th>
 
                     </tr>
                     </thead>

@@ -55,4 +55,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/edit/{sistem}', [SistemController::class, 'update'])->name('update');
 
     });
+
+
+
+    Route::get('/tokens/create/{token_name}', function ($token_name) {
+        $token = Auth::user()->createToken($token_name);
+
+        return [
+            'token' => $token->plainTextToken,
+            '__desc' =>"Bu tokeni kaydet, sana bu tokeni ilk ve son göstermemiz olacak"
+        ];
+    });
+
 });

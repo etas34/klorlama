@@ -183,5 +183,17 @@ class SistemController extends Controller
         $sistem->save();
 
     }
+    public function klorAtimPeriod(Sistem $sistem, Request $request)
+    {
+        $validated = $request->validate([
+            'period_saat' => 'required|numeric',
+            'period_saniye' => 'required|numeric',
+        ]);
+        $sistem->period_saniye = $request['period_saniye'];
+        $sistem->period_saat = $request['period_saat'];
+
+        $sistem->save();
+
+    }
 
 }
