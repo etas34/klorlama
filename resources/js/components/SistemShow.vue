@@ -154,14 +154,21 @@
 
                                         <div class="form-group">
                                             <label for="periodSaat">Saat</label>
-                                            <input type="number" min="1" step="1" v-model="periodSaat" class="form-control" id="periodSaat">
+                                            <input type="number"
+
+                                                   min="1" step="1"
+                                                   v-model="periodSaat"
+                                                   class="form-control"
+                                                   id="periodSaat">
                                         </div>
                                         <div class="form-group">
                                             <label for="periodSaniye">Atım Saniyesi</label>
-                                            <input type="number" min="1" step="1" v-model="periodSaniye" class="form-control" id="periodSaniye">
+                                            <input type="number"
+
+                                                   min="1" step="1" v-model="periodSaniye" class="form-control" id="periodSaniye">
                                         </div>
                                                 <button
-                                                    :disabled="kLoad"
+                                                    :disabled="kLoad || checkperiodAtim"
                                                     @click="periodAtimSubmit"
                                                     class="btn btn-success">
                                              <span v-if="kLoad"
@@ -569,9 +576,20 @@ export default {
         }
     },
     computed: {
-
         checkKlorAtimSure: function () {
-            return this.klorAtimSure < 1 || this.klorAtimSure > 99 || this.klorAtimSure === ''
+            return (
+                this.klorAtimSure < 1 ||
+                this.klorAtimSure > 99 ||
+                this.klorAtimSure === ''
+            )
+        },
+        checkperiodAtim: function () {
+            return(
+                this.periodSaat < 1 ||
+                this.periodSaniye < 1 ||
+                this.periodSaat === '' ||
+                this.periodSaniye === ''
+            )
         }
     },
     watch: {
@@ -590,7 +608,7 @@ export default {
             var data = {
                 klor_atim_sure: this.klorAtimSure
             }
-            if (!this.checkKlorAtimSure && confirm(`Klor atım süresi ${this.klorAtimSure} olarak ayarlanacak emin misiniz?`)) {
+            if (!this.checkperiodAtim && confirm(`Klor atım süresi ${this.klorAtimSure} olarak ayarlanacak emin misiniz?`)) {
                 // console.log(this.klorAtimSure)
                 this.kLoad = true
                 axios.post(`/api/sistem/klor-atim-sure/${this.user_id}`, data)
@@ -622,8 +640,7 @@ export default {
                 period_saniye: this.periodSaniye,
                 period_saat: this.periodSaat,
             }
-            console.log(data)
-            if (!this.checkKlorAtimSure && confirm(`Klor atım Periodu ${this.periodSaat} saat, ${this.periodSaniye} saniye olarak ayarlanacak emin misiniz?`)) {
+            if (!this.checkperiodAtim && confirm(`Klor atım Periodu ${this.periodSaat} saat, ${this.periodSaniye} saniye olarak ayarlanacak emin misiniz?`)) {
                 // console.log(this.klorAtimSure)
                 this.kLoad = true
                 axios.post(`/api/sistem/klor-atim-period/${this.user_id}`, data)
@@ -671,7 +688,6 @@ export default {
         }
     },
     mounted() {
-
     }
 
 

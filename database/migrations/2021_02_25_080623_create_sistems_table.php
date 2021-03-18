@@ -27,11 +27,6 @@ class CreateSistemsTable extends Migration
             $table->string('alt_limit')->nullable();
             $table->string('ust_limit')->nullable();
 
-            $table->string('pompa_zaman_asimi')->nullable();
-            $table->string('yasakli_zaman')->nullable();
-            $table->string('calisma_tarih')->nullable();
-            $table->string('pompa_durumu')->nullable();
-
             $table->string('depo_seviye')->nullable();
             $table->string('debi')->nullable();
 
@@ -43,11 +38,9 @@ class CreateSistemsTable extends Migration
             $table->string('klor_sonucu')->nullable();
             $table->string('son_olcum_zaman')->nullable();
 
-            $table->string('haraket')->nullable();
-            $table->string('kapi_guvenlik')->nullable();
-            $table->string('pano_guvenlik')->nullable();
-            $table->string('depo_guvenlik')->nullable();
-            $table->string('aku_ariza')->nullable();
+
+            $table->string('period_saat')->nullable();
+            $table->string('period_saniye')->nullable();
 
 
             $table->tinyInteger('durum')->default(1);
