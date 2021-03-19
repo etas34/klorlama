@@ -5,11 +5,18 @@
 
         <div class="container" :class="{'active' : run}">
             <div class="row">
-                <div class="col col-12 py-3">
+                <div class="col col-6 py-3">
                     <h3>{{ sistem.ad }}</h3>
+
                 </div>
+
                 <div class="col col-12 mb-3">
                     <span id="fillingRate">{{ pixel }}%</span>
+                    <button id="guncelle"  class="btn btn-pos runSystem btn-warning  "
+                             style="width: 148px;"
+                    >
+                        Sistemi Güncelle
+                    </button>
                 </div>
                 <div id="app" class="col col-12 mb-5">
                     <img id="machine" :src="'../../img/machine.svg'" alt="">
@@ -97,7 +104,7 @@
                                                aria-label="Sizing example input"
                                                v-model="klorAtimSure"
                                                aria-describedby="cvw">
-                                        <small v-show="checkKlorAtimSure" class="form-text text-danger">Değer 1 ila 99
+                                        <small id="uyari" v-show="checkKlorAtimSure" class="form-text text-danger">Değer 1 ila 99
                                             arası olmalı</small>
 
                                     </td>
@@ -149,39 +156,54 @@
                                     <td colspan="2">{{ sistem.son_olcum_zaman }}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">2.Klor atım Periyodu</th>
+                                    <th scope="row">2.Klor atım Periyod Saati: </th>
                                     <td colspan="2">
 
                                         <div class="form-group">
-                                            <label for="periodSaat">Saat</label>
                                             <input type="number"
 
+                                                   v-on:keyup.enter="periodAtimSubmit"
                                                    min="1" step="1"
                                                    v-model="periodSaat"
                                                    class="form-control"
                                                    id="periodSaat">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="periodSaniye">Atım Saniyesi</label>
-                                            <input type="number"
 
-                                                   min="1" step="1" v-model="periodSaniye" class="form-control" id="periodSaniye">
-                                        </div>
-                                                <button
-                                                    :disabled="kLoad || checkperiodAtim"
-                                                    @click="periodAtimSubmit"
-                                                    class="btn btn-success">
-                                             <span v-if="kLoad"
-                                                   class="spinner-border spinner-border-sm"
-                                                   role="status"
-                                                   aria-hidden="true"></span>
-                                                    {{ kLoad ? '' : 'Kaydet' }}
-
-                                                </button>
 
 
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th scope="row">2.Klor atım Periyodu Saniyesi: </th>
+                                    <td>
+
+                                        <div class="form-group">
+                                            <input type="number"
+
+                                                   v-on:keyup.enter="periodAtimSubmit"
+                                                   min="1" step="1" v-model="periodSaniye" class="form-control" id="periodSaniye">
+                                        </div>
+
+
+
+
+
+                                    </td>
+                                    <td>
+                                        <button
+                                            :disabled="kLoad || checkperiodAtim"
+                                            @click="periodAtimSubmit"
+                                            class="btn btn-success">
+                                             <span v-if="kLoad"
+                                                   class="spinner-border spinner-border-sm"
+                                                   role="status"
+                                                   aria-hidden="true"></span>
+                                            {{ kLoad ? '' : 'Kaydet' }}
+
+                                        </button>
+                                    </td>
+                                </tr>
+
                                 </tbody>
                             </table>
 
@@ -240,7 +262,7 @@
 
 * {
     box-sizing: border-box;
-    box-sizing: -webkit-border-box;
+    /*box-sizing: -webkit-border-box;*/
 }
 
 html,
@@ -248,6 +270,9 @@ body {
     margin: 0;
     padding: 15px;
     outline: none;
+}
+th {
+    width: 250px;
 }
 
 img {
@@ -688,6 +713,13 @@ export default {
         }
     },
     mounted() {
+        var width = $(window).width();
+        $(window).resize(function () {
+            if (width <= 780) {
+                $('#guncelle').addClass('btn-sm');
+                $('#uyari').val('')
+            }
+        });
     }
 
 

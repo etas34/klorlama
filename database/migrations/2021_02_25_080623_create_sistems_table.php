@@ -24,11 +24,8 @@ class CreateSistemsTable extends Migration
             $table->string('klor')->nullable();
             $table->string('pompa')->nullable();
             $table->string('elektrik')->nullable();
-            $table->string('alt_limit')->nullable();
-            $table->string('ust_limit')->nullable();
 
             $table->string('depo_seviye')->nullable();
-            $table->string('debi')->nullable();
 
             $table->string('klor_atim_sure')->nullable();
             $table->string('klor_durum')->nullable();

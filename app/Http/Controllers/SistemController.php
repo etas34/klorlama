@@ -42,14 +42,13 @@ class SistemController extends Controller
      */
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'ilce_id' => 'required',
             'ad' => 'required|max:255',
             'klorlama_tel' => 'max:255',
             'motor_tel' => 'max:255',
             'klor_olcum_tel' => 'max:255',
-            'ust_limit' => 'max:255',
-            'alt_limit' => 'max:255',
             'il_id' => 'required',
         ]);
 
@@ -60,10 +59,11 @@ class SistemController extends Controller
             'klorlama_tel' => $request['klorlama_tel'],
             'motor_tel' => $request['motor_tel'],
             'klor_olcum_tel' => $request['klor_olcum_tel'],
-            'ust_limit' => $request['ust_limit'],
-            'alt_limit' => $request['alt_limit'],
+            'birinci_numara' => $request['birinci_numara'],
+            'ikinci_numara' => $request['ikinci_numara'],
+            'ucuncu_numara' => $request['ucuncu_numara'],
         ]);
-
+//
 
     }
 
@@ -121,8 +121,6 @@ class SistemController extends Controller
             'klorlama_tel' => 'max:255',
             'motor_tel' => 'max:255',
             'klor_olcum_tel' => 'max:255',
-            'ust_limit' => 'max:255',
-            'alt_limit' => 'max:255',
             'il_id' => 'required',
         ]);
         $sistem->ilce_id = $request['ilce_id'];
@@ -131,8 +129,9 @@ class SistemController extends Controller
         $sistem->klorlama_tel = $request['klorlama_tel'];
         $sistem->motor_tel = $request['motor_tel'];
         $sistem->klor_olcum_tel = $request['klor_olcum_tel'];
-        $sistem->ust_limit = $request['ust_limit'];
-        $sistem->alt_limit = $request['alt_limit'];
+        $sistem->birinci_numara = $request['birinci_numara'];
+        $sistem->ikinci_numara = $request['ikinci_numara'];
+        $sistem->ucuncu_numara = $request['ucuncu_numara'];
         $sistem->save();
     }
 

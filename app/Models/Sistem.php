@@ -18,6 +18,9 @@ class Sistem extends Model
         'klor_olcum_tel',
         'ust_limit',
         'alt_limit',
+        'birinci_numara',
+        'ikinci_numara',
+        'ucuncu_numara',
     ];
 
     public function Il()

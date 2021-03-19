@@ -27,21 +27,13 @@ class SmsLogController extends Controller
     public function store(Request $request)
     {
         $data = $request[0];
-//        Storage::put('file.txt', $data['content']);
-//        $data->validate(
-//            [
-//                'source_addr' => 'required|max:255',
-//                'content' => 'required',
-//                'received_at' => 'required|max:255',
-//            ]
-//        );
+        Storage::append('sms.log', json_encode($data) . "\n");
+
         return SmsLog::create([
             'numara' => $data['source_addr'],
             'mesaj' => $data['content'],
             'tarih' => $data['received_at'],
         ]);
-
-
     }
 
     /**
@@ -52,7 +44,7 @@ class SmsLogController extends Controller
      */
     public function show(Request $request)
     {
-       55 / 0;
+        //
     }
 
     /**

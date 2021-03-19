@@ -55,6 +55,39 @@
                                        class="form-control" v-model="formData.klor_olcum_tel">
 
                             </div>
+                            <div class="col-md-12">
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            İletişim Bilgileri
+                                        </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="form-group col-md-12">
+                                            <label>1.Kişi</label>
+                                            <input ref="clear" type="text" v-mask="'0 (###) ###-####'"
+                                                   class="form-control" v-model="formData.birinci_numara">
+
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label>2.Kişi</label>
+                                            <input ref="clear" type="text" v-mask="'0 (###) ###-####'"
+                                                   class="form-control" v-model="formData.ikinci_numara">
+
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label>3.Kişi</label>
+                                            <input ref="clear" type="text" v-mask="'0 (###) ###-####'"
+                                                   class="form-control" v-model="formData.ucuncu_numara">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
 
 
                         </div>
@@ -96,8 +129,9 @@ export default {
                 klorlama_tel: '',
                 motor_tel: '',
                 klor_olcum_tel: '',
-                alt_limit: '',
-                ust_limit: '',
+                birinci_numara: '',
+                ikinci_numara: '',
+                ucuncu_numara: '',
             }
 
         }
@@ -115,6 +149,7 @@ export default {
             this.disableSubmit = true
             axios.post('/api/sistem/store', this.formData)
                 .then((response) => {
+                    console.log(response)
                     Vue.$toast.success('Kayıt Başarı İle Eklendi!', {
                         position: 'top-right'
                     })
@@ -169,6 +204,7 @@ export default {
     watch: {
         selected_il(val) {
             this.formData.il_id = val
+            console.log(val)
             this.getIlce(val)
         },
         // 'formData.alt_limit'(){
