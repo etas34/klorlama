@@ -2901,7 +2901,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['sistem'],
   data: function data() {
@@ -2927,6 +2926,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
+    myprop: function myprop(newVal, oldVal) {
+      // watch it
+      console.log('Prop changed: ', newVal, ' | was: ', oldVal);
+    },
     pixel: function pixel() {
       if (this.pixel < 0) return this.pixel = 0;
 
@@ -2938,6 +2941,9 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    guncelle: function guncelle() {
+      location.reload();
+    },
     klorAtimSureSubmit: function klorAtimSureSubmit() {
       var _this = this;
 
@@ -3018,13 +3024,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    var width = $(window).width();
-    $(window).resize(function () {
-      if (width <= 780) {
-        $('#guncelle').addClass('btn-sm');
-        $('#uyari').val('');
-      }
-    });
+    this.run = parseInt(this.sistem.motor_durum);
+    this.pixel = parseInt(this.sistem.depo_seviye);
   }
 });
 
@@ -5640,11 +5641,11 @@ var render = function() {
           _c(
             "button",
             {
-              staticClass: "btn btn-pos runSystem btn-warning  ",
-              staticStyle: { width: "148px" },
-              attrs: { id: "guncelle" }
+              staticClass: "btn btn-pos runSystem btn-primary  ",
+              attrs: { id: "guncelle" },
+              on: { click: _vm.guncelle }
             },
-            [_vm._v("\n                    Sistemi Güncelle\n                ")]
+            [_c("i", { staticClass: "fa fa-sync" })]
           )
         ]),
         _vm._v(" "),

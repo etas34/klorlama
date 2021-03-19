@@ -18,27 +18,27 @@ class CreateSistemsTable extends Migration
             $table->string('ad');
             $table->unsignedInteger('il_id');
             $table->unsignedInteger('ilce_id');
-            $table->string('klorlama_tel')->nullable();
-            $table->string('motor_tel')->nullable();
-            $table->string('klor_olcum_tel')->nullable();
-            $table->string('klor')->nullable();
-            $table->string('pompa')->nullable();
-            $table->string('elektrik')->nullable();
 
             $table->string('depo_seviye')->nullable();
 
+            $table->string('motor_tel')->nullable();
+            $table->string('motor_durum')->nullable();
+
+            $table->string('elektrik_durum')->nullable();
+            $table->string('aku_ariza')->nullable();
+
+            $table->string('klor_olcum_tel')->nullable();
+            $table->string('klorlama_tel')->nullable();
             $table->string('klor_atim_sure')->nullable();
             $table->string('klor_durum')->nullable();
             $table->string('klor_ariza_durum')->nullable();
-            $table->string('klor_dolum')->nullable();
-            $table->string('klor_bitis')->nullable();
+            $table->string('klor_dolum_tarih')->nullable();
+            $table->string('klor_bitis_tarih')->nullable();
             $table->string('klor_sonucu')->nullable();
             $table->string('son_olcum_zaman')->nullable();
 
-
             $table->string('period_saat')->nullable();
             $table->string('period_saniye')->nullable();
-
 
             $table->tinyInteger('durum')->default(1);
             $table->timestamps();

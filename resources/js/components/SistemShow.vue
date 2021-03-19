@@ -12,10 +12,9 @@
 
                 <div class="col col-12 mb-3">
                     <span id="fillingRate">{{ pixel }}%</span>
-                    <button id="guncelle"  class="btn btn-pos runSystem btn-warning  "
-                             style="width: 148px;"
+                    <button id="guncelle" v-on:click="guncelle"  class="btn btn-pos runSystem btn-primary  "
                     >
-                        Sistemi Güncelle
+                        <i class="fa fa-sync"></i>
                     </button>
                 </div>
                 <div id="app" class="col col-12 mb-5">
@@ -618,6 +617,9 @@ export default {
         }
     },
     watch: {
+        myprop: function(newVal, oldVal) { // watch it
+            console.log('Prop changed: ', newVal, ' | was: ', oldVal)
+        },
         pixel: function () {
             if (this.pixel < 0)
                 return this.pixel = 0
@@ -629,7 +631,11 @@ export default {
         }
     },
     methods: {
+        guncelle : function () {
+            location.reload();
+        },
         klorAtimSureSubmit() {
+
             var data = {
                 klor_atim_sure: this.klorAtimSure
             }
@@ -713,13 +719,10 @@ export default {
         }
     },
     mounted() {
-        var width = $(window).width();
-        $(window).resize(function () {
-            if (width <= 780) {
-                $('#guncelle').addClass('btn-sm');
-                $('#uyari').val('')
-            }
-        });
+
+        this.run = parseInt(this.sistem.motor_durum)
+        this.pixel = parseInt(this.sistem.depo_seviye)
+
     }
 
 
