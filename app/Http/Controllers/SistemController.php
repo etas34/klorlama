@@ -173,6 +173,7 @@ class SistemController extends Controller
         $sistem->save();
 
     }
+
     public function klorAtimSure(Sistem $sistem, Request $request)
     {
         $validated = $request->validate([
@@ -182,6 +183,7 @@ class SistemController extends Controller
         $sistem->save();
 
     }
+
     public function klorAtimPeriod(Sistem $sistem, Request $request)
     {
         $validated = $request->validate([
@@ -194,5 +196,21 @@ class SistemController extends Controller
         $sistem->save();
 
     }
+
+
+    public function run(Sistem $sistem)
+    {
+        $sistem->motor_durum = 2;
+        $sistem->save();
+        return $sistem->motor_durum;
+    }
+
+    public function dkRun(Request $request, Sistem $sistem)
+    {
+        $sistem->motor_durum = 2;
+        $sistem->save();
+        return $sistem->motor_durum;
+    }
+
 
 }

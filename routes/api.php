@@ -26,6 +26,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::group(['prefix'=>'sistem','as'=>'sistem.'],function (){
         Route::post('/store', [SistemController::class, 'store'])->name('store');
         Route::post('/update/{sistem}', [SistemController::class, 'update'])->name('update');
+        Route::post('/run/{sistem}', [SistemController::class, 'run'])->name('run');
+        Route::post('/dk-run/{sistem}', [SistemController::class, 'dkRun'])->name('dkRun');
         Route::post('/zaman-asim/{sistem}' , [SistemController::class, 'zamanAsim'] )->name('zamanAsim');
         Route::post('/yasakli-zaman/{sistem}' , [SistemController::class, 'yasakliZaman'] )->name('yasakliZaman');
         Route::post('/klor-atim-sure/{sistem}' , [SistemController::class, 'klorAtimSure'] )->name('klorAtimSure');

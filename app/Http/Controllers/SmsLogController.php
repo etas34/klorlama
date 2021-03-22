@@ -45,7 +45,6 @@ class SmsLogController extends Controller
 
         $motor = Sistem::where('motor_tel', $number)
             ->first();
-
         if ($depo)
         {
             //sistem record

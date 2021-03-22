@@ -2901,20 +2901,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['sistem'],
   data: function data() {
     return {
       user_id: this.sistem.id,
       pixel: 70,
-      run: false,
       uyari: '',
-      pLoad: true,
+      pLoad: false,
       kLoad: false,
+      motor_durum: this.sistem.motor_durum,
       pompaZamanAsim: this.sistem.pompa_zaman_asimi,
       klorAtimSure: this.sistem.klor_atim_sure,
       periodSaat: this.sistem.period_saat,
-      periodSaniye: this.sistem.period_saniye
+      periodSaniye: this.sistem.period_saniye,
+      dkSysData: {
+        dakika: null
+      }
     };
   },
   computed: {
@@ -2926,10 +2949,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
-    myprop: function myprop(newVal, oldVal) {
-      // watch it
-      console.log('Prop changed: ', newVal, ' | was: ', oldVal);
-    },
     pixel: function pixel() {
       if (this.pixel < 0) return this.pixel = 0;
 
@@ -2941,8 +2960,27 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    guncelle: function guncelle() {
-      location.reload();
+    motorStatus: function motorStatus(code) {
+      switch (parseInt(code)) {
+        case 0:
+          return {
+            color: 'btn-primary',
+            text: 'Sistemi Çalıştır'
+          };
+
+        case 1:
+          return {
+            color: 'btn-danger',
+            text: 'Sistemi Durdur'
+          };
+
+        case 2:
+          return {
+            color: 'btn-warning',
+            text: 'Sistem Yükleniyor',
+            disable: true
+          };
+      }
     },
     klorAtimSureSubmit: function klorAtimSureSubmit() {
       var _this = this;
@@ -2975,6 +3013,9 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
+    guncelle: function guncelle() {
+      location.reload();
+    },
     periodAtimSubmit: function periodAtimSubmit() {
       var _this2 = this;
 
@@ -2985,7 +3026,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (!this.checkperiodAtim && confirm("Klor at\u0131m Periodu ".concat(this.periodSaat, " saat, ").concat(this.periodSaniye, " saniye olarak ayarlanacak emin misiniz?"))) {
         // console.log(this.klorAtimSure)
-        this.kLoad = true;
+        this.pLoad = true;
         axios.post("/api/sistem/klor-atim-period/".concat(this.user_id), data).then(function (response) {
           Vue.$toast.success('Kayıt Başarı İle Eklendi!', {
             position: 'top-right'
@@ -3003,9 +3044,29 @@ __webpack_require__.r(__webpack_exports__);
             });
           }
         })["finally"](function () {
-          _this2.kLoad = false;
+          _this2.pLoad = false;
         });
       }
+    },
+    dkRunSystemSubmit: function dkRunSystemSubmit(event) {
+      var _this3 = this;
+
+      this.disableSubmit = true;
+      axios.post("/api/sistem/dk-run/".concat(this.user_id), this.dkSysData).then(function (response) {
+        _this3.motor_durum = response.data;
+
+        _this3.refreshForWait(_this3.motor_durum);
+      })["catch"](function (error) {})["finally"](function () {});
+    },
+    runSystemSubmit: function runSystemSubmit(event) {
+      var _this4 = this;
+
+      this.disableSubmit = true;
+      axios.post("/api/sistem/run/".concat(this.user_id)).then(function (response) {
+        _this4.motor_durum = response.data;
+
+        _this4.refreshForWait(_this4.motor_durum);
+      })["catch"](function (error) {})["finally"](function () {});
     },
     runSystem: function runSystem() {
       var $this = this;
@@ -3021,11 +3082,24 @@ __webpack_require__.r(__webpack_exports__);
       //
       //     }
       // }
+    },
+    refreshForWait: function refreshForWait(stat) {
+      if (stat == 2) {
+        window.setInterval(function () {
+          return location.reload();
+        }, 1000);
+      }
     }
   },
   mounted: function mounted() {
-    this.run = parseInt(this.sistem.motor_durum);
-    this.pixel = parseInt(this.sistem.depo_seviye);
+    // console.log(motorStatus(2))
+    console.log(this.motor_durum);
+    this.refreshForWait(this.motor_durum);
+    this.run = parseInt(this.motor_durum);
+    this.pixel = parseInt(this.sistem.depo_seviye); //
+    // function guncelle() {
+    //     location.reload();
+    // }
   }
 });
 
@@ -5627,579 +5701,638 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "container", class: { active: _vm.run } }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col col-6 py-3" }, [
-          _c("h3", [_vm._v(_vm._s(_vm.sistem.ad))])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col col-12 mb-3" }, [
-          _c("span", { attrs: { id: "fillingRate" } }, [
-            _vm._v(_vm._s(_vm.pixel) + "%")
+    _c(
+      "div",
+      { staticClass: "container", class: _vm.motor_durum == 1 ? "active" : "" },
+      [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col col-6 py-3" }, [
+            _c("h3", [_vm._v(_vm._s(_vm.sistem.ad))])
           ]),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-pos runSystem btn-primary  ",
-              attrs: { id: "guncelle" },
-              on: { click: _vm.guncelle }
-            },
-            [_c("i", { staticClass: "fa fa-sync" })]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col col-12 mb-5", attrs: { id: "app" } }, [
-          _c("img", {
-            attrs: { id: "machine", src: "../../img/machine.svg", alt: "" }
-          }),
-          _vm._v(" "),
-          _c("div", { attrs: { id: "action" } }, [
-            !_vm.run
-              ? _c("div", { staticClass: "input-group mb-3" }, [
-                  _c("input", {
-                    staticStyle: { width: "55px !important" },
-                    attrs: {
-                      type: "number",
-                      min: "1",
-                      max: "999",
-                      "aria-label": "Recipient's username",
-                      "aria-describedby": "button-addon2"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group-append" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button", id: "button-addon2" },
-                        on: {
-                          click: function($event) {
-                            _vm.run = true
-                          }
-                        }
-                      },
-                      [
-                        _vm._v(
-                          "\n                                Dk Çalıştır\n                            "
-                        )
-                      ]
-                    )
-                  ])
-                ])
-              : _vm._e(),
+          _c("div", { staticClass: "col col-12 mb-3" }, [
+            _c("span", { attrs: { id: "fillingRate" } }, [
+              _vm._v(_vm._s(_vm.pixel) + "%")
+            ]),
             _vm._v(" "),
             _c(
               "button",
               {
-                staticClass: "btn btn-pos mb-2 runSystem",
-                class: [!_vm.run ? "btn-success" : "btn-danger"],
-                staticStyle: { width: "148px" },
-                on: { click: _vm.runSystem }
+                staticClass: "btn btn-pos runSystem btn-success",
+                attrs: { id: "guncelle", disabled: _vm.motor_durum == 2 },
+                on: { click: _vm.guncelle }
               },
               [
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(!_vm.run ? "Sistemi Çalıştır" : "Sistemi Durdur") +
-                    "\n                    "
-                )
+                _c("i", { staticClass: "fa fa-sync" }),
+                _vm._v("  Durumu Güncelle\n                ")
               ]
             )
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "d-flex justify-content-center align-items-center",
-              attrs: { id: "cogwheel" }
-            },
-            [_c("img", { attrs: { src: "../../img/cogwheel.svg", alt: "" } })]
-          ),
-          _vm._v(" "),
-          _c("div", { attrs: { id: "waterbox" } }, [
-            _c("div", { attrs: { id: "water" } }, [
+          _c("div", { staticClass: "col col-12 mb-5", attrs: { id: "app" } }, [
+            _c("img", {
+              attrs: { id: "machine", src: "../../img/machine.svg", alt: "" }
+            }),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "action" } }, [
+              _vm.motor_durum == 0
+                ? _c(
+                    "form",
+                    {
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.dkRunSystemSubmit($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "input-group mb-3" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.dkSysData.dakika,
+                              expression: "dkSysData.dakika"
+                            }
+                          ],
+                          staticStyle: { width: "55px !important" },
+                          attrs: {
+                            type: "number",
+                            min: "1",
+                            max: "999",
+                            required: ""
+                          },
+                          domProps: { value: _vm.dkSysData.dakika },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.dkSysData,
+                                "dakika",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(0)
+                      ])
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               _c(
-                "svg",
+                "form",
                 {
-                  staticClass: "waves min",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                    viewBox: "0 24 150 28",
-                    preserveAspectRatio: "none",
-                    "shape-rendering": "auto"
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.runSystemSubmit($event)
+                    }
                   }
                 },
                 [
-                  _c("defs", [
-                    _c("path", {
-                      attrs: {
-                        id: "gentle-wave",
-                        d:
-                          "M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("g", { staticClass: "parallax" }, [
-                    _c("use", {
-                      attrs: {
-                        "xlink:href": "#gentle-wave",
-                        x: "48",
-                        y: "0",
-                        fill: "rgba(255,255,255,0.5"
-                      }
-                    }),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-pos mb-2 runSystem",
+                      class: _vm.motorStatus(this.motor_durum).color,
+                      staticStyle: { width: "148px" },
+                      attrs: { disabled: this.motor_durum == 2 }
+                    },
+                    [
+                      _vm._v(
+                        "\n\n                            " +
+                          _vm._s(_vm.motorStatus(this.motor_durum).text) +
+                          "\n\n                            "
+                      ),
+                      this.motor_durum == 2
+                        ? _c("span", {
+                            staticClass: "spinner-border spinner-border-sm",
+                            attrs: { role: "status", "aria-hidden": "true" }
+                          })
+                        : _vm._e()
+                    ]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "d-flex justify-content-center align-items-center",
+                attrs: { id: "cogwheel" }
+              },
+              [_c("img", { attrs: { src: "../../img/cogwheel.svg", alt: "" } })]
+            ),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "waterbox" } }, [
+              _c("div", { attrs: { id: "water" } }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "waves min",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                      viewBox: "0 24 150 28",
+                      preserveAspectRatio: "none",
+                      "shape-rendering": "auto"
+                    }
+                  },
+                  [
+                    _c("defs", [
+                      _c("path", {
+                        attrs: {
+                          id: "gentle-wave",
+                          d:
+                            "M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                        }
+                      })
+                    ]),
                     _vm._v(" "),
-                    _c("use", {
-                      attrs: {
-                        "xlink:href": "#gentle-wave",
-                        x: "48",
-                        y: "3",
-                        fill: "rgba(255,255,255,0.3)"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("use", {
-                      attrs: {
-                        "xlink:href": "#gentle-wave",
-                        x: "48",
-                        y: "5",
-                        fill: "rgba(255,255,255,0.2)"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("use", {
-                      attrs: {
-                        "xlink:href": "#gentle-wave",
-                        x: "48",
-                        y: "7",
-                        fill: "rgba(255,255,255,0.5)"
-                      }
-                    })
-                  ])
+                    _c("g", { staticClass: "parallax" }, [
+                      _c("use", {
+                        attrs: {
+                          "xlink:href": "#gentle-wave",
+                          x: "48",
+                          y: "0",
+                          fill: "rgba(255,255,255,0.5"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("use", {
+                        attrs: {
+                          "xlink:href": "#gentle-wave",
+                          x: "48",
+                          y: "3",
+                          fill: "rgba(255,255,255,0.3)"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("use", {
+                        attrs: {
+                          "xlink:href": "#gentle-wave",
+                          x: "48",
+                          y: "5",
+                          fill: "rgba(255,255,255,0.2)"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("use", {
+                        attrs: {
+                          "xlink:href": "#gentle-wave",
+                          x: "48",
+                          y: "7",
+                          fill: "rgba(255,255,255,0.5)"
+                        }
+                      })
+                    ])
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "watertank" } }, [
+              _c(
+                "div",
+                {
+                  staticClass: "d-flex justify-content-end align-items-end",
+                  attrs: { id: "tankinner" }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      style: "height: " + _vm.pixel + "%;",
+                      attrs: { id: "tankinnerwater" }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "waves",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                            viewBox: "0 24 150 28",
+                            preserveAspectRatio: "none",
+                            "shape-rendering": "auto"
+                          }
+                        },
+                        [
+                          _c("defs", [
+                            _c("path", {
+                              attrs: {
+                                id: "gentle-wave",
+                                d:
+                                  "M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("g", { staticClass: "parallax" }, [
+                            _c("use", {
+                              attrs: {
+                                "xlink:href": "#gentle-wave",
+                                x: "48",
+                                y: "0",
+                                fill: "rgb(26 183 239 / 70%)"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("use", {
+                              attrs: {
+                                "xlink:href": "#gentle-wave",
+                                x: "48",
+                                y: "3",
+                                fill: "rgb(26 183 239 / 50%)"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("use", {
+                              attrs: {
+                                "xlink:href": "#gentle-wave",
+                                x: "48",
+                                y: "5",
+                                fill: "rgb(26 183 239 / 30%)"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("use", {
+                              attrs: {
+                                "xlink:href": "#gentle-wave",
+                                x: "48",
+                                y: "7",
+                                fill: "#1ab7ef"
+                              }
+                            })
+                          ])
+                        ]
+                      )
+                    ]
+                  )
                 ]
               )
             ])
           ]),
           _vm._v(" "),
-          _c("div", { attrs: { id: "watertank" } }, [
-            _c(
-              "div",
-              {
-                staticClass: "d-flex justify-content-end align-items-end",
-                attrs: { id: "tankinner" }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    style: "height: " + _vm.pixel + "%;",
-                    attrs: { id: "tankinnerwater" }
-                  },
-                  [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "waves",
-                        attrs: {
-                          xmlns: "http://www.w3.org/2000/svg",
-                          "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                          viewBox: "0 24 150 28",
-                          preserveAspectRatio: "none",
-                          "shape-rendering": "auto"
-                        }
-                      },
-                      [
-                        _c("defs", [
-                          _c("path", {
-                            attrs: {
-                              id: "gentle-wave",
-                              d:
-                                "M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "card" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("table", { staticClass: "table" }, [
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v(
+                          "\n                                    Klor atım süresi\n                                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.klorAtimSure,
+                              expression: "klorAtimSure"
                             }
-                          })
-                        ]),
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "number",
+                            min: "1",
+                            max: "99",
+                            "aria-label": "Sizing example input",
+                            "aria-describedby": "cvw"
+                          },
+                          domProps: { value: _vm.klorAtimSure },
+                          on: {
+                            keyup: function($event) {
+                              if (
+                                !$event.type.indexOf("key") &&
+                                _vm._k(
+                                  $event.keyCode,
+                                  "enter",
+                                  13,
+                                  $event.key,
+                                  "Enter"
+                                )
+                              ) {
+                                return null
+                              }
+                              return _vm.klorAtimSureSubmit($event)
+                            },
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.klorAtimSure = $event.target.value
+                            }
+                          }
+                        }),
                         _vm._v(" "),
-                        _c("g", { staticClass: "parallax" }, [
-                          _c("use", {
+                        _c(
+                          "small",
+                          {
+                            directives: [
+                              {
+                                name: "show",
+                                rawName: "v-show",
+                                value: _vm.checkKlorAtimSure,
+                                expression: "checkKlorAtimSure"
+                              }
+                            ],
+                            staticClass: "form-text text-danger",
+                            attrs: { id: "uyari" }
+                          },
+                          [
+                            _vm._v(
+                              "Değer\n                                        1 ila 99\n                                        arası olmalı"
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
                             attrs: {
-                              "xlink:href": "#gentle-wave",
-                              x: "48",
-                              y: "0",
-                              fill: "rgb(26 183 239 / 70%)"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("use", {
+                              disabled:
+                                _vm.checkKlorAtimSure ||
+                                _vm.kLoad ||
+                                this.motor_durum == 2
+                            },
+                            on: { click: _vm.klorAtimSureSubmit }
+                          },
+                          [
+                            _vm.kLoad
+                              ? _c("span", {
+                                  staticClass:
+                                    "spinner-border spinner-border-sm",
+                                  attrs: {
+                                    role: "status",
+                                    "aria-hidden": "true"
+                                  }
+                                })
+                              : _vm._e(),
+                            _vm._v(
+                              "\n                                        " +
+                                _vm._s(_vm.kLoad ? "" : "Kaydet") +
+                                "\n\n                                    "
+                            )
+                          ]
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v("Klor Durumu :")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { colspan: "2" } }, [
+                        _vm._v(" " + _vm._s(_vm.sistem.klor_durum))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v("Klor Arıza Durumu :")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { colspan: "2" } }, [
+                        _vm._v(_vm._s(_vm.sistem.klor_ariza_durum))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v("Klor Dolum Zamanı:")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { colspan: "2" } }, [
+                        _vm._v(_vm._s(_vm.sistem.klor_dolum))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v("Klor Bitiş Zamanı:")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { colspan: "2" } }, [
+                        _vm._v(" " + _vm._s(_vm.sistem.klor_bitis))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v("Klor Ölçüm Sonucu :")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { colspan: "2" } }, [
+                        _vm._v(_vm._s(_vm.sistem.klor_sonucu) + " (ppm)")
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v("Son Ölçüm Zamanı :")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { colspan: "2" } }, [
+                        _vm._v(_vm._s(_vm.sistem.son_olcum_zaman))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v("Son Ölçüm Zamanı :")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { colspan: "2" } }, [
+                        _vm._v(_vm._s(_vm.sistem.son_olcum_zaman))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("tr", [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v("2.Klor atım Periyodu Saati:")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { colspan: "2" } }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.periodSaat,
+                                expression: "periodSaat"
+                              }
+                            ],
+                            staticClass: "form-control",
                             attrs: {
-                              "xlink:href": "#gentle-wave",
-                              x: "48",
-                              y: "3",
-                              fill: "rgb(26 183 239 / 50%)"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("use", {
-                            attrs: {
-                              "xlink:href": "#gentle-wave",
-                              x: "48",
-                              y: "5",
-                              fill: "rgb(26 183 239 / 30%)"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("use", {
-                            attrs: {
-                              "xlink:href": "#gentle-wave",
-                              x: "48",
-                              y: "7",
-                              fill: "#1ab7ef"
+                              type: "number",
+                              min: "1",
+                              step: "1",
+                              id: "periodSaat"
+                            },
+                            domProps: { value: _vm.periodSaat },
+                            on: {
+                              keyup: function($event) {
+                                if (
+                                  !$event.type.indexOf("key") &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
+                                return _vm.periodAtimSubmit($event)
+                              },
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.periodSaat = $event.target.value
+                              }
                             }
                           })
                         ])
-                      ]
-                    )
-                  ]
-                )
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("div", { staticClass: "card" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("table", { staticClass: "table" }, [
-                _c("tbody", [
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [
-                      _vm._v(
-                        "\n                                    Klor atım süresi\n                                "
-                      )
+                      ])
                     ]),
                     _vm._v(" "),
-                    _c("td", [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.klorAtimSure,
-                            expression: "klorAtimSure"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "number",
-                          min: "1",
-                          max: "99",
-                          "aria-label": "Sizing example input",
-                          "aria-describedby": "cvw"
-                        },
-                        domProps: { value: _vm.klorAtimSure },
-                        on: {
-                          keyup: function($event) {
-                            if (
-                              !$event.type.indexOf("key") &&
-                              _vm._k(
-                                $event.keyCode,
-                                "enter",
-                                13,
-                                $event.key,
-                                "Enter"
-                              )
-                            ) {
-                              return null
-                            }
-                            return _vm.klorAtimSureSubmit($event)
-                          },
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.klorAtimSure = $event.target.value
-                          }
-                        }
-                      }),
+                    _c("tr", [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v("2.Klor atım Periyodu Saniyesi:")
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "small",
-                        {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.checkKlorAtimSure,
-                              expression: "checkKlorAtimSure"
-                            }
-                          ],
-                          staticClass: "form-text text-danger",
-                          attrs: { id: "uyari" }
-                        },
-                        [
-                          _vm._v(
-                            "Değer 1 ila 99\n                                        arası olmalı"
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-success",
-                          attrs: {
-                            disabled: _vm.checkKlorAtimSure || _vm.kLoad
-                          },
-                          on: { click: _vm.klorAtimSureSubmit }
-                        },
-                        [
-                          _vm.kLoad
-                            ? _c("span", {
-                                staticClass: "spinner-border spinner-border-sm",
-                                attrs: { role: "status", "aria-hidden": "true" }
-                              })
-                            : _vm._e(),
-                          _vm._v(
-                            "\n                                        " +
-                              _vm._s(_vm.kLoad ? "" : "Kaydet") +
-                              "\n\n                                    "
-                          )
-                        ]
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [
-                      _vm._v("Klor Durumu :")
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { colspan: "2" } }, [
-                      _vm._v(" " + _vm._s(_vm.sistem.klor_durum))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [
-                      _vm._v("Klor Arıza Durumu :")
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { colspan: "2" } }, [
-                      _vm._v(_vm._s(_vm.sistem.klor_ariza_durum))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [
-                      _vm._v("Klor Dolum Zamanı:")
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { colspan: "2" } }, [
-                      _vm._v(_vm._s(_vm.sistem.klor_dolum))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [
-                      _vm._v("Klor Bitiş Zamanı:")
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { colspan: "2" } }, [
-                      _vm._v(" " + _vm._s(_vm.sistem.klor_bitis))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [
-                      _vm._v("Klor Ölçüm Sonucu :")
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { colspan: "2" } }, [
-                      _vm._v(_vm._s(_vm.sistem.klor_sonucu) + " (ppm)")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [
-                      _vm._v("Son Ölçüm Zamanı :")
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { colspan: "2" } }, [
-                      _vm._v(_vm._s(_vm.sistem.son_olcum_zaman))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [
-                      _vm._v("Son Ölçüm Zamanı :")
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { colspan: "2" } }, [
-                      _vm._v(_vm._s(_vm.sistem.son_olcum_zaman))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [
-                      _vm._v("2.Klor atım Periyod Saati: ")
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { colspan: "2" } }, [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.periodSaat,
-                              expression: "periodSaat"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            min: "1",
-                            step: "1",
-                            id: "periodSaat"
-                          },
-                          domProps: { value: _vm.periodSaat },
-                          on: {
-                            keyup: function($event) {
-                              if (
-                                !$event.type.indexOf("key") &&
-                                _vm._k(
-                                  $event.keyCode,
-                                  "enter",
-                                  13,
-                                  $event.key,
-                                  "Enter"
-                                )
-                              ) {
-                                return null
+                      _c("td", { staticStyle: { width: "300px" } }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.periodSaniye,
+                                expression: "periodSaniye"
                               }
-                              return _vm.periodAtimSubmit($event)
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "number",
+                              min: "1",
+                              step: "1",
+                              id: "periodSaniye"
                             },
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                            domProps: { value: _vm.periodSaniye },
+                            on: {
+                              keyup: function($event) {
+                                if (
+                                  !$event.type.indexOf("key") &&
+                                  _vm._k(
+                                    $event.keyCode,
+                                    "enter",
+                                    13,
+                                    $event.key,
+                                    "Enter"
+                                  )
+                                ) {
+                                  return null
+                                }
+                                return _vm.periodAtimSubmit($event)
+                              },
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.periodSaniye = $event.target.value
                               }
-                              _vm.periodSaat = $event.target.value
                             }
-                          }
-                        })
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [
-                      _vm._v("2.Klor atım Periyodu Saniyesi: ")
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c("div", { staticClass: "form-group" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.periodSaniye,
-                              expression: "periodSaniye"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "number",
-                            min: "1",
-                            step: "1",
-                            id: "periodSaniye"
-                          },
-                          domProps: { value: _vm.periodSaniye },
-                          on: {
-                            keyup: function($event) {
-                              if (
-                                !$event.type.indexOf("key") &&
-                                _vm._k(
-                                  $event.keyCode,
-                                  "enter",
-                                  13,
-                                  $event.key,
-                                  "Enter"
-                                )
-                              ) {
-                                return null
-                              }
-                              return _vm.periodAtimSubmit($event)
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success",
+                            attrs: {
+                              disabled:
+                                _vm.pLoad ||
+                                _vm.checkperiodAtim ||
+                                this.motor_durum == 2
                             },
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.periodSaniye = $event.target.value
-                            }
-                          }
-                        })
+                            on: { click: _vm.periodAtimSubmit }
+                          },
+                          [
+                            _vm.pLoad
+                              ? _c("span", {
+                                  staticClass:
+                                    "spinner-border spinner-border-sm",
+                                  attrs: {
+                                    role: "status",
+                                    "aria-hidden": "true"
+                                  }
+                                })
+                              : _vm._e(),
+                            _vm._v(
+                              "\n                                        " +
+                                _vm._s(_vm.pLoad ? "" : "Kaydet") +
+                                "\n\n                                    "
+                            )
+                          ]
+                        )
                       ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-success",
-                          attrs: { disabled: _vm.kLoad || _vm.checkperiodAtim },
-                          on: { click: _vm.periodAtimSubmit }
-                        },
-                        [
-                          _vm.kLoad
-                            ? _c("span", {
-                                staticClass: "spinner-border spinner-border-sm",
-                                attrs: { role: "status", "aria-hidden": "true" }
-                              })
-                            : _vm._e(),
-                          _vm._v(
-                            "\n                                        " +
-                              _vm._s(_vm.kLoad ? "" : "Kaydet") +
-                              "\n\n                                    "
-                          )
-                        ]
-                      )
                     ])
                   ])
                 ])
               ])
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("div", { staticClass: "card" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("table", { staticClass: "table" }, [
-                _c("tbody", [
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [_vm._v("Seviye :")]),
-                    _vm._v(" "),
-                    _c("td", { attrs: { colspan: "2" } }, [
-                      _vm._v(" % " + _vm._s(_vm.sistem.depo_seviye))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("th", { attrs: { scope: "row" } }, [
-                      _vm._v("Debi ( m³/s) :")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "card" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("table", { staticClass: "table" }, [
+                  _c("tbody", [
+                    _c("tr", [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v("Seviye :")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { colspan: "2" } }, [
+                        _vm._v(" % " + _vm._s(_vm.sistem.depo_seviye))
+                      ])
                     ]),
                     _vm._v(" "),
-                    _c("td", { attrs: { colspan: "2" } }, [
-                      _vm._v(_vm._s(_vm.sistem.debi))
+                    _c("tr", [
+                      _c("th", { attrs: { scope: "row" } }, [
+                        _vm._v("Debi ( m³/s) :")
+                      ]),
+                      _vm._v(" "),
+                      _c("td", { attrs: { colspan: "2" } }, [
+                        _vm._v(_vm._s(_vm.sistem.debi))
+                      ])
                     ])
                   ])
                 ])
@@ -6207,11 +6340,30 @@ var render = function() {
             ])
           ])
         ])
-      ])
-    ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { type: "submit", id: "button-addon2" }
+        },
+        [
+          _vm._v(
+            "\n                                    Dk Çalıştır\n                                "
+          )
+        ]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

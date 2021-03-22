@@ -3,7 +3,7 @@
     <!-- general form elements -->
     <div>
 
-        <div class="container" :class="{'active' : run}">
+        <div class="container" :class="motor_durum == 1 ? 'active' : ''">
             <div class="row">
                 <div class="col col-6 py-3">
                     <h3>{{ sistem.ad }}</h3>
@@ -12,29 +12,48 @@
 
                 <div class="col col-12 mb-3">
                     <span id="fillingRate">{{ pixel }}%</span>
-                    <button id="guncelle" v-on:click="guncelle"  class="btn btn-pos runSystem btn-primary  "
+                    <button id="guncelle" :disabled="motor_durum == 2" v-on:click="guncelle"
+                            class="btn btn-pos runSystem btn-success"
                     >
-                        <i class="fa fa-sync"></i>
+                        <i class="fa fa-sync"></i>&nbsp;&nbsp;Durumu Güncelle
                     </button>
                 </div>
                 <div id="app" class="col col-12 mb-5">
                     <img id="machine" :src="'../../img/machine.svg'" alt="">
                     <div id="action">
-
-                        <div v-if="!run" class="input-group mb-3">
-                            <input type="number" min="1" max="999" style="width: 55px !important;"
-                                   aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-success" v-on:click="run = true" type="button"
-                                        id="button-addon2">
-                                    Dk Çalıştır
-                                </button>
+                        <form v-if="motor_durum == 0" @submit.prevent="dkRunSystemSubmit">
+                            <div class="input-group mb-3">
+                                <input type="number" min="1" max="999" style="width: 55px !important;"
+                                       v-model="dkSysData.dakika"
+                                       required>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit"
+                                            id="button-addon2">
+                                        Dk Çalıştır
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <button style="width: 148px" v-on:click="runSystem" class="btn btn-pos mb-2 runSystem"
-                                :class="[!run ? 'btn-success' : 'btn-danger']">
-                            {{ !run ? 'Sistemi Çalıştır' : 'Sistemi Durdur' }}
-                        </button>
+                        </form>
+
+
+                        <form @submit.prevent="runSystemSubmit">
+                            <button style="width: 148px" class="btn btn-pos mb-2 runSystem"
+
+                                    :disabled=" this.motor_durum == 2"
+                                    :class="motorStatus(this.motor_durum).color">
+
+                                {{ motorStatus(this.motor_durum).text }}
+
+                                <span v-if=" this.motor_durum == 2"
+                                      class="spinner-border spinner-border-sm"
+                                      role="status"
+                                      aria-hidden="true"></span>
+
+
+                            </button>
+
+                        </form>
+
 
                     </div>
                     <div id="cogwheel" class="d-flex justify-content-center align-items-center">
@@ -96,6 +115,7 @@
                                     </th>
                                     <td>
                                         <input type="number"
+
                                                min="1"
                                                max="99"
                                                v-on:keyup.enter="klorAtimSureSubmit"
@@ -103,13 +123,14 @@
                                                aria-label="Sizing example input"
                                                v-model="klorAtimSure"
                                                aria-describedby="cvw">
-                                        <small id="uyari" v-show="checkKlorAtimSure" class="form-text text-danger">Değer 1 ila 99
+                                        <small id="uyari" v-show="checkKlorAtimSure" class="form-text text-danger">Değer
+                                            1 ila 99
                                             arası olmalı</small>
 
                                     </td>
                                     <td>
                                         <button
-                                            :disabled="checkKlorAtimSure || kLoad"
+                                            :disabled="checkKlorAtimSure || kLoad ||  this.motor_durum == 2"
                                             @click="klorAtimSureSubmit"
                                             class="btn btn-success">
                                              <span v-if="kLoad"
@@ -155,11 +176,12 @@
                                     <td colspan="2">{{ sistem.son_olcum_zaman }}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">2.Klor atım Periyod Saati: </th>
+                                    <th scope="row">2.Klor atım Periyodu Saati:</th>
                                     <td colspan="2">
 
                                         <div class="form-group">
                                             <input type="number"
+
 
                                                    v-on:keyup.enter="periodAtimSubmit"
                                                    min="1" step="1"
@@ -169,35 +191,32 @@
                                         </div>
 
 
-
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">2.Klor atım Periyodu Saniyesi: </th>
-                                    <td>
+                                    <th scope="row">2.Klor atım Periyodu Saniyesi:</th>
+                                    <td style="width: 300px">
 
                                         <div class="form-group">
                                             <input type="number"
 
                                                    v-on:keyup.enter="periodAtimSubmit"
-                                                   min="1" step="1" v-model="periodSaniye" class="form-control" id="periodSaniye">
+                                                   min="1" step="1" v-model="periodSaniye" class="form-control"
+                                                   id="periodSaniye">
                                         </div>
-
-
-
 
 
                                     </td>
                                     <td>
                                         <button
-                                            :disabled="kLoad || checkperiodAtim"
+                                            :disabled="pLoad || checkperiodAtim || this.motor_durum == 2"
                                             @click="periodAtimSubmit"
                                             class="btn btn-success">
-                                             <span v-if="kLoad"
+                                             <span v-if="pLoad"
                                                    class="spinner-border spinner-border-sm"
                                                    role="status"
                                                    aria-hidden="true"></span>
-                                            {{ kLoad ? '' : 'Kaydet' }}
+                                            {{ pLoad ? '' : 'Kaydet' }}
 
                                         </button>
                                     </td>
@@ -270,6 +289,7 @@ body {
     padding: 15px;
     outline: none;
 }
+
 th {
     width: 250px;
 }
@@ -589,14 +609,18 @@ export default {
         return {
             user_id: this.sistem.id,
             pixel: 70,
-            run: false,
             uyari: '',
-            pLoad: true,
+            pLoad: false,
             kLoad: false,
+            motor_durum: this.sistem.motor_durum,
             pompaZamanAsim: this.sistem.pompa_zaman_asimi,
             klorAtimSure: this.sistem.klor_atim_sure,
             periodSaat: this.sistem.period_saat,
             periodSaniye: this.sistem.period_saniye,
+            dkSysData: {
+                dakika: null
+            },
+
         }
     },
     computed: {
@@ -608,7 +632,7 @@ export default {
             )
         },
         checkperiodAtim: function () {
-            return(
+            return (
                 this.periodSaat < 1 ||
                 this.periodSaniye < 1 ||
                 this.periodSaat === '' ||
@@ -617,9 +641,6 @@ export default {
         }
     },
     watch: {
-        myprop: function(newVal, oldVal) { // watch it
-            console.log('Prop changed: ', newVal, ' | was: ', oldVal)
-        },
         pixel: function () {
             if (this.pixel < 0)
                 return this.pixel = 0
@@ -631,8 +652,28 @@ export default {
         }
     },
     methods: {
-        guncelle : function () {
-            location.reload();
+        motorStatus: function (code) {
+            switch (parseInt(code)) {
+                case 0:
+                    return {
+                        color: 'btn-primary',
+                        text: 'Sistemi Çalıştır',
+
+                    }
+
+                case 1:
+                    return {
+                        color: 'btn-danger',
+                        text: 'Sistemi Durdur',
+
+                    }
+                case 2:
+                    return {
+                        color: 'btn-warning',
+                        text: 'Sistem Yükleniyor',
+                        disable: true,
+                    }
+            }
         },
         klorAtimSureSubmit() {
 
@@ -665,7 +706,9 @@ export default {
                 });
             }
         },
-
+        guncelle() {
+            location.reload();
+        },
         periodAtimSubmit() {
             var data = {
                 period_saniye: this.periodSaniye,
@@ -673,13 +716,13 @@ export default {
             }
             if (!this.checkperiodAtim && confirm(`Klor atım Periodu ${this.periodSaat} saat, ${this.periodSaniye} saniye olarak ayarlanacak emin misiniz?`)) {
                 // console.log(this.klorAtimSure)
-                this.kLoad = true
+                this.pLoad = true
                 axios.post(`/api/sistem/klor-atim-period/${this.user_id}`, data)
                     .then((response) => {
                         Vue.$toast.success('Kayıt Başarı İle Eklendi!', {
                             position: 'top-right'
                         })
-                    }).catch(function (error) {
+                    }).catch((error) => {
                     if (error.response.status === 422) {
                         $.each(error.response.data.errors, function (key, value) {
 
@@ -693,11 +736,40 @@ export default {
                     }
 
                 }).finally(() => {
-                    this.kLoad = false
+                    this.pLoad = false
                 });
             }
         },
+        dkRunSystemSubmit(event) {
 
+            this.disableSubmit = true
+            axios.post(`/api/sistem/dk-run/${this.user_id}`, this.dkSysData)
+                .then((response) => {
+
+                    this.motor_durum = response.data
+                    this.refreshForWait(this.motor_durum)
+                })
+                .catch((error) => {
+                })
+                .finally(() => {
+                })
+
+        },
+        runSystemSubmit(event) {
+
+            this.disableSubmit = true
+            axios.post(`/api/sistem/run/${this.user_id}`)
+                .then((response) => {
+
+                    this.motor_durum = response.data
+                    this.refreshForWait(this.motor_durum)
+                })
+                .catch((error) => {
+                })
+                .finally(() => {
+                })
+
+        },
 
         runSystem: function () {
             var $this = this
@@ -716,13 +788,25 @@ export default {
             //     }
             // }
 
+        },
+        refreshForWait(stat) {
+            if (stat == 2) {
+                window.setInterval(() => location.reload(), 1000);
+            }
         }
+
     },
     mounted() {
+        // console.log(motorStatus(2))
+        console.log(this.motor_durum)
 
-        this.run = parseInt(this.sistem.motor_durum)
+        this.refreshForWait(this.motor_durum);
+        this.run = parseInt(this.motor_durum)
         this.pixel = parseInt(this.sistem.depo_seviye)
-
+        //
+        // function guncelle() {
+        //     location.reload();
+        // }
     }
 
 
