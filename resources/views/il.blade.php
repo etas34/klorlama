@@ -39,7 +39,7 @@
                     @foreach(Auth::user()->il->ilces as $key=>$value)
                         <tr>
 
-                            <td>{{$value->ad}}</td>
+                            <td><a href="">{{$value->ad}}</a></td>
                             <td>{{$value->sistems->count()}}</td>
                             <td>
                                 @if(( $cihaz = $value->sistems->count()) == 0)
