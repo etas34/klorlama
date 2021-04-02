@@ -2318,6 +2318,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-the-mask */ "./node_modules/vue-the-mask/dist/vue-the-mask.js");
+/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_the_mask__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2920,9 +2922,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['sistem'],
+  components: {
+    TheMask: vue_the_mask__WEBPACK_IMPORTED_MODULE_0__.TheMask
+  },
   data: function data() {
     return {
       user_id: this.sistem.id,
@@ -2942,10 +2947,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     checkKlorAtimSure: function checkKlorAtimSure() {
-      return this.klorAtimSure < 1 || this.klorAtimSure > 99 || this.klorAtimSure === '';
+      return this.klorAtimSure < 1 || this.klorAtimSure > 999 || this.klorAtimSure === '';
     },
     checkperiodAtim: function checkperiodAtim() {
-      return this.periodSaat < 1 || this.periodSaniye < 1 || this.periodSaat === '' || this.periodSaniye === '';
+      var checkValuesIsNull = this.periodSaat != null && this.periodSaniye != null;
+      if (checkValuesIsNull) return this.periodSaat.length !== 2 || this.periodSaniye.length !== 2 || this.periodSaat === '' || this.periodSaniye === '';else return true;
     }
   },
   watch: {
@@ -5068,125 +5074,6 @@ var render = function() {
                       }
                     }
                   })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-12" }, [
-                  _c("div", { staticClass: "card" }, [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-body" }, [
-                      _c("div", { staticClass: "form-group col-md-12" }, [
-                        _c("label", [_vm._v("1.Kişi")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "mask",
-                              rawName: "v-mask",
-                              value: "0 (###) ###-####",
-                              expression: "'0 (###) ###-####'"
-                            },
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.formData.birinci_numara,
-                              expression: "formData.birinci_numara"
-                            }
-                          ],
-                          ref: "clear",
-                          staticClass: "form-control",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.formData.birinci_numara },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.formData,
-                                "birinci_numara",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
-                        _c("label", [_vm._v("2.Kişi")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "mask",
-                              rawName: "v-mask",
-                              value: "0 (###) ###-####",
-                              expression: "'0 (###) ###-####'"
-                            },
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.formData.ikinci_numara,
-                              expression: "formData.ikinci_numara"
-                            }
-                          ],
-                          ref: "clear",
-                          staticClass: "form-control",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.formData.ikinci_numara },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.formData,
-                                "ikinci_numara",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
-                        _c("label", [_vm._v("3.Kişi")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "mask",
-                              rawName: "v-mask",
-                              value: "0 (###) ###-####",
-                              expression: "'0 (###) ###-####'"
-                            },
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.formData.ucuncu_numara,
-                              expression: "formData.ucuncu_numara"
-                            }
-                          ],
-                          ref: "clear",
-                          staticClass: "form-control",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.formData.ucuncu_numara },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.formData,
-                                "ucuncu_numara",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ])
-                    ])
-                  ])
                 ])
               ])
             ]),
@@ -5224,19 +5111,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header" }, [
       _c("h3", { staticClass: "card-title" }, [
         _vm._v(
-          "\n                        Sistem - Yeni Oluştur\n                    "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [
-        _vm._v(
-          "\n                                        İletişim Bilgileri\n                                    "
+          "\n                            Sistem - Yeni Oluştur\n                        "
         )
       ])
     ])
@@ -5504,125 +5379,6 @@ var render = function() {
                       }
                     }
                   })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-12" }, [
-                  _c("div", { staticClass: "card" }, [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-body" }, [
-                      _c("div", { staticClass: "form-group col-md-12" }, [
-                        _c("label", [_vm._v("1.Kişi")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "mask",
-                              rawName: "v-mask",
-                              value: "0 (###) ###-####",
-                              expression: "'0 (###) ###-####'"
-                            },
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.formData.birinci_numara,
-                              expression: "formData.birinci_numara"
-                            }
-                          ],
-                          ref: "clear",
-                          staticClass: "form-control",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.formData.birinci_numara },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.formData,
-                                "birinci_numara",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
-                        _c("label", [_vm._v("2.Kişi")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "mask",
-                              rawName: "v-mask",
-                              value: "0 (###) ###-####",
-                              expression: "'0 (###) ###-####'"
-                            },
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.formData.ikinci_numara,
-                              expression: "formData.ikinci_numara"
-                            }
-                          ],
-                          ref: "clear",
-                          staticClass: "form-control",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.formData.ikinci_numara },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.formData,
-                                "ikinci_numara",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-group col-md-12" }, [
-                        _c("label", [_vm._v("3.Kişi")]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "mask",
-                              rawName: "v-mask",
-                              value: "0 (###) ###-####",
-                              expression: "'0 (###) ###-####'"
-                            },
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.formData.ucuncu_numara,
-                              expression: "formData.ucuncu_numara"
-                            }
-                          ],
-                          ref: "clear",
-                          staticClass: "form-control",
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.formData.ucuncu_numara },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.formData,
-                                "ucuncu_numara",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ])
-                    ])
-                  ])
                 ])
               ])
             ]),
@@ -5660,19 +5416,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header" }, [
       _c("h3", { staticClass: "card-title" }, [
         _vm._v(
-          "\n                        Sistem - Düzenle\n                    "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [
-        _vm._v(
-          "\n                                        İletişim Bilgileri\n                                    "
+          "\n                            Sistem - Düzenle\n                        "
         )
       ])
     ])
@@ -5992,7 +5736,7 @@ var render = function() {
                     _c("tr", [
                       _c("th", { attrs: { scope: "row" } }, [
                         _vm._v(
-                          "\n                                    Klor atım süresi\n                                "
+                          "\n                                    Klor atım süresi (sn)\n                                "
                         )
                       ]),
                       _vm._v(" "),
@@ -6010,7 +5754,7 @@ var render = function() {
                           attrs: {
                             type: "number",
                             min: "1",
-                            max: "99",
+                            max: "999",
                             "aria-label": "Sizing example input",
                             "aria-describedby": "cvw"
                           },
@@ -6056,7 +5800,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "Değer\n                                        1 ila 99\n                                        arası olmalı"
+                              "Değer\n                                        1 ila 999\n                                        arası olmalı"
                             )
                           ]
                         )
@@ -6168,13 +5912,19 @@ var render = function() {
                     _vm._v(" "),
                     _c("tr", [
                       _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v("2.Klor atım Periyodu Saati:")
+                        _vm._v("2.Klor Atım Bekleme Saati:")
                       ]),
                       _vm._v(" "),
                       _c("td", { attrs: { colspan: "2" } }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("input", {
                             directives: [
+                              {
+                                name: "mask",
+                                rawName: "v-mask",
+                                value: "##",
+                                expression: "'##'"
+                              },
                               {
                                 name: "model",
                                 rawName: "v-model",
@@ -6183,12 +5933,7 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: {
-                              type: "number",
-                              min: "1",
-                              step: "1",
-                              id: "periodSaat"
-                            },
+                            attrs: { type: "text", id: "periodSaat" },
                             domProps: { value: _vm.periodSaat },
                             on: {
                               keyup: function($event) {
@@ -6220,13 +5965,19 @@ var render = function() {
                     _vm._v(" "),
                     _c("tr", [
                       _c("th", { attrs: { scope: "row" } }, [
-                        _vm._v("2.Klor atım Periyodu Saniyesi:")
+                        _vm._v("2.Klor Atım Çalışma Saniyesi:")
                       ]),
                       _vm._v(" "),
                       _c("td", { staticStyle: { width: "300px" } }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("input", {
                             directives: [
+                              {
+                                name: "mask",
+                                rawName: "v-mask",
+                                value: "##",
+                                expression: "'##'"
+                              },
                               {
                                 name: "model",
                                 rawName: "v-model",
@@ -6235,12 +5986,7 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: {
-                              type: "number",
-                              min: "1",
-                              step: "1",
-                              id: "periodSaniye"
-                            },
+                            attrs: { type: "text", id: "periodSaniye" },
                             domProps: { value: _vm.periodSaniye },
                             on: {
                               keyup: function($event) {

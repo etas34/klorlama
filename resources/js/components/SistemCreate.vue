@@ -55,39 +55,39 @@
                                        class="form-control" v-model="formData.klor_olcum_tel">
 
                             </div>
-                            <div class="col-md-12">
+<!--                            <div class="col-md-12">-->
 
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3 class="card-title">
-                                            İletişim Bilgileri
-                                        </h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="form-group col-md-12">
-                                            <label>1.Kişi</label>
-                                            <input ref="clear" type="text" v-mask="'0 (###) ###-####'"
-                                                   class="form-control" v-model="formData.birinci_numara">
+<!--                                <div class="card">-->
+<!--                                    <div class="card-header">-->
+<!--                                        <h3 class="card-title">-->
+<!--                                            İletişim Bilgileri-->
+<!--                                        </h3>-->
+<!--                                    </div>-->
+<!--                                    <div class="card-body">-->
+<!--                                        <div class="form-group col-md-12">-->
+<!--                                            <label>1.Kişi</label>-->
+<!--                                            <input ref="clear" type="text" v-mask="'0 (###) ###-####'"-->
+<!--                                                   class="form-control" v-model="formData.birinci_numara">-->
 
-                                        </div>
+<!--                                        </div>-->
 
-                                        <div class="form-group col-md-12">
-                                            <label>2.Kişi</label>
-                                            <input ref="clear" type="text" v-mask="'0 (###) ###-####'"
-                                                   class="form-control" v-model="formData.ikinci_numara">
+<!--                                        <div class="form-group col-md-12">-->
+<!--                                            <label>2.Kişi</label>-->
+<!--                                            <input ref="clear" type="text" v-mask="'0 (###) ###-####'"-->
+<!--                                                   class="form-control" v-model="formData.ikinci_numara">-->
 
-                                        </div>
+<!--                                        </div>-->
 
-                                        <div class="form-group col-md-12">
-                                            <label>3.Kişi</label>
-                                            <input ref="clear" type="text" v-mask="'0 (###) ###-####'"
-                                                   class="form-control" v-model="formData.ucuncu_numara">
+<!--                                        <div class="form-group col-md-12">-->
+<!--                                            <label>3.Kişi</label>-->
+<!--                                            <input ref="clear" type="text" v-mask="'0 (###) ###-####'"-->
+<!--                                                   class="form-control" v-model="formData.ucuncu_numara">-->
 
-                                        </div>
+<!--                                        </div>-->
 
-                                    </div>
-                                </div>
-                            </div>
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
 
 
                         </div>

@@ -59,9 +59,9 @@ class SistemController extends Controller
             'klorlama_tel' => $request['klorlama_tel'],
             'motor_tel' => $request['motor_tel'],
             'klor_olcum_tel' => $request['klor_olcum_tel'],
-            'birinci_numara' => $request['birinci_numara'],
-            'ikinci_numara' => $request['ikinci_numara'],
-            'ucuncu_numara' => $request['ucuncu_numara'],
+//            'birinci_numara' => $request['birinci_numara'],
+//            'ikinci_numara' => $request['ikinci_numara'],
+//            'ucuncu_numara' => $request['ucuncu_numara'],
         ]);
 //
 
@@ -129,9 +129,9 @@ class SistemController extends Controller
         $sistem->klorlama_tel = $request['klorlama_tel'];
         $sistem->motor_tel = $request['motor_tel'];
         $sistem->klor_olcum_tel = $request['klor_olcum_tel'];
-        $sistem->birinci_numara = $request['birinci_numara'];
-        $sistem->ikinci_numara = $request['ikinci_numara'];
-        $sistem->ucuncu_numara = $request['ucuncu_numara'];
+//        $sistem->birinci_numara = $request['birinci_numara'];
+//        $sistem->ikinci_numara = $request['ikinci_numara'];
+//        $sistem->ucuncu_numara = $request['ucuncu_numara'];
         $sistem->save();
     }
 

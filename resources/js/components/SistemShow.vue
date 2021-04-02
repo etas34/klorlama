@@ -111,20 +111,19 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">
-                                        Klor atım süresi
+                                        Klor atım süresi (sn)
                                     </th>
                                     <td>
                                         <input type="number"
-
                                                min="1"
-                                               max="99"
+                                               max="999"
                                                v-on:keyup.enter="klorAtimSureSubmit"
                                                class="form-control"
                                                aria-label="Sizing example input"
                                                v-model="klorAtimSure"
                                                aria-describedby="cvw">
                                         <small id="uyari" v-show="checkKlorAtimSure" class="form-text text-danger">Değer
-                                            1 ila 99
+                                            1 ila 999
                                             arası olmalı</small>
 
                                     </td>
@@ -176,15 +175,14 @@
                                     <td colspan="2">{{ sistem.son_olcum_zaman }}</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">2.Klor atım Periyodu Saati:</th>
+                                    <th scope="row">2.Klor Atım Bekleme Saati:</th>
                                     <td colspan="2">
 
                                         <div class="form-group">
-                                            <input type="number"
+                                            <input type="text"
 
-
+                                                   v-mask="'##'"
                                                    v-on:keyup.enter="periodAtimSubmit"
-                                                   min="1" step="1"
                                                    v-model="periodSaat"
                                                    class="form-control"
                                                    id="periodSaat">
@@ -194,14 +192,15 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">2.Klor atım Periyodu Saniyesi:</th>
+                                    <th scope="row">2.Klor Atım Çalışma Saniyesi:</th>
                                     <td style="width: 300px">
 
                                         <div class="form-group">
-                                            <input type="number"
+                                            <input type="text"
 
                                                    v-on:keyup.enter="periodAtimSubmit"
-                                                   min="1" step="1" v-model="periodSaniye" class="form-control"
+                                                   v-mask="'##'"
+                                                   v-model="periodSaniye" class="form-control"
                                                    id="periodSaniye">
                                         </div>
 
@@ -602,9 +601,11 @@ img {
 
 </style>
 <script>
+import {TheMask} from 'vue-the-mask'
+
 export default {
     props: ['sistem'],
-
+    components: {TheMask},
     data: function () {
         return {
             user_id: this.sistem.id,
@@ -627,17 +628,23 @@ export default {
         checkKlorAtimSure: function () {
             return (
                 this.klorAtimSure < 1 ||
-                this.klorAtimSure > 99 ||
+                this.klorAtimSure > 999 ||
                 this.klorAtimSure === ''
             )
         },
         checkperiodAtim: function () {
-            return (
-                this.periodSaat < 1 ||
-                this.periodSaniye < 1 ||
-                this.periodSaat === '' ||
-                this.periodSaniye === ''
-            )
+            var checkValuesIsNull = this.periodSaat != null && this.periodSaniye != null;
+
+            if (checkValuesIsNull)
+                return (
+
+                    this.periodSaat.length !== 2 ||
+                    this.periodSaniye.length !== 2 ||
+                    this.periodSaat === '' ||
+                    this.periodSaniye === ''
+                )
+            else
+                return true
         }
     },
     watch: {
